@@ -7,7 +7,7 @@ package jobportal;
 
 //OOP2 Project Section#4/Group#4 
 
-//Raghad
+//Raghad bandar 2190005368
 
 public class JobPortal {
 
