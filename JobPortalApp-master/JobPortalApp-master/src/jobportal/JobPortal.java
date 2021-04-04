@@ -1,10 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package jobportal;
-
 //OOP2 Project Section#4/Group#4 
 
 //Fatima Al-Ramadhan 2180004473
@@ -12,6 +5,9 @@ package jobportal;
 //Razan Alsudairi 2180002990
 // Manar
 // khawla 
+
+
+package jobportal;
 
 public class JobPortal {
 
