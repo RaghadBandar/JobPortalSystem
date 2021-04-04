@@ -3,14 +3,14 @@ package jobportal;
 public class User {
       
     String password;  
-    String UserID;
+    String userID;
     
     public User() {
     }
     
     public User(String password, String UserID) {
         this.password = password;
-        this.UserID = UserID;
+        this.userID = UserID;
     }
 
     public String getPassword() {
@@ -18,7 +18,7 @@ public class User {
     }
 
     public String getUserID() {
-        return UserID;
+        return userID;
     }
 
     public void setPassword(String password) {
@@ -26,12 +26,12 @@ public class User {
     }
 
     public void setUserID(String UserID) {
-        this.UserID = UserID;
+        this.userID = UserID;
     }
 
     @Override
     public String toString() {
-        return "User{" + "password=" + password + ", UserID=" + UserID + '}';
+        return "User{" + "password=" + password + ", UserID=" + userID + '}';
     }
 
     public boolean logIn(String password, String UserID) {
