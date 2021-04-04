@@ -11,6 +11,7 @@ package jobportal;
 //Raghad bandar 2190005368
 //Razan Alsudairi 2180002990
 // Manar
+// khawla 
 
 public class JobPortal {
 
