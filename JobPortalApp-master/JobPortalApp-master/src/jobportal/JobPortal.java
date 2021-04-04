@@ -24,6 +24,8 @@ public class JobPortal {
                mai.setVisible(true);
          SignFrame e = new SignFrame();
                  e.setVisible(true);
+                 
+                MANAR
     }
     
 }
