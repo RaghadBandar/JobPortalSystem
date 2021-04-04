@@ -28,18 +28,6 @@ public class Admin extends User{
         
     }
     
-    public String getName (){
-        return adminName;
-    }
-    
-    public String getRole (){
-        return adminRole;
-    }
-    
-    public String getEmail (){
-        return email;
-    }
-    
     public void setName (String adminName){
        this.adminName = adminName;
     }
@@ -50,6 +38,18 @@ public class Admin extends User{
     
     public void setEmail (String email){
        this.email = email;
+    }
+    
+    public String getName (){
+        return adminName;
+    }
+    
+    public String getRole (){
+        return adminRole;
+    }
+    
+    public String getEmail (){
+        return email;
     }
     
      @Override
