@@ -10,7 +10,7 @@ package jobportal;
 //Fatima Al-Ramadhan 2180004473
 //Raghad bandar 2190005368
 //Razan Alsudairi 2180002990
-
+// Manar
 
 public class JobPortal {
 
@@ -25,7 +25,7 @@ public class JobPortal {
          SignFrame e = new SignFrame();
                  e.setVisible(true);
                  
-                MANAR
+                
     }
     
 }
