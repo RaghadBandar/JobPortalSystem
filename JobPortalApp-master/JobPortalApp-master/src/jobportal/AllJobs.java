@@ -83,7 +83,7 @@ public class AllJobs extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(10, 10, 171, 31);
+        jRadioButton1.setBounds(10, 10, 173, 31);
 
         jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(255, 204, 204));
@@ -133,8 +133,13 @@ public class AllJobs extends javax.swing.JFrame {
         jRadioButton3.setBackground(new java.awt.Color(255, 255, 204));
         jRadioButton3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jRadioButton3.setText("Social Media Assistant");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jRadioButton3);
-        jRadioButton3.setBounds(10, 10, 201, 31);
+        jRadioButton3.setBounds(10, 10, 205, 31);
 
         jTextField10.setEditable(false);
         jTextField10.setBackground(new java.awt.Color(255, 255, 204));
@@ -184,7 +189,7 @@ public class AllJobs extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jRadioButton2);
-        jRadioButton2.setBounds(10, 10, 171, 31);
+        jRadioButton2.setBounds(10, 10, 173, 31);
 
         jTextField6.setEditable(false);
         jTextField6.setBackground(new java.awt.Color(255, 204, 204));
@@ -234,7 +239,7 @@ public class AllJobs extends javax.swing.JFrame {
             }
         });
         jPanel5.add(jRadioButton4);
-        jRadioButton4.setBounds(10, 10, 155, 31);
+        jRadioButton4.setBounds(10, 10, 159, 31);
 
         jTextField14.setEditable(false);
         jTextField14.setBackground(new java.awt.Color(204, 204, 255));
@@ -289,7 +294,7 @@ public class AllJobs extends javax.swing.JFrame {
             }
         });
         jPanel6.add(jRadioButton5);
-        jRadioButton5.setBounds(10, 10, 159, 31);
+        jRadioButton5.setBounds(10, 10, 163, 31);
 
         jTextField18.setEditable(false);
         jTextField18.setBackground(new java.awt.Color(204, 255, 204));
@@ -447,7 +452,9 @@ public class AllJobs extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 810, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -508,6 +515,12 @@ public class AllJobs extends javax.swing.JFrame {
     private void jTextField25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField25ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField25ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        SelectJob x = new SelectJob();
+        x.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     /**
      * @param args the command line arguments

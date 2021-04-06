@@ -1,28 +1,51 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package jobportal;
-
 //OOP2 Project Section#4/Group#4 
-
+//Fatima Al-Ramadhan 2180004473
 //Raghad bandar 2190005368
 //Razan Alsudairi 2180002990
+// Manar
+// khawla 
+package jobportal;
+
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class JobPortal {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-         screen mai = new screen();
-               mai.setVisible(true);
-         SignFrame e = new SignFrame();
-                 e.setVisible(true);
-                 
-                MANAR
+    private Connection connectionse;
+
+    public void closeDB() {
+
+        try {
+            connectionse.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void openDB() {
+
+        try {
+            connectionse = DriverManager.getConnection(DataBase_URL, DataBase_UsreName, DataBase_UPassword);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
+    private static final String DataBase_URL = "jdbc:derby://localhost:1527/JobPortalDB";
+    private static final String DataBase_UsreName = "DB";
+    private static final String DataBase_UPassword = "DB";
+
+    public static void main(String[] args) {
+
+        //openDB();
+        screen mai = new screen();
+        mai.setVisible(true);
+
+        //closeDB();
+    }
 }
