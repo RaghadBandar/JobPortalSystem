@@ -64,7 +64,7 @@ public class SekeerServices extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton4.setText("Show all Jobs");
+        jButton4.setText("Apply for Jobs");
         jButton4.setToolTipText("search ");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
