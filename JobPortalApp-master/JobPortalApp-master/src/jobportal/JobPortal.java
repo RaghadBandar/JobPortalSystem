@@ -11,16 +11,17 @@ package jobportal;
 
 public class JobPortal {
 
-    /**
-     * @param args the command line arguments
-     */
-    
+    private final String DataBase_URL = "jdbc:derby://localhost:1527/JobPortalDB";
+     private final String DataBase_UsreName = "DB";
+     private final String DataBase_UPassword = "DB";
+   
     public static void main(String[] args) {
-        // TODO code application logic here
+        
          screen mai = new screen();
                mai.setVisible(true);
          SignFrame e = new SignFrame();
                  e.setVisible(true);
+        
                  
                 
     }
