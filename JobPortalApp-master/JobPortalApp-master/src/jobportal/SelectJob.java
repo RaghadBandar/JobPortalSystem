@@ -5,6 +5,8 @@
  */
 package jobportal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ِAsus
@@ -108,6 +110,11 @@ public class SelectJob extends javax.swing.JFrame {
         jButton1.setBounds(30, 290, 40, 30);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/checkIcon.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2);
         jButton2.setBounds(360, 280, 50, 50);
 
@@ -138,6 +145,10 @@ public class SelectJob extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         JOptionPane.showMessageDialog(null,"successfull applying for job","successfull",JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
