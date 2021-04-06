@@ -94,7 +94,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Times New Roman" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Show All Jobs"/>
+            <Property name="text" type="java.lang.String" value="Apply for Jobs"/>
             <Property name="toolTipText" type="java.lang.String" value="search "/>
             <Property name="actionCommand" type="java.lang.String" value="Show all Jobs"/>
           </Properties>

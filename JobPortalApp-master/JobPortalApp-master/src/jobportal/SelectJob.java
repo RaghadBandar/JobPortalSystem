@@ -44,6 +44,7 @@ public class SelectJob extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setAutoscrolls(true);
         jPanel1.setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/selectJobInter.png"))); // NOI18N
@@ -119,6 +120,11 @@ public class SelectJob extends javax.swing.JFrame {
         jButton2.setBounds(360, 280, 50, 50);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/cancleIcon.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton3);
         jButton3.setBounds(310, 280, 50, 50);
 
@@ -143,12 +149,23 @@ public class SelectJob extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        JobTable x = new JobTable();
+        x.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         JOptionPane.showMessageDialog(null,"successfull applying for job","successfull",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,"successfull applying for job","successfull",JOptionPane.INFORMATION_MESSAGE);
+        SekeerServices x = new SekeerServices();
+        x.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        SekeerServices x = new SekeerServices();
+        x.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

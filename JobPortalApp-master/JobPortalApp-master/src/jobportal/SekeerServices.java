@@ -64,7 +64,7 @@ public class SekeerServices extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton4.setText("Show All Jobs");
+        jButton4.setText("Apply for Jobs");
         jButton4.setToolTipText("search ");
         jButton4.setActionCommand("Show all Jobs");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -132,13 +132,15 @@ public class SekeerServices extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        AllJobs x = new AllJobs();
+        JobTable x = new JobTable();
         x.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        DisplayID y = new DisplayID();
+        y.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
