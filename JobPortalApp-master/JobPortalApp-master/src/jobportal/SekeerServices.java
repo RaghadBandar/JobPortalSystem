@@ -138,9 +138,7 @@ public class SekeerServices extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        DisplayID y = new DisplayID();
-        y.setVisible(true);
-        this.setVisible(false);
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

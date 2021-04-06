@@ -38,7 +38,7 @@ public class JobPortal {
     
     private static final String DataBase_URL = "jdbc:derby://localhost:1527/JobPortalDB";
     private static final String DataBase_UsreName = "DB";
-    private static final String DataBase_UPassword = "DB";
+    private static final String DataBase_UPassword = "1234";
 
     public static void main(String[] args) {
 
