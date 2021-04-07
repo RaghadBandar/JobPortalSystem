@@ -33,6 +33,7 @@ public class SignFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         AdminRadio = new javax.swing.JRadioButton();
@@ -54,11 +55,13 @@ public class SignFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(30, 220, 130, 50);
 
+        buttonGroup1.add(AdminRadio);
         AdminRadio.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         AdminRadio.setText("Admin");
         jPanel1.add(AdminRadio);
         AdminRadio.setBounds(120, 270, 100, 29);
 
+        buttonGroup1.add(SeekerRadio);
         SeekerRadio.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         SeekerRadio.setText("Seeker");
         SeekerRadio.addActionListener(new java.awt.event.ActionListener() {
@@ -129,31 +132,25 @@ public class SignFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        if(SeekerRadio.isSelected()){
-//            String sql = "SELECT AdminID FROM Admin where AdminID="+SeekerIDjText.getText();
-//            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-//                java.sql.Statement stt = con.createStatement();
-//                ResultSet rs = stt.executeQuery(sql);) {
-//
-//            if (rs.next()) {
-//                SekeerServices x = new SekeerServices();
-//                x.setVisible(true);
-//                this.setVisible(false);    
-//            }else{
-//                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
-//                SeekerIDjText.setText("");
-//                jPasswordField1.setText("");
-//                SeekerRadio.setSelected(false); 
-//                AdminRadio.setSelected(false);
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-//            SeekerIDjText.setText("");
-//                jPasswordField1.setText("");
-//                SeekerRadio.setSelected(false); 
-//                AdminRadio.setSelected(false);
-//        }    
-//    }
+        if(SeekerRadio.isSelected()){
+            String sql = "SELECT SeekerID FROM Job_Seeker where SeekerID="+SeekerIDjText.getText();
+            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql);) {
+
+            if (rs.next()) {
+                SekeerServices x = new SekeerServices();
+                x.setVisible(true);
+                this.setVisible(false);    
+            }else{
+                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
+                Resat();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            Resat();
+        }    
+    }
 //        if(AdminRadio.isSelected()){
 //            String sql = "SELECT SeekerID FROM Job_Seeker where SeekerID="+SeekerIDjText.getText();
 //            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
@@ -161,30 +158,32 @@ public class SignFrame extends javax.swing.JFrame {
 //                ResultSet rs = stt.executeQuery(sql);) {
 //
 //            if (rs.next()) {
-//               AddJobAdmin y = new AddJobAdmin();
-//                y.setVisible(true);
-//                this.setVisible(false);
+//               //AddJobAdmin y = new AddJobAdmin();
+////               y.setVisible(true);
+////               this.setVisible(false);
 //               
 //            }else{
 //                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
-//                SeekerIDjText.setText("");
-//                jPasswordField1.setText("");
-//                SeekerRadio.setSelected(false); 
-//                AdminRadio.setSelected(false); 
+//                Resat();
 //            }
 //        } catch (Exception e) {
 //            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+//              Resat();
 //        } 
 //            
 //    }else{
 //            JOptionPane.showMessageDialog(null, "Please, Select a user Role.", "Error", JOptionPane.ERROR_MESSAGE);
-//            SeekerIDjText.setText("");
-//                jPasswordField1.setText("");
-//                SeekerRadio.setSelected(false); 
-//                AdminRadio.setSelected(false);
+//            Resat();
 //        }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    private void Resat(){
+        SeekerIDjText.setText("");
+        jPasswordField1.setText("");
+        SeekerRadio.setSelected(false); 
+         AdminRadio.setSelected(false);  
+       }
+    
+    
     private void SeekerRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeekerRadioActionPerformed
         
     }//GEN-LAST:event_SeekerRadioActionPerformed
@@ -232,6 +231,7 @@ public class SignFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton AdminRadio;
     public static javax.swing.JTextField SeekerIDjText;
     private javax.swing.JRadioButton SeekerRadio;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
