@@ -132,35 +132,35 @@ public class SignFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(SeekerRadio.isSelected()){
-            String sql = "SELECT SeekerID FROM Job_Seeker where SeekerID="+SeekerIDjText.getText();
-            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-                java.sql.Statement stt = con.createStatement();
-                ResultSet rs = stt.executeQuery(sql);) {
-
-            if (rs.next()) {
-                SekeerServices x = new SekeerServices();
-                x.setVisible(true);
-                this.setVisible(false);    
-            }else{
-                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
-                Resat();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-            Resat();
-        }    
-    }
-//        if(AdminRadio.isSelected()){
+//        if(SeekerRadio.isSelected()){
 //            String sql = "SELECT SeekerID FROM Job_Seeker where SeekerID="+SeekerIDjText.getText();
 //            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
 //                java.sql.Statement stt = con.createStatement();
 //                ResultSet rs = stt.executeQuery(sql);) {
 //
 //            if (rs.next()) {
-//               //AddJobAdmin y = new AddJobAdmin();
-////               y.setVisible(true);
-////               this.setVisible(false);
+                SekeerServices x = new SekeerServices();
+                x.setVisible(true);
+                this.setVisible(false);    
+//            }else{
+//                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
+//                Resat();
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+//            Resat();
+//        }    
+//    }
+//        if(AdminRadio.isSelected()){
+//            String sql = "SELECT AdminID FROM Admin where AdminID="+SeekerIDjText.getText();
+//            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+//                java.sql.Statement stt = con.createStatement();
+//                ResultSet rs = stt.executeQuery(sql);) {
+//
+//            if (rs.next()) {
+               AdminServices y = new AdminServices();
+               y.setVisible(true);
+               this.setVisible(false);
 //               
 //            }else{
 //                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
