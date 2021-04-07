@@ -9,12 +9,14 @@ package jobportal;
  *
  * @author ِAsus
  */
-public class AddJobAdmin extends javax.swing.JFrame {
+public class AdminServices extends javax.swing.JFrame {
 
     /**
      * Creates new form AddJobAdmin
      */
-    public AddJobAdmin() {
+    public AdminServices() {
+        
+        super ("ADMIN SERVICES");
         initComponents();
     }
 
@@ -64,6 +66,11 @@ public class AddJobAdmin extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         jButton1.setText("Add New Job");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(110, 320, 210, 40);
 
@@ -95,6 +102,13 @@ public class AddJobAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+         AddJob addjob = new AddJob();
+         addjob.setVisible(true);
+         this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -125,7 +139,7 @@ public class AddJobAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddJobAdmin().setVisible(true);
+                new AdminServices().setVisible(true);
             }
         });
     }

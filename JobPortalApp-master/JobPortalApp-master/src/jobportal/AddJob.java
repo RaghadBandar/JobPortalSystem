@@ -5,6 +5,11 @@
  */
 package jobportal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ِAsus
@@ -15,7 +20,10 @@ public class AddJob extends javax.swing.JFrame {
      * Creates new form AddJob
      */
     public AddJob() {
+        
+        super("ADD NEW JOB");
         initComponents();
+            
     }
 
     /**
@@ -28,63 +36,64 @@ public class AddJob extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        addButton = new javax.swing.JButton();
+        numEmpCombo = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        jobID = new javax.swing.JTextField();
+        jobtext = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        majorCombo = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        desTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        jButton2.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/addicon.jpg"))); // NOI18N
-        jPanel2.add(jButton2);
-        jButton2.setBounds(330, 490, 70, 70);
+        addButton.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
+        addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/addicon.jpg"))); // NOI18N
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(addButton);
+        addButton.setBounds(330, 490, 70, 70);
 
-        jComboBox3.setMaximumRowCount(2);
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-        jPanel2.add(jComboBox3);
-        jComboBox3.setBounds(240, 360, 110, 30);
+        numEmpCombo.setMaximumRowCount(2);
+        numEmpCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        jPanel2.add(numEmpCombo);
+        numEmpCombo.setBounds(240, 360, 110, 30);
 
         jLabel12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel12.setText("Number of Emloyee");
         jPanel2.add(jLabel12);
         jLabel12.setBounds(70, 360, 150, 29);
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.setText("Enter Job ID");
-        jPanel2.add(jTextField5);
-        jTextField5.setBounds(180, 260, 170, 30);
+        jobID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jobID.setForeground(new java.awt.Color(153, 153, 153));
+        jobID.setText("Enter Job ID");
+        jPanel2.add(jobID);
+        jobID.setBounds(180, 260, 170, 30);
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField6.setText("Enter Name of Job");
-        jPanel2.add(jTextField6);
-        jTextField6.setBounds(180, 210, 170, 30);
+        jobtext.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jobtext.setForeground(new java.awt.Color(153, 153, 153));
+        jobtext.setText("Enter Name of Job");
+        jPanel2.add(jobtext);
+        jobtext.setBounds(180, 210, 170, 30);
 
         jLabel13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel13.setText("Name of Job");
         jPanel2.add(jLabel13);
         jLabel13.setBounds(70, 210, 100, 29);
-
-        jTextField4.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField4.setText("Enter Description of JOB!");
-        jPanel2.add(jTextField4);
-        jTextField4.setBounds(180, 410, 230, 50);
 
         jLabel11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel11.setText("Job ID");
@@ -102,10 +111,10 @@ public class AddJob extends javax.swing.JFrame {
         jPanel2.add(jLabel15);
         jLabel15.setBounds(40, 40, 120, 40);
 
-        jComboBox4.setMaximumRowCount(3);
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
-        jPanel2.add(jComboBox4);
-        jComboBox4.setBounds(180, 310, 170, 30);
+        majorCombo.setMaximumRowCount(3);
+        majorCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
+        jPanel2.add(majorCombo);
+        majorCombo.setBounds(180, 310, 170, 30);
 
         jLabel10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel10.setText("Major");
@@ -122,9 +131,22 @@ public class AddJob extends javax.swing.JFrame {
         jPanel2.add(jLabel9);
         jLabel9.setBounds(0, 0, 430, 200);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
-        jPanel2.add(jButton1);
-        jButton1.setBounds(20, 510, 50, 30);
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
+        jPanel2.add(backButton);
+        backButton.setBounds(20, 510, 50, 30);
+
+        jScrollPane1.setForeground(new java.awt.Color(153, 153, 153));
+        jScrollPane1.setToolTipText("");
+
+        desTextArea.setColumns(20);
+        desTextArea.setFont(new java.awt.Font("Courier New", 0, 10)); // NOI18N
+        desTextArea.setForeground(new java.awt.Color(153, 153, 153));
+        desTextArea.setRows(5);
+        desTextArea.setText("Enter Description of JOB!");
+        jScrollPane1.setViewportView(desTextArea);
+
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(190, 410, 190, 83);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +161,44 @@ public class AddJob extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if (evt.getSource()==addButton) {
+            
+            
+            String jobName = jobtext.getText();
+            String jobid = jobID.getText();
+            String major = majorCombo.getSelectedItem().toString();
+            String numEmp = numEmpCombo.getSelectedItem().toString();
+            String des = desTextArea.getText();
+            
+            int jobId = Integer.parseInt(jobid);
+            
+            String insert = "INSERT INTO JOB (JobID, JobName, Description, Major) VALUES ("+jobid+",'"+jobName+"','"+des+"','"+major+"')";
+            
+            try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+                    java.sql.Statement stt = con.createStatement(); )
+                    {
+                        int INSERT_State = stt.executeUpdate(insert);
+
+                    }
+            catch (SQLException ex){
+                JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in INSERT", JOptionPane.ERROR_MESSAGE);
+            }  catch (Exception ex) {
+            JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+            
+           }
+        else if (evt.getSource()==backButton){
+            AdminServices x = new AdminServices();
+            x.setVisible(true);
+           this.setVisible(false);
+        }
+    }//GEN-LAST:event_addButtonActionPerformed
+
+      
 
     /**
      * @param args the command line arguments
@@ -176,10 +236,9 @@ public class AddJob extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JButton addButton;
+    private javax.swing.JButton backButton;
+    private javax.swing.JTextArea desTextArea;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -189,8 +248,10 @@ public class AddJob extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jobID;
+    private javax.swing.JTextField jobtext;
+    private javax.swing.JComboBox<String> majorCombo;
+    private javax.swing.JComboBox<String> numEmpCombo;
     // End of variables declaration//GEN-END:variables
 }
