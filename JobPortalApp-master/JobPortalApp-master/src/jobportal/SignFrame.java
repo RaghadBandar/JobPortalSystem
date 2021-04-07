@@ -53,14 +53,16 @@ public class SignFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
         jLabel4.setText("User Role:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(30, 220, 130, 50);
+        jLabel4.setBounds(40, 250, 130, 40);
 
+        AdminRadio.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(AdminRadio);
         AdminRadio.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         AdminRadio.setText("Admin");
         jPanel1.add(AdminRadio);
-        AdminRadio.setBounds(120, 270, 100, 29);
+        AdminRadio.setBounds(150, 260, 80, 20);
 
+        SeekerRadio.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(SeekerRadio);
         SeekerRadio.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
         SeekerRadio.setText("Seeker");
@@ -70,7 +72,7 @@ public class SignFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(SeekerRadio);
-        SeekerRadio.setBounds(240, 270, 90, 25);
+        SeekerRadio.setBounds(240, 260, 90, 25);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Male.png"))); // NOI18N
         jPanel1.add(jLabel2);
