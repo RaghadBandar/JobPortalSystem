@@ -112,8 +112,7 @@ try(Connection connection=DriverManager.getConnection( DatabaseName,username, pa
  PreparedStatement prepstatement= connection.prepareStatement(sql)){
 prepstatement.setInt(1,ID); 
 prepstatement.executeUpdate();
-JOptionPane.showMessageDialog(null,"JobDeleted Sucssessfuly ","Deleted Message",JOptionPane.PLAIN_MESSAGE);
-
+JOptionPane.showMessageDialog(this.jTextField1,"JobDeleted Sucssessfuly ","Deleted Message",JOptionPane.PLAIN_MESSAGE);
                          
 }
 catch (SQLException ex) {
