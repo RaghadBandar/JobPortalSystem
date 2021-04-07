@@ -45,6 +45,7 @@ public class AdminServices extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,21 +80,31 @@ public class AdminServices extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(110, 320, 210, 40);
+        jButton1.setBounds(110, 300, 210, 40);
 
         jButton4.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         jButton4.setText("Display Jobs");
         jPanel1.add(jButton4);
-        jButton4.setBounds(110, 270, 210, 40);
+        jButton4.setBounds(110, 250, 210, 40);
 
         jButton5.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
-        jButton5.setText("Select Seeker for Job");
+        jButton5.setText("Delete Job");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5);
-        jButton5.setBounds(110, 370, 210, 40);
+        jButton5.setBounds(110, 400, 210, 40);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/icons8-exit-24.png"))); // NOI18N
         jPanel1.add(jButton6);
         jButton6.setBounds(350, 430, 50, 30);
+
+        jButton7.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
+        jButton7.setText("Select Seeker for Job");
+        jPanel1.add(jButton7);
+        jButton7.setBounds(110, 350, 210, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +126,12 @@ public class AdminServices extends javax.swing.JFrame {
          addjob.setVisible(true);
          this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new DeleteJob().setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +175,7 @@ public class AdminServices extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
