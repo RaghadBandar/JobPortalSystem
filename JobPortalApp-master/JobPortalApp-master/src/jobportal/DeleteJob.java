@@ -112,7 +112,8 @@ try(Connection connection=DriverManager.getConnection( DatabaseName,username, pa
  PreparedStatement prepstatement= connection.prepareStatement(sql)){
 prepstatement.setInt(1,ID); 
 prepstatement.executeUpdate();
-JOptionPane.showMessageDialog(null,"Record Deleted Sucssessfuly ","Deleted",JOptionPane.PLAIN_MESSAGE);
+JOptionPane.showMessageDialog(null,"JobDeleted Sucssessfuly ","Deleted Message",JOptionPane.PLAIN_MESSAGE);
+
                          
 }
 catch (SQLException ex) {
