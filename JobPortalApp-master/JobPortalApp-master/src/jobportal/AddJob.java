@@ -38,7 +38,7 @@ public class AddJob extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         addButton = new javax.swing.JButton();
         stateLabel = new javax.swing.JLabel();
-        jobID = new javax.swing.JTextField();
+        stateText = new javax.swing.JTextField();
         jobtext = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -51,7 +51,7 @@ public class AddJob extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         desTextArea = new javax.swing.JTextArea();
         jobID1 = new javax.swing.JTextField();
-        jobID2 = new javax.swing.JTextField();
+        majorText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,11 +73,11 @@ public class AddJob extends javax.swing.JFrame {
         jPanel2.add(stateLabel);
         stateLabel.setBounds(70, 360, 80, 29);
 
-        jobID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jobID.setForeground(new java.awt.Color(153, 153, 153));
-        jobID.setText("T (True) OR F (False)");
-        jPanel2.add(jobID);
-        jobID.setBounds(180, 360, 170, 30);
+        stateText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        stateText.setForeground(new java.awt.Color(153, 153, 153));
+        stateText.setText("T (True) OR F (False)");
+        jPanel2.add(stateText);
+        stateText.setBounds(180, 360, 170, 30);
 
         jobtext.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jobtext.setForeground(new java.awt.Color(153, 153, 153));
@@ -122,6 +122,11 @@ public class AddJob extends javax.swing.JFrame {
         jLabel9.setBounds(0, 0, 430, 200);
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
         jPanel2.add(backButton);
         backButton.setBounds(20, 510, 50, 30);
 
@@ -145,11 +150,11 @@ public class AddJob extends javax.swing.JFrame {
         jPanel2.add(jobID1);
         jobID1.setBounds(180, 260, 170, 30);
 
-        jobID2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jobID2.setForeground(new java.awt.Color(153, 153, 153));
-        jobID2.setText("Enter Major!");
-        jPanel2.add(jobID2);
-        jobID2.setBounds(180, 310, 170, 30);
+        majorText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        majorText.setForeground(new java.awt.Color(153, 153, 153));
+        majorText.setText("Enter Major!");
+        jPanel2.add(majorText);
+        majorText.setBounds(180, 310, 170, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,40 +173,42 @@ public class AddJob extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         
-        if (evt.getSource()==addButton) {
-            
             
             String jobName = jobtext.getText();
-            String jobid = jobID.getText();
-            String major = majorCombo.getSelectedItem().toString();
-            String numEmp = numEmpCombo.getSelectedItem().toString();
+            String jobid = jobID1.getText();
+            String major = majorText.getText();
+            String state = stateText.getText();
             String des = desTextArea.getText();
             
             int jobId = Integer.parseInt(jobid);
             
-            String insert = "INSERT INTO JOB (JobID, JobName, Description, Major) VALUES ("+jobid+",'"+jobName+"','"+des+"','"+major+"')";
+            String insert = "INSERT INTO JOB (JobID, JobName, State, Description, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
             
             try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
                     java.sql.Statement stt = con.createStatement(); )
                     {
                         int INSERT_State = stt.executeUpdate(insert);
                         
-                        JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");
+                     JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");   
 
                     }
             catch (SQLException ex){
                 JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in INSERT", JOptionPane.ERROR_MESSAGE);
             }  catch (Exception ex) {
-            JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                
+          JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-            
-           }
-        else if (evt.getSource()==backButton){
-            AdminServices x = new AdminServices();
-            x.setVisible(true);
-           this.setVisible(false);
-        }
+            JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");
+           
+      
+        
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new AdminServices().setVisible(true);
+    }//GEN-LAST:event_backButtonActionPerformed
 
       
 
@@ -253,10 +260,10 @@ public class AddJob extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jobID;
     private javax.swing.JTextField jobID1;
-    private javax.swing.JTextField jobID2;
     private javax.swing.JTextField jobtext;
+    private javax.swing.JTextField majorText;
     private javax.swing.JLabel stateLabel;
+    private javax.swing.JTextField stateText;
     // End of variables declaration//GEN-END:variables
 }
