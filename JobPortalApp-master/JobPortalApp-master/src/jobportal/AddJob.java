@@ -182,6 +182,8 @@ public class AddJob extends javax.swing.JFrame {
                     java.sql.Statement stt = con.createStatement(); )
                     {
                         int INSERT_State = stt.executeUpdate(insert);
+                        
+                        JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");
 
                     }
             catch (SQLException ex){
