@@ -5,6 +5,12 @@
  */
 package jobportal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ِAsus
@@ -28,8 +34,9 @@ public class SignFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+        AdminRadio = new javax.swing.JRadioButton();
+        SeekerRadio = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         SeekerIDjText = new javax.swing.JTextField();
@@ -42,36 +49,48 @@ public class SignFrame extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        jRadioButton1.setText("Admin");
-        jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(80, 240, 107, 25);
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
+        jLabel4.setText("User Role:");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(30, 220, 130, 50);
 
-        jRadioButton2.setText("Seeker");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        AdminRadio.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
+        AdminRadio.setText("Admin");
+        jPanel1.add(AdminRadio);
+        AdminRadio.setBounds(120, 270, 100, 29);
+
+        SeekerRadio.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 18)); // NOI18N
+        SeekerRadio.setText("Seeker");
+        SeekerRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                SeekerRadioActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(230, 240, 69, 25);
+        jPanel1.add(SeekerRadio);
+        SeekerRadio.setBounds(240, 270, 90, 25);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Male.png"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(60, 290, 50, 50);
+        jLabel2.setBounds(60, 310, 50, 50);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/pass.png"))); // NOI18N
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(60, 360, 50, 50);
+        jLabel3.setBounds(60, 380, 50, 50);
 
         SeekerIDjText.setForeground(new java.awt.Color(153, 153, 153));
         SeekerIDjText.setText("Enter ID");
+        SeekerIDjText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeekerIDjTextActionPerformed(evt);
+            }
+        });
         jPanel1.add(SeekerIDjText);
-        SeekerIDjText.setBounds(140, 300, 160, 30);
+        SeekerIDjText.setBounds(130, 320, 160, 30);
 
         jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
         jPasswordField1.setText("Password");
         jPanel1.add(jPasswordField1);
-        jPasswordField1.setBounds(140, 370, 160, 30);
+        jPasswordField1.setBounds(130, 390, 160, 30);
 
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -84,7 +103,7 @@ public class SignFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(150, 440, 140, 30);
+        jButton1.setBounds(140, 450, 140, 30);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
         jPanel1.add(jButton2);
@@ -93,7 +112,7 @@ public class SignFrame extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/interLG.png"))); // NOI18N
         jLabel1.setText("Admin");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(-10, 0, 400, 530);
+        jLabel1.setBounds(0, 0, 400, 530);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,14 +129,69 @@ public class SignFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+//        if(SeekerRadio.isSelected()){
+//            String sql = "SELECT AdminID FROM Admin where AdminID="+SeekerIDjText.getText();
+//            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+//                java.sql.Statement stt = con.createStatement();
+//                ResultSet rs = stt.executeQuery(sql);) {
+//
+//            if (rs.next()) {
+//                SekeerServices x = new SekeerServices();
+//                x.setVisible(true);
+//                this.setVisible(false);    
+//            }else{
+//                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
+//                SeekerIDjText.setText("");
+//                jPasswordField1.setText("");
+//                SeekerRadio.setSelected(false); 
+//                AdminRadio.setSelected(false);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+//            SeekerIDjText.setText("");
+//                jPasswordField1.setText("");
+//                SeekerRadio.setSelected(false); 
+//                AdminRadio.setSelected(false);
+//        }    
+//    }
+//        if(AdminRadio.isSelected()){
+//            String sql = "SELECT SeekerID FROM Job_Seeker where SeekerID="+SeekerIDjText.getText();
+//            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+//                java.sql.Statement stt = con.createStatement();
+//                ResultSet rs = stt.executeQuery(sql);) {
+//
+//            if (rs.next()) {
+//               AddJobAdmin y = new AddJobAdmin();
+//                y.setVisible(true);
+//                this.setVisible(false);
+//               
+//            }else{
+//                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
+//                SeekerIDjText.setText("");
+//                jPasswordField1.setText("");
+//                SeekerRadio.setSelected(false); 
+//                AdminRadio.setSelected(false); 
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+//        } 
+//            
+//    }else{
+//            JOptionPane.showMessageDialog(null, "Please, Select a user Role.", "Error", JOptionPane.ERROR_MESSAGE);
+//            SeekerIDjText.setText("");
+//                jPasswordField1.setText("");
+//                SeekerRadio.setSelected(false); 
+//                AdminRadio.setSelected(false);
+//        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        SekeerServices x = new SekeerServices();
-        x.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void SeekerRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeekerRadioActionPerformed
+        
+    }//GEN-LAST:event_SeekerRadioActionPerformed
+
+    private void SeekerIDjTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeekerIDjTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SeekerIDjTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,15 +229,16 @@ public class SignFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton AdminRadio;
     public static javax.swing.JTextField SeekerIDjText;
+    private javax.swing.JRadioButton SeekerRadio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     // End of variables declaration//GEN-END:variables
 }
