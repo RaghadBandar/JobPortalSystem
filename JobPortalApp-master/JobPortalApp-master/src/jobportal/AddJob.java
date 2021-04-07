@@ -37,21 +37,21 @@ public class AddJob extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         addButton = new javax.swing.JButton();
-        numEmpCombo = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
+        stateLabel = new javax.swing.JLabel();
         jobID = new javax.swing.JTextField();
         jobtext = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        majorCombo = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         desTextArea = new javax.swing.JTextArea();
+        jobID1 = new javax.swing.JTextField();
+        jobID2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,25 +68,20 @@ public class AddJob extends javax.swing.JFrame {
         jPanel2.add(addButton);
         addButton.setBounds(330, 490, 70, 70);
 
-        numEmpCombo.setMaximumRowCount(2);
-        numEmpCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-        jPanel2.add(numEmpCombo);
-        numEmpCombo.setBounds(240, 360, 110, 30);
-
-        jLabel12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        jLabel12.setText("Number of Emloyee");
-        jPanel2.add(jLabel12);
-        jLabel12.setBounds(70, 360, 150, 29);
+        stateLabel.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
+        stateLabel.setText("State");
+        jPanel2.add(stateLabel);
+        stateLabel.setBounds(70, 360, 80, 29);
 
         jobID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jobID.setForeground(new java.awt.Color(153, 153, 153));
-        jobID.setText("Enter Job ID");
+        jobID.setText("T (True) OR F (False)");
         jPanel2.add(jobID);
-        jobID.setBounds(180, 260, 170, 30);
+        jobID.setBounds(180, 360, 170, 30);
 
         jobtext.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jobtext.setForeground(new java.awt.Color(153, 153, 153));
-        jobtext.setText("Enter Name of Job");
+        jobtext.setText("Enter Name of Job!");
         jPanel2.add(jobtext);
         jobtext.setBounds(180, 210, 170, 30);
 
@@ -111,11 +106,6 @@ public class AddJob extends javax.swing.JFrame {
         jPanel2.add(jLabel15);
         jLabel15.setBounds(40, 40, 120, 40);
 
-        majorCombo.setMaximumRowCount(3);
-        majorCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
-        jPanel2.add(majorCombo);
-        majorCombo.setBounds(180, 310, 170, 30);
-
         jLabel10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel10.setText("Major");
         jPanel2.add(jLabel10);
@@ -135,6 +125,7 @@ public class AddJob extends javax.swing.JFrame {
         jPanel2.add(backButton);
         backButton.setBounds(20, 510, 50, 30);
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(153, 153, 153));
         jScrollPane1.setToolTipText("");
 
@@ -146,7 +137,19 @@ public class AddJob extends javax.swing.JFrame {
         jScrollPane1.setViewportView(desTextArea);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(190, 410, 190, 83);
+        jScrollPane1.setBounds(180, 410, 190, 70);
+
+        jobID1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jobID1.setForeground(new java.awt.Color(153, 153, 153));
+        jobID1.setText("Enter Job ID!");
+        jPanel2.add(jobID1);
+        jobID1.setBounds(180, 260, 170, 30);
+
+        jobID2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jobID2.setForeground(new java.awt.Color(153, 153, 153));
+        jobID2.setText("Enter Major!");
+        jPanel2.add(jobID2);
+        jobID2.setBounds(180, 310, 170, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,7 +246,6 @@ public class AddJob extends javax.swing.JFrame {
     private javax.swing.JTextArea desTextArea;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -252,8 +254,9 @@ public class AddJob extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jobID;
+    private javax.swing.JTextField jobID1;
+    private javax.swing.JTextField jobID2;
     private javax.swing.JTextField jobtext;
-    private javax.swing.JComboBox<String> majorCombo;
-    private javax.swing.JComboBox<String> numEmpCombo;
+    private javax.swing.JLabel stateLabel;
     // End of variables declaration//GEN-END:variables
 }
