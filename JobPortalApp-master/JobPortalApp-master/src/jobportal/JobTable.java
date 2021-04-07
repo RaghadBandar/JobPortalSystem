@@ -58,7 +58,7 @@ public class JobTable extends javax.swing.JFrame {
         jLabel3.setText("Select Job ");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
-        jButton1.setToolTipText("Previous");
+        jButton1.setToolTipText("Go Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -86,12 +86,18 @@ public class JobTable extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jLabel5.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
         jLabel5.setText("Table of Jobs ");
 
+        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(153, 153, 153));
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,21 +217,18 @@ public class JobTable extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-
-/////////////////////////////////////////////////////
-        SelectJob x = new SelectJob();
+        int id = Integer.parseInt(jTextField7.getText());
+        SelectJob x = new SelectJob(id);
         x.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-               
-try {
-    Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+    String sql = "SELECT JobID,JobName,Major FROM JOB ";          
+    
+    try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
     java.sql.Statement stt = con.createStatement();
-    String sql = "SELECT JobID,JobName,Major FROM JOB ";
-    ResultSet rs = stt.executeQuery(sql);
+    ResultSet rs = stt.executeQuery(sql);) {
     
     while(rs.next()){
         
@@ -234,18 +237,26 @@ try {
         String major = rs.getString("Major");
 
         jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-        
-        String toData[] = {id,name,major};
-        //DefaultTableModel tblNodael = (DefaultTableModel)jTable1.getModel();      
+              
     }   
-    rs.close();
-    stt.close();
-    con.close();
-
-        } catch (Exception e) {
+    
+    } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        
+        try{
+            int row = jTable1.getSelectedRow();
+            int TableID = Integer.parseInt(jTable1.getModel().getValueAt(row, 0).toString());
+                    
+             jTextField7.setText(""+TableID);
+                    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

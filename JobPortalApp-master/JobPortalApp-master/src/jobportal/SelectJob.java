@@ -5,7 +5,12 @@
  */
 package jobportal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -13,9 +18,34 @@ import javax.swing.JOptionPane;
  */
 public class SelectJob extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SelectJob
-     */
+    int ID;
+    
+    public SelectJob(int ID) {
+        this();
+        this.ID = ID;
+        jTextField10.setText(""+this.ID);
+    String sql = "SELECT JobName,Major,Descripiton FROM JOB where JobID="+ID;          
+    
+    try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+    java.sql.Statement stt = con.createStatement();
+    ResultSet rs = stt.executeQuery(sql)) {
+    ResultSetMetaData metadata = rs.getMetaData();
+    int col = metadata.getColumnCount();
+    
+    if(rs.next()){
+        
+           jTextField1.setText(rs.getString("JobName"));
+        
+           jTextField12.setText(rs.getString("Major"));
+        
+           jTextField13.setText(rs.getString("Descripiton"));
+        }
+        
+    }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     public SelectJob() {
         initComponents();
     }
@@ -29,17 +59,27 @@ public class SelectJob extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField11 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+
+        jTextField11.setBackground(new java.awt.Color(255, 255, 204));
+        jTextField11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextField11.setText("Number of employee 2");
+        jTextField11.setBorder(null);
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,31 +104,24 @@ public class SelectJob extends javax.swing.JFrame {
         jPanel4.add(jTextField10);
         jTextField10.setBounds(50, 50, 28, 17);
 
-        jTextField11.setBackground(new java.awt.Color(255, 255, 204));
-        jTextField11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jTextField11.setText("Number of employee 2");
-        jTextField11.setBorder(null);
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jTextField11);
-        jTextField11.setBounds(50, 70, 130, 17);
-
         jTextField12.setBackground(new java.awt.Color(255, 255, 204));
         jTextField12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTextField12.setText("Marketing Department");
         jTextField12.setBorder(null);
         jPanel4.add(jTextField12);
-        jTextField12.setBounds(50, 90, 127, 17);
+        jTextField12.setBounds(50, 70, 127, 20);
 
         jTextField13.setBackground(new java.awt.Color(255, 255, 204));
         jTextField13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTextField13.setText("Offers part time work with a salary of 5000 SR");
         jTextField13.setBorder(null);
+        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField13ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jTextField13);
-        jTextField13.setBounds(50, 110, 270, 17);
+        jTextField13.setBounds(50, 90, 270, 17);
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 204));
@@ -102,6 +135,7 @@ public class SelectJob extends javax.swing.JFrame {
         jPanel4.setBounds(40, 110, 340, 150);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
+        jButton1.setToolTipText("Go Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -111,6 +145,7 @@ public class SelectJob extends javax.swing.JFrame {
         jButton1.setBounds(30, 290, 40, 30);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/checkIcon.png"))); // NOI18N
+        jButton2.setToolTipText("Apply for Job");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -120,6 +155,7 @@ public class SelectJob extends javax.swing.JFrame {
         jButton2.setBounds(360, 280, 50, 50);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/cancleIcon.png"))); // NOI18N
+        jButton3.setToolTipText("Cancel");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -166,6 +202,10 @@ public class SelectJob extends javax.swing.JFrame {
         x.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField13ActionPerformed
 
     /**
      * @param args the command line arguments

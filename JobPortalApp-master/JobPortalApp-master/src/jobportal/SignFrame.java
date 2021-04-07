@@ -28,6 +28,8 @@ public class SignFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -39,6 +41,19 @@ public class SignFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(null);
+
+        jRadioButton1.setText("Admin");
+        jPanel1.add(jRadioButton1);
+        jRadioButton1.setBounds(40, 230, 107, 25);
+
+        jRadioButton2.setText("Seeker");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton2);
+        jRadioButton2.setBounds(220, 230, 69, 25);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Male.png"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -76,6 +91,7 @@ public class SignFrame extends javax.swing.JFrame {
         jButton2.setBounds(10, 480, 50, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/interLG.png"))); // NOI18N
+        jLabel1.setText("Admin");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(-10, 0, 400, 530);
 
@@ -94,10 +110,14 @@ public class SignFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         SekeerServices x = new SekeerServices();
         x.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +162,8 @@ public class SignFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
