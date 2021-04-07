@@ -111,6 +111,11 @@ public class SignFrame extends javax.swing.JFrame {
         jButton1.setBounds(140, 450, 140, 30);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2);
         jButton2.setBounds(10, 480, 50, 30);
 
@@ -193,6 +198,13 @@ public class SignFrame extends javax.swing.JFrame {
     private void SeekerIDjTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeekerIDjTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SeekerIDjTextActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        screen x = new screen();
+        x.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
