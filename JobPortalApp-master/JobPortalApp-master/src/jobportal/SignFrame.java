@@ -44,7 +44,7 @@ public class SignFrame extends javax.swing.JFrame {
 
         jRadioButton1.setText("Admin");
         jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(40, 230, 107, 25);
+        jRadioButton1.setBounds(80, 240, 107, 25);
 
         jRadioButton2.setText("Seeker");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +53,7 @@ public class SignFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(220, 230, 69, 25);
+        jRadioButton2.setBounds(230, 240, 69, 25);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Male.png"))); // NOI18N
         jPanel1.add(jLabel2);
@@ -64,7 +64,7 @@ public class SignFrame extends javax.swing.JFrame {
         jLabel3.setBounds(60, 360, 50, 50);
 
         SeekerIDjText.setForeground(new java.awt.Color(153, 153, 153));
-        SeekerIDjText.setText("Enter UserName");
+        SeekerIDjText.setText("Enter ID");
         jPanel1.add(SeekerIDjText);
         SeekerIDjText.setBounds(140, 300, 160, 30);
 
