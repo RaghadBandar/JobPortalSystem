@@ -5,6 +5,13 @@
  */
 package jobportal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import javax.swing.JOptionPane;
+import static jobportal.SignFrame.SeekerIDjText;
+
 /**
  *
  * @author ِAsus
@@ -16,6 +23,29 @@ public class ViewJobSeeker extends javax.swing.JFrame {
      */
     public ViewJobSeeker() {
         initComponents();
+        
+        String sql = "SELECT * FROM JOB where SeekerID="+SeekerIDjText.getText();          
+    
+    try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+    java.sql.Statement stt = con.createStatement();
+    ResultSet rs = stt.executeQuery(sql)) {
+    ResultSetMetaData metadata = rs.getMetaData();
+    int col = metadata.getColumnCount();
+    
+    if(rs.next()){
+        if(rs.getString("JobID") == ""){
+            JOptionPane.showMessageDialog(null, "You are not have any job yet!", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+           jTextField1.setText(rs.getString("JobID"));
+           jTextField1.setText(rs.getString("JobName"));
+           jTextField12.setText(rs.getString("Major"));
+           jTextField13.setText(rs.getString("Descripiton"));
+           jCheckBox2.isSelected();
+        }
+    }
+    }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -139,9 +169,14 @@ public class ViewJobSeeker extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jCheckBox2);
-        jCheckBox2.setBounds(230, 360, 101, 20);
+        jCheckBox2.setBounds(230, 360, 105, 20);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(30, 410, 50, 30);
 
@@ -173,6 +208,12 @@ public class ViewJobSeeker extends javax.swing.JFrame {
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SekeerServices x = new SekeerServices();
+        x.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
