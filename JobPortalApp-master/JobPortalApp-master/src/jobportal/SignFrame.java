@@ -32,7 +32,7 @@ public class SignFrame extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        SeekerIDjText = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -63,10 +63,10 @@ public class SignFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel3);
         jLabel3.setBounds(60, 360, 50, 50);
 
-        jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Enter UserName");
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(140, 300, 160, 30);
+        SeekerIDjText.setForeground(new java.awt.Color(153, 153, 153));
+        SeekerIDjText.setText("Enter UserName");
+        jPanel1.add(SeekerIDjText);
+        SeekerIDjText.setBounds(140, 300, 160, 30);
 
         jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
         jPasswordField1.setText("Password");
@@ -155,6 +155,7 @@ public class SignFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JTextField SeekerIDjText;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -164,6 +165,5 @@ public class SignFrame extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

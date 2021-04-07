@@ -9,8 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
+import static jobportal.SignFrame.SeekerIDjText;
 
 /**
  *
@@ -102,14 +103,14 @@ public class SelectJob extends javax.swing.JFrame {
         jTextField10.setText("2001");
         jTextField10.setBorder(null);
         jPanel4.add(jTextField10);
-        jTextField10.setBounds(50, 50, 28, 17);
+        jTextField10.setBounds(10, 50, 28, 20);
 
         jTextField12.setBackground(new java.awt.Color(255, 255, 204));
         jTextField12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTextField12.setText("Marketing Department");
         jTextField12.setBorder(null);
         jPanel4.add(jTextField12);
-        jTextField12.setBounds(50, 70, 127, 20);
+        jTextField12.setBounds(10, 80, 320, 20);
 
         jTextField13.setBackground(new java.awt.Color(255, 255, 204));
         jTextField13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -121,7 +122,7 @@ public class SelectJob extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jTextField13);
-        jTextField13.setBounds(50, 90, 270, 17);
+        jTextField13.setBounds(10, 110, 330, 20);
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(255, 255, 204));
@@ -129,10 +130,10 @@ public class SelectJob extends javax.swing.JFrame {
         jTextField1.setText("Social Media Assistant");
         jTextField1.setBorder(null);
         jPanel4.add(jTextField1);
-        jTextField1.setBounds(20, 20, 190, 20);
+        jTextField1.setBounds(10, 20, 330, 20);
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(40, 110, 340, 150);
+        jPanel4.setBounds(30, 110, 350, 160);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
         jButton1.setToolTipText("Go Back");
@@ -191,7 +192,49 @@ public class SelectJob extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JOptionPane.showMessageDialog(null,"successfull applying for job","successfull",JOptionPane.INFORMATION_MESSAGE);
+
+        int SeekerID = Integer.parseInt(SeekerIDjText.getText());
+
+        String sq2 = "SELECT SeekerID FROM JOB where JobID=" + ID;
+        String sql = "SELECT State FROM JOB where JobID=" + ID;
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                java.sql.Statement stt2 = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql);
+                ResultSet rs2 = stt2.executeQuery(sq2)) {
+
+            ResultSetMetaData metadata2 = rs2.getMetaData();
+            rs2.next();
+            int SeekerIDFromTable = Integer.parseInt(rs2.getString("SeekerID"));
+
+            ResultSetMetaData metadata = rs.getMetaData();
+            rs.next();
+            String State = rs.getString("State");
+
+            if (SeekerID != SeekerIDFromTable) {
+
+                if (State == "F") {
+                    java.sql.PreparedStatement pst = con.prepareStatement("UPDATE JOB SET SEEKERID = ? where JobID= ?");
+                    pst.setString(1, "" + SeekerID);
+                    pst.setString(2, "" + ID);
+
+                    int updateRow = pst.executeUpdate();
+                    if (updateRow > 0) {
+                        JOptionPane.showMessageDialog(null, "successfull applying for job", "successfull", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Unsuccessfull applying for job", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "You can't apply for a Job " + ID + " becouse the job state is approved for another seeker.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "You can't apply for a Job " + ID + " becouse you have applied for it before.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
         SekeerServices x = new SekeerServices();
         x.setVisible(true);
         this.setVisible(false);

@@ -229,7 +229,7 @@ public class JobTable extends javax.swing.JFrame {
     try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
     java.sql.Statement stt = con.createStatement();
     ResultSet rs = stt.executeQuery(sql);) {
-    
+      
     while(rs.next()){
         
         String id = String.valueOf(rs.getInt("JobID"));
