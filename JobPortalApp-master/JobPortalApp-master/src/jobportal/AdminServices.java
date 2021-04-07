@@ -5,6 +5,13 @@
  */
 package jobportal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import javax.swing.JOptionPane;
+import static jobportal.SignFrame.SeekerIDjText;
+
 /**
  *
  * @author ِAsus
@@ -18,6 +25,20 @@ public class AdminServices extends javax.swing.JFrame {
         
         super ("ADMIN SERVICES");
         initComponents();
+        
+        String sql = "SELECT FName FROM Admin where AdmminID=" + SeekerIDjText.getText();
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql) ) {
+
+            ResultSetMetaData metadata = rs.getMetaData();
+            rs.next();
+            String name = rs.getString("FName");
+            jLabel3.setText(name);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
