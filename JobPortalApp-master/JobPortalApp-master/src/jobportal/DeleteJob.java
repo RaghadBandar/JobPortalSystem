@@ -131,6 +131,12 @@ catch (SQLException ex) {
                         ex.getMessage(), "Database error", 
                         JOptionPane.ERROR_MESSAGE);
         }
+
+catch (Exception ex) {
+          JOptionPane.showMessageDialog(null, 
+                        ex.getMessage(), "an error has accured ", 
+                        JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
