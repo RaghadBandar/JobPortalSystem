@@ -359,9 +359,9 @@ public class updateCvFrame extends javax.swing.JFrame {
             
             
             
-            updateSt.setString(6,jTextField5.getText()); //Age
-            updateSt.setString(7,jTextField6.getText()); //GPA
-            updateSt.setString(8,jTextField9.getText()); //Major
+            updateSt.setInt(6,Integer.valueOf(jTextField5.getText())); //Age
+            updateSt.setDouble(7,Double.valueOf(jTextField6.getText())); //GPA
+            updateSt.setString(8,jTextField9.getText()); //Major ... check
             updateSt.setString(9,jComboBox2.getSelectedItem().toString()); // Qualifications
             updateSt.setString(10,jTextField7.getText()); //Address
             updateSt.setString(11,jTextField8.getText()); //Experience 
