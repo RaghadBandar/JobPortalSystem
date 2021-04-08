@@ -343,13 +343,13 @@ public class updateCvFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        /* try {  
+        try {  
             Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB","1234"); //check the database
             st=con.createStatement();
             rs=st.executeQuery("select * from CV");
             
-            PreparedStatement updateSt= con.prepareStatement("Update Job Seeker CV set FName=?, LName=?, SeekerPhone=?, "
-                    + "Experience=?,Address=?,SeekerEmail=?,GPA=?,Gender=?,Age=? where SeekerID=? ");
+            PreparedStatement updateSt= con.prepareStatement("Update Job Seeker CV set FName=?, LName=?, SeekerEmail=?,"
+                    + "SeekerPhone=?,Gender=?,Age=?,GPA=?,Major=?,Qualifications=?,Address=?, Experience=? where SeekerID=? ");
         
             updateSt.setString(1,jTextField1.getText()); //FName
             updateSt.setString(2,jTextField2.getText()); //LName
@@ -375,7 +375,7 @@ public class updateCvFrame extends javax.swing.JFrame {
         }        
         catch(SQLException ex)
                 { JOptionPane.showMessageDialog(null, ex.getMessage());}
-         */
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
