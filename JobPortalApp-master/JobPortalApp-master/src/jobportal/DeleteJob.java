@@ -115,10 +115,16 @@ String password="1234";
 String sql=" DELETE FROM Job WHERE JobID=?" ;
 try(Connection connection=DriverManager.getConnection( DatabaseName,username, password);  
  PreparedStatement prepstatement= connection.prepareStatement(sql)){
+    int x= JOptionPane.showConfirmDialog(null,"Are you sure you want to delete This permnantly? ","Delete Job",JOptionPane.YES_NO_OPTION);
+   if(x==JOptionPane.YES_OPTION){
 prepstatement.setInt(1,ID); 
 prepstatement.executeUpdate();
 JOptionPane.showMessageDialog(this.jTextField1,"JobDeleted Sucssessfuly ","Deleted Message",JOptionPane.PLAIN_MESSAGE);
-                         
+   }
+    if(x==JOptionPane.NO_OPTION){
+       return;
+   }
+    
 }
 catch (SQLException ex) {
           JOptionPane.showMessageDialog(null, 
