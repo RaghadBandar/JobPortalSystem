@@ -1,9 +1,25 @@
 package jobportal;
+import static java.lang.String.valueOf;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import static sun.misc.MessageUtils.where;
 
 public class updateCvFrame extends javax.swing.JFrame {
 
+    Connection con;
+    Statement st;
+    ResultSet rs;
+    
     public updateCvFrame() {
-        initComponents(); }
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -140,6 +156,11 @@ public class updateCvFrame extends javax.swing.JFrame {
         jButton1.setToolTipText("Cleack Update");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -303,24 +324,59 @@ public class updateCvFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        updateCvFrame u = new updateCvFrame();
-        u.setVisible(true);
+        SekeerServices s = new SekeerServices();
+        s.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try {  
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB","1234"); //check the database
+            st=con.createStatement();
+            rs=st.executeQuery("select * from CV");
+            
+            PreparedStatement updateSt= con.prepareStatement("Update Job Seeker CV set FName=?, LName=?, SeekerPhone=?, "
+                    + "Experience=?,Address=?,SeekerEmail=?,GPA=?,Gender=?,Age=? where SeekerID=? ");
+        
+            updateSt.setString(1,jTextField1.getText()); //FName
+            updateSt.setString(2,jTextField2.getText()); //LName
+            updateSt.setString(3,jTextField3.getText()); //Email         
+            updateSt.setString(4,jTextField4.getText()); //Phone
+            updateSt.setString(5,jRadioButton1.getText()); // Gender {if statment(isSelected))}
+            
+            
+            
+            updateSt.setString(6,jTextField5.getText()); //Age
+            updateSt.setString(7,jTextField6.getText()); //GPA
+            updateSt.setString(8,jTextField9.getText()); //Major
+            updateSt.setString(9,jComboBox2.getSelectedItem().toString()); // Qualifications
+            updateSt.setString(10,jTextField7.getText()); //Address
+            updateSt.setString(11,jTextField8.getText()); //Experience 
+            updateSt.setInt(12,SignFrame.SekkerID);
+           
+            int updateRows = updateSt.executeUpdate();
+            if (updateRows>0)
+            {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
+            else 
+                {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }            
+        }        
+        catch(SQLException ex)
+                { JOptionPane.showMessageDialog(null, ex.getMessage());}
+          
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,6 +410,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             @Override
             public void run() {
                 new updateCvFrame().setVisible(true);
+                
             } }); }
 
 
