@@ -109,7 +109,7 @@ public class DeleteJob extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int ID;
         ID = Integer.parseInt(jTextField1.getText());
-          String DatabaseName="jdbc:derby://localhost:1527/JobPortalDB"; 
+ String DatabaseName="jdbc:derby://localhost:1527/JobPortalDB"; 
 String username="DB";
 String password="1234";
 String sql=" DELETE FROM Job WHERE JobID=?" ;
