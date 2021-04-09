@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jobportal;
 
 
-/**
- *
- * @author ِAsus
- */
+
 public class SignFrame extends javax.swing.JFrame {
 
+    static int SekkerID ;
     /**
      * Creates new form SignFrame
      */

@@ -7,6 +7,9 @@ package jobportal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -180,17 +183,22 @@ public class AddJob extends javax.swing.JFrame {
             String state = stateText.getText();
             String des = desTextArea.getText();
             
-            int jobId = Integer.parseInt(jobid);
+            
+            
+            if (verifData()){
+                
+             int jobId = Integer.parseInt(jobid);
             
             String insert = "INSERT INTO JOB (JobID, JobName, State, Description, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
             
             try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
                     java.sql.Statement stt = con.createStatement(); )
                     {
+                      
                         int INSERT_State = stt.executeUpdate(insert);
                         
                      JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");   
-
+                    
                     }
             catch (SQLException ex){
                 JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in INSERT", JOptionPane.ERROR_MESSAGE);
@@ -200,7 +208,7 @@ public class AddJob extends javax.swing.JFrame {
         }
             JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");
            
-      
+            }
         
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -210,7 +218,55 @@ public class AddJob extends javax.swing.JFrame {
         new AdminServices().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    public boolean verifData (){
+         
       
+         
+         if (jobtext.getText().equals("") || jobID1.getText().equals("") 
+               || majorText.getText().equals("") || stateText.getText().equals("") || desTextArea.getText().equals(""))
+         {
+             JOptionPane.showMessageDialog(AddJob.this, "One or more filed is empty.. Try again!");
+             return false;
+         }
+         else if (jobtext.getText().equals("Enter Name of Job!") || jobID1.getText().equals("Enter Job ID!") 
+               || majorText.getText().equals("Enter Major!") || stateText.getText().equals("T (True) OR F (False)") 
+                 || desTextArea.getText().equals("Enter Description of JOB!"))
+         {
+              JOptionPane.showMessageDialog(AddJob.this, "One or more filed is empty.. Try again!");
+             return false;
+         }   
+         
+         else if (isJobIDexist(Integer.parseInt(jobID1.getText())) ) {
+             JOptionPane.showMessageDialog(AddJob.this, "Job ID is already exist.. Try again!");
+             return false;
+             
+         }
+        
+         else  return true;
+     }
+      
+    public boolean isJobIDexist(int id) {
+        
+        boolean uExist = false;
+        
+        
+       try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+              PreparedStatement ps= con.prepareStatement("SELECT * FROM job WHERE 'jobID' = ? ") ){
+           
+            ps.setInt(1, id);
+           
+           ResultSet rs = ps.executeQuery();
+           
+           if (rs.next()){
+               uExist = true;
+           }
+       }
+        catch (SQLException ex){
+                JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in INSERT", JOptionPane.ERROR_MESSAGE);
+            
+        }
+       return uExist;
+    }
 
     /**
      * @param args the command line arguments
