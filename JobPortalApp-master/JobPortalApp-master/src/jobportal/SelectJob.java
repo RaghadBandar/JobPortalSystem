@@ -19,12 +19,12 @@ import static jobportal.SignFrame.SeekerIDjText;
  */
 public class SelectJob extends javax.swing.JFrame {
 
-    int ID;
+    int JobID;
     
     public SelectJob(int ID) {
         this();
-        this.ID = ID;
-        jTextField10.setText(""+this.ID);
+        this.JobID = ID;
+        jTextField10.setText(""+this.JobID);
     String sql = "SELECT JobName,Major,Descripiton FROM JOB where JobID="+ID;          
     
     try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
@@ -195,40 +195,45 @@ public class SelectJob extends javax.swing.JFrame {
 
         int SeekerID = Integer.parseInt(SeekerIDjText.getText());
 
-        String sq2 = "SELECT SeekerID FROM JOB where JobID=" + ID;
-        String sql = "SELECT State FROM JOB where JobID=" + ID;
+        String sql = "SELECT State FROM JOB where JobID=" + JobID;//If this Job have a Seeker 
+
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                 java.sql.Statement stt = con.createStatement();
-                java.sql.Statement stt2 = con.createStatement();
-                ResultSet rs = stt.executeQuery(sql);
-                ResultSet rs2 = stt2.executeQuery(sq2)) {
-
-            ResultSetMetaData metadata2 = rs2.getMetaData();
-            rs2.next();
-            int SeekerIDFromTable = Integer.parseInt(rs2.getString("SeekerID"));
+                ResultSet rs = stt.executeQuery(sql)) {
 
             ResultSetMetaData metadata = rs.getMetaData();
             rs.next();
             String State = rs.getString("State");
 
-            if (SeekerID != SeekerIDFromTable) {
+        //If the seeker appliy for this job befor
+        String sql2 = "SELECT * FROM APPLIED_TO_BY where JobID="+JobID+" and SeekerID="+SeekerID;
+            java.sql.Statement pst = con.createStatement();
+            ResultSet rs_pst = stt.executeQuery(sql2);
+            ResultSetMetaData metadata2 = rs_pst.getMetaData();
+            
+            boolean empty = true;
+            while(rs_pst.next()){
+                empty = false;
+            }
 
+            
+            if (!empty) {
+                JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse you have applied for it before.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
+            } else {
                 if (State == "F") {
-                    java.sql.PreparedStatement pst = con.prepareStatement("UPDATE JOB SET SEEKERID = ? where JobID= ?");
-                    pst.setString(1, "" + SeekerID);
-                    pst.setString(2, "" + ID);
+                    java.sql.PreparedStatement pst2 = con.prepareStatement("Insert into APPLIED_TO_BY values( ?,?)");
+                    pst2.setString(1, "" + JobID);
+                    pst2.setString(2, "" + SeekerID);
 
-                    int updateRow = pst.executeUpdate();
-                    if (updateRow > 0) {
+                    int updateRow2 = pst2.executeUpdate();
+                    if (updateRow2 > 0) {
                         JOptionPane.showMessageDialog(null, "successfull applying for job", "successfull", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null, "Unsuccessfull applying for job", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "You can't apply for a Job " + ID + " becouse the job state is approved for another seeker.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse the job state is approved for another seeker.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "You can't apply for a Job " + ID + " becouse you have applied for it before.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
