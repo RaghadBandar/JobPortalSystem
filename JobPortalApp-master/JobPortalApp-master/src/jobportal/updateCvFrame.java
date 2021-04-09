@@ -1,4 +1,5 @@
 package jobportal;
+import java.awt.HeadlessException;
 import static java.lang.String.valueOf;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.regex.Pattern;
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -91,6 +94,11 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel5.setText("Email");
 
         Email.setForeground(new java.awt.Color(153, 153, 153));
+        Email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel6.setText("Phone");
@@ -99,6 +107,11 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel7.setText("+966");
 
         Phone.setForeground(new java.awt.Color(153, 153, 153));
+        Phone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PhoneActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel8.setText("Gender");
@@ -341,7 +354,14 @@ public class updateCvFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try {  
+        
+                    Female = new JRadioButton("",true );
+                    Male = new JRadioButton("",false );
+                    radioGroup= new ButtonGroup();       
+                    radioGroup.add(Female);      
+                    radioGroup.add(Male);
+        
+        try {  
             Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB","1234"); //check the database
             st=con.createStatement();
             rs=st.executeQuery("select * from CV");
@@ -373,8 +393,33 @@ public class updateCvFrame extends javax.swing.JFrame {
         }        
         catch(SQLException ex)
                 { JOptionPane.showMessageDialog(null, ex.getMessage());} 
+               
+         catch (Exception ex) 
+           { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE); }
          
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
+               try{ 
+           if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", Email.getText()))) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email", "Error", JOptionPane.ERROR_MESSAGE); } }
+            
+       catch(HeadlessException ex)
+            {
+                JOptionPane.showMessageDialog(null,ex.getMessage(), "The email is valid", JOptionPane.INFORMATION_MESSAGE);   } 
+    }//GEN-LAST:event_EmailActionPerformed
+
+    private void PhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneActionPerformed
+        String phone = Phone.getText();
+        String regexStr = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";
+        Phone.setText(phone);
+
+        try {
+        // valid function goes here
+        phone = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";}
+    catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(),"Please enter a valid phone number",JOptionPane.INFORMATION_MESSAGE); }
+    }//GEN-LAST:event_PhoneActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,7 +460,7 @@ public class updateCvFrame extends javax.swing.JFrame {
 
 
 
-
+private ButtonGroup radioGroup; 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Address;
     private javax.swing.JTextField Age;
