@@ -108,13 +108,14 @@ public class DeleteJob extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int ID;
-        ID = Integer.parseInt(jTextField1.getText());
+      
  String DatabaseName="jdbc:derby://localhost:1527/JobPortalDB"; 
 String username="DB";
 String password="1234";
 String sql=" DELETE FROM Job WHERE JobID=?" ;
 try(Connection connection=DriverManager.getConnection( DatabaseName,username, password);  
  PreparedStatement prepstatement= connection.prepareStatement(sql)){
+      ID = Integer.parseInt(jTextField1.getText());
     int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to delete This permenantly? ","Delete Job",JOptionPane.YES_NO_OPTION);
    if(option==JOptionPane.YES_OPTION){
 prepstatement.setInt(1,ID); 
@@ -129,6 +130,11 @@ JOptionPane.showMessageDialog(this.jTextField1,"your Operation was successfuly D
 catch (SQLException ex) {
           JOptionPane.showMessageDialog(null, 
                         ex.getMessage(), "Database error", 
+                        JOptionPane.ERROR_MESSAGE);
+        }
+catch (NumberFormatException ex) {
+          JOptionPane.showMessageDialog(null, 
+                        ex.getMessage(), " error has accord! you have Enterd a string insted of a Digit please try again", 
                         JOptionPane.ERROR_MESSAGE);
         }
 
