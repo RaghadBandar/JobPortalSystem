@@ -108,9 +108,8 @@ public class DeleteJob extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int ID;
-      
- String DatabaseName="jdbc:derby://localhost:1527/JobPortalDB"; 
+        int ID;   
+        String DatabaseName="jdbc:derby://localhost:1527/JobPortalDB"; 
 String username="DB";
 String password="1234";
 String sql=" DELETE FROM Job WHERE JobID=?" ;
@@ -136,7 +135,7 @@ JOptionPane.showMessageDialog(this.jTextField1,"your Operation was successfuly D
    }
        }
       else{
-           JOptionPane.showMessageDialog(null,"Record not exixts ","Error",JOptionPane.PLAIN_MESSAGE);
+           JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
        } 
 }
 catch (SQLException ex) {
