@@ -190,7 +190,7 @@ public class SekeerServices extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
        new SekeerServices().setVisible(false);
-        new updateCvFrame().setVisible(true);
+       new updateCvFrame().setVisible(true);
       
     }//GEN-LAST:event_jButton5ActionPerformed
 

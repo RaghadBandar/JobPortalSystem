@@ -251,7 +251,7 @@ public class AddJob extends javax.swing.JFrame {
         
         
        try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-              PreparedStatement ps= con.prepareStatement("SELECT * FROM job WHERE 'jobID' = ? ") ){
+              PreparedStatement ps= con.prepareStatement("SELECT * FROM job WHERE jobID = ? ") ){
            
             ps.setInt(1, id);
            
