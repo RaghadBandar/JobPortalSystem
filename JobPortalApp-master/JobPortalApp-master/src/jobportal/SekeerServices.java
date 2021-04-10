@@ -22,7 +22,9 @@ public class SekeerServices extends javax.swing.JFrame {
      * Creates new form SekeerServices
      */
     public SekeerServices() {
+        super("Seeker Services");
         initComponents();
+        setLocationRelativeTo(null);
         
         String sql = "SELECT FName FROM CV where SeekerID=" + SeekerIDjText.getText();
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
@@ -54,7 +56,6 @@ public class SekeerServices extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -62,6 +63,7 @@ public class SekeerServices extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,16 +109,6 @@ public class SekeerServices extends javax.swing.JFrame {
         jPanel1.add(jButton3);
         jButton3.setBounds(160, 400, 190, 40);
 
-        jButton5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton5.setText("Update your profile");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton5);
-        jButton5.setBounds(160, 460, 190, 40);
-
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/ViewIcon.jpg"))); // NOI18N
         jPanel1.add(jLabel5);
         jLabel5.setBounds(70, 390, 60, 60);
@@ -150,6 +142,7 @@ public class SekeerServices extends javax.swing.JFrame {
         jLabel7.setBounds(70, 260, 60, 70);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/icons8-exit-24.png"))); // NOI18N
+        jButton7.setToolTipText("End System");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -157,6 +150,16 @@ public class SekeerServices extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7);
         jButton7.setBounds(360, 500, 50, 30);
+
+        jButton5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton5.setText("Update your profile");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5);
+        jButton5.setBounds(160, 460, 190, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,17 +191,17 @@ public class SekeerServices extends javax.swing.JFrame {
        JOptionPane.showMessageDialog(SekeerServices.this ,"Come Soon..");
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       new SekeerServices().setVisible(false);
-        new updateCvFrame().setVisible(true);
-      
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(SekeerServices.this ,"See you next time..");
         System.exit(0);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        updateCvFrame u = new updateCvFrame();
+        u.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

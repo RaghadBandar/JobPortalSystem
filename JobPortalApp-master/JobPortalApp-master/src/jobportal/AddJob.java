@@ -26,6 +26,7 @@ public class AddJob extends javax.swing.JFrame {
         
         super("ADD NEW JOB");
         initComponents();
+        setLocationRelativeTo(null);
             
     }
 
@@ -186,8 +187,7 @@ public class AddJob extends javax.swing.JFrame {
             
             
             if (verifData()){
-                
-           //  int jobId = Integer.parseInt(jobid);
+            
             
             String insert = "INSERT INTO JOB (JobID, JobName, State, Descripiton, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
             
@@ -225,19 +225,22 @@ public class AddJob extends javax.swing.JFrame {
          if (jobtext.getText().equals("") || jobID1.getText().equals("") 
                || majorText.getText().equals("") || stateText.getText().equals("") || desTextArea.getText().equals(""))
          {
-             JOptionPane.showMessageDialog(AddJob.this, "One or more filed is empty.. Try again!");
+             JOptionPane.showMessageDialog(AddJob.this, "One or more filed is empty.. Try again!","Empty fileds",JOptionPane.PLAIN_MESSAGE);
              return false;
          }
          else if (jobtext.getText().equals("Enter Name of Job!") || jobID1.getText().equals("Enter Job ID!") 
                || majorText.getText().equals("Enter Major!") || stateText.getText().equals("T (True) OR F (False)") 
                  || desTextArea.getText().equals("Enter Description of JOB!"))
          {
-              JOptionPane.showMessageDialog(AddJob.this, "One or more filed is empty.. Try again!");
+              JOptionPane.showMessageDialog(AddJob.this, "One or more filed is empty.. Try again!","Empty fileds",JOptionPane.PLAIN_MESSAGE);
              return false;
          }   
-         
+         else if (!(stateText.getText().equals("T") || stateText.getText().equals("F"))){
+             JOptionPane.showMessageDialog(AddJob.this, "You should enter T or F.. Try again!","Error in STATE",JOptionPane.PLAIN_MESSAGE);
+             return false;
+         }
          else if (isJobIDexist(Integer.parseInt(jobID1.getText())) ) {
-             JOptionPane.showMessageDialog(AddJob.this, "Job ID is already exist.. Try again!");
+             JOptionPane.showMessageDialog(AddJob.this, "Job ID is already exist.. Try again!","Error in JOB ID",JOptionPane.PLAIN_MESSAGE);
              return false;
              
          }
@@ -251,7 +254,7 @@ public class AddJob extends javax.swing.JFrame {
         
         
        try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-              PreparedStatement ps= con.prepareStatement("SELECT * FROM job WHERE 'jobID' = ? ") ){
+              PreparedStatement ps= con.prepareStatement("SELECT * FROM job WHERE jobID = ? ") ){
            
             ps.setInt(1, id);
            
@@ -262,7 +265,7 @@ public class AddJob extends javax.swing.JFrame {
            }
        }
         catch (SQLException ex){
-                JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in INSERT", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in JOB ID", JOptionPane.ERROR_MESSAGE);
             
         }
        return uExist;

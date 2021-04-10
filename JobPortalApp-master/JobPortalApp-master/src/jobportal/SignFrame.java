@@ -13,7 +13,9 @@ public class SignFrame extends javax.swing.JFrame {
      * Creates new form SignFrame
      */
     public SignFrame() {
+        super("Sign");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -131,6 +133,7 @@ public class SignFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    if(SeekerIDjText.getText().length() != 0){
         if (SeekerRadio.isSelected()) {
             String sql = "SELECT SeekerID FROM Job_Seeker where SeekerID=" + SeekerIDjText.getText();
             try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
@@ -168,11 +171,16 @@ public class SignFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
                 Resat();
             }
+        
 
         } else {
             JOptionPane.showMessageDialog(null, "Please, Select a user Role.", "Error", JOptionPane.ERROR_MESSAGE);
             Resat();
         }
+    }else{
+        JOptionPane.showMessageDialog(null, "Please, Enter your ID and Password", "Error", JOptionPane.ERROR_MESSAGE);
+         Resat();
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
     private void Resat() {
         SeekerIDjText.setText("");
