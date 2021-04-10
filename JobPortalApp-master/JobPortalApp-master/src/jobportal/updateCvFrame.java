@@ -440,8 +440,7 @@ public class updateCvFrame extends javax.swing.JFrame {
                 try {
             String fname;
         fname = FName.getText(); }
-        
-        
+                
         catch(Exception ex) {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
     }//GEN-LAST:event_FNameActionPerformed
@@ -449,8 +448,7 @@ public class updateCvFrame extends javax.swing.JFrame {
     private void LNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LNameActionPerformed
                try {
             String lname;
-        lname = LName.getText(); }
-        
+        lname = LName.getText(); }      
         
         catch(Exception ex) {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); } 
@@ -466,7 +464,6 @@ public class updateCvFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MajorActionPerformed
 
     private void AddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressActionPerformed
- 
         try {
             String address;
         address = Address.getText(); }
@@ -487,17 +484,23 @@ public class updateCvFrame extends javax.swing.JFrame {
     private void AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeActionPerformed
         try{
            int age;
-           age = Integer.parseInt(Age.getText());}
+           age = Integer.parseInt(Age.getText());
+               if ( age < 20)
+        JOptionPane.showMessageDialog(null,"Age should be > 20 ","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
         
         catch(NumberFormatException ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage(), " Please enter a Digit ", JOptionPane.ERROR_MESSAGE); }
     }//GEN-LAST:event_AgeActionPerformed
 
     private void GPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GPAActionPerformed
-              try{
+        try{
            double gpa;
-           gpa = Double.parseDouble(GPA.getText()); }
+           gpa = Double.parseDouble(GPA.getText());
+              if ( (gpa > 0) && (gpa<=5))
+                          
+          JOptionPane.showMessageDialog(null,"GPA should be between 0 - 5","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
         
+      
         catch(Exception ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage(), " Please enter a digit ", JOptionPane.ERROR_MESSAGE); }
     }//GEN-LAST:event_GPAActionPerformed
@@ -526,7 +529,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             updateSt.setString(3,Email.getText()); //Email         
             updateSt.setString(4,Phone.getText()); //Phone                       
            
-            {  updateSt.setString(5,radioGroup.toString()); // gender
+            {  updateSt.setString(5,radioGroup.toString()); // gender ********
             if ( Female.isSelected())
                 Female.setSelected(true); 
             else           
@@ -537,6 +540,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             updateSt.setString(8,Address.getText()); //Address
             updateSt.setString(9,Experience.getText()); //Experience
             updateSt.setInt(13,SignFrame.SekkerID);
+            
            
             int updateRows = updateSt.executeUpdate();
             if (updateRows>0)
