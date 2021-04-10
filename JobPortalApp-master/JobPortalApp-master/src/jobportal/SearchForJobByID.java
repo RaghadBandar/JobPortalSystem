@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -148,17 +149,15 @@ public class SearchForJobByID extends javax.swing.JFrame {
         int ID = Integer.parseInt(jTextField7.getText());
         
         try (Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-                PreparedStatement prepstatement = connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?");
-                ResultSet rs = prepstatement.executeQuery();) {
-            
-            prepstatement.setInt(1, ID);
-            
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery(("SELECT JobID FROM Job WHERE JobID="+ID))) {
+
             boolean exists = false;
             while (rs.next()) {
                 exists = true;
             }
             if (exists) {
-                SelectJob x = new SelectJob(id);
+                SelectJob x = new SelectJob(ID);
                 x.setVisible(true);
                 this.setVisible(false);
             } else {

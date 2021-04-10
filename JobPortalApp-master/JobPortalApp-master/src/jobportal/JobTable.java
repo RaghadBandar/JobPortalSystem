@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author ragha
@@ -23,24 +24,17 @@ public class JobTable extends javax.swing.JFrame {
      */
     public JobTable() {
         initComponents();
-        
-        String sql = "SELECT JobID,JobName,Major FROM JOB ";          
-    
-    try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
-    java.sql.Statement stt = con.createStatement();
-    ResultSet rs = stt.executeQuery(sql);) {
-      
-    while(rs.next()){
-        
-//        String id = String.valueOf(rs.getInt("JobID"));
-//        String name = rs.getString("JobName");
-//        String major = rs.getString("Major");
 
-        jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-              
-    }   
-    
-    } catch (Exception e) {
+        String sql = "SELECT JobID,JobName,Major FROM JOB ";
+
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql);) {
+
+            while (rs.next()) {
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -236,14 +230,14 @@ public class JobTable extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
-        try{
+
+        try {
             int row = jTable1.getSelectedRow();
             int TableID = Integer.parseInt(jTable1.getModel().getValueAt(row, 0).toString());
-                    
-             jTextField7.setText(""+TableID);
-                    
-        }catch(Exception e){
+
+            jTextField7.setText("" + TableID);
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jTable1MouseClicked
