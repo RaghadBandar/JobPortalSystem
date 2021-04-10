@@ -145,7 +145,7 @@ catch (SQLException ex) {
         }
 catch (NumberFormatException ex) {
           JOptionPane.showMessageDialog(null, 
-                        ex.getMessage(), " error has accord! you have Enterd a string insted of a Digit please try again", 
+                        ex.getMessage(), " error has accord! Try Again", 
                         JOptionPane.ERROR_MESSAGE);
         }
 

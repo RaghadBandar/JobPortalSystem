@@ -1,5 +1,4 @@
 package jobportal;
-import java.awt.HeadlessException;
 import static java.lang.String.valueOf;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.regex.Pattern;
-import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -16,18 +13,13 @@ import static sun.misc.MessageUtils.where;
 
 public class updateCvFrame extends javax.swing.JFrame {
 
-    private ButtonGroup radioGroup;
-    
     Connection con;
     Statement st;
     ResultSet rs;
     
     public updateCvFrame() {
-        initComponents();      
-        
-                    radioGroup=  new ButtonGroup();                    
-                    radioGroup.add(Female);      
-                    radioGroup.add(Male);     }
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,7 +65,6 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         Major = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,31 +81,16 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel3.setText("First Name");
 
         FName.setForeground(new java.awt.Color(153, 153, 153));
-        FName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FNameActionPerformed(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel4.setText("Last Name");
 
         LName.setForeground(new java.awt.Color(153, 153, 153));
-        LName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LNameActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel5.setText("Email");
 
         Email.setForeground(new java.awt.Color(153, 153, 153));
-        Email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailActionPerformed(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel6.setText("Phone");
@@ -123,11 +99,6 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel7.setText("+966");
 
         Phone.setForeground(new java.awt.Color(153, 153, 153));
-        Phone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PhoneActionPerformed(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel8.setText("Gender");
@@ -161,40 +132,15 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel16.setText("Experience");
 
         Experience.setForeground(new java.awt.Color(153, 153, 153));
-        Experience.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExperienceActionPerformed(evt);
-            }
-        });
 
         Address.setForeground(new java.awt.Color(153, 153, 153));
-        Address.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddressActionPerformed(evt);
-            }
-        });
 
         Qualifications.setMaximumRowCount(3);
         Qualifications.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bachelor of Finance major", "Bachelor of Marketing major", "Master of Accounting major", "Doctorate of Accounting major", "Master of Development administration" }));
-        Qualifications.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                QualificationsActionPerformed(evt);
-            }
-        });
 
         GPA.setForeground(new java.awt.Color(153, 153, 153));
-        GPA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GPAActionPerformed(evt);
-            }
-        });
 
         Age.setForeground(new java.awt.Color(153, 153, 153));
-        Age.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AgeActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -220,29 +166,17 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/UsernameIcon.png"))); // NOI18N
 
         Major.setForeground(new java.awt.Color(153, 153, 153));
-        Major.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MajorActionPerformed(evt);
-            }
-        });
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Updicon.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Age, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(GPA, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,28 +184,9 @@ public class updateCvFrame extends javax.swing.JFrame {
                             .addComponent(Address, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Experience, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Major, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(96, 189, Short.MAX_VALUE))
+                        .addGap(96, 149, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(60, 60, 60)
-                                        .addComponent(jLabel9)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(85, 85, 85)
-                                        .addComponent(jLabel10))
-                                    .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -293,22 +208,39 @@ public class updateCvFrame extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Male, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(121, 121, 121)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(96, 96, 96))
+                                        .addComponent(Male, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(60, 60, 60)
+                                        .addComponent(jLabel9)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(85, 85, 85)
+                                        .addComponent(jLabel10))
+                                    .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(181, 181, 181)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 53, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,9 +281,9 @@ public class updateCvFrame extends javax.swing.JFrame {
                         .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Male, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(Male))
                         .addGap(21, 21, 21)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -377,11 +309,10 @@ public class updateCvFrame extends javax.swing.JFrame {
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Experience, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
 
         jScrollPane1.setViewportView(jPanel2);
@@ -514,32 +445,38 @@ public class updateCvFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should Select one from the QUALIFICATION ! ", JOptionPane.ERROR_MESSAGE); }
     }//GEN-LAST:event_QualificationsActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {                                         
        try {  
                     
             Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/Try", "Try","1234"); //check the database
+
+         try {  
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB","1234"); //check the database
             st=con.createStatement();
             rs=st.executeQuery("select * from CV");
             
-            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?,"
-                    + "SeekerPhone=?,Gender=? ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=? ");
+            PreparedStatement updateSt= con.prepareStatement("Update Job Seeker CV set FName=?, LName=?, SeekerEmail=?,"
+                    + "SeekerPhone=?,Gender=?,Age=?,GPA=?,Major=?,Qualifications=?,Address=?, Experience=? where SeekerID=? ");
         
             updateSt.setString(1,FName.getText()); //FName
             updateSt.setString(2,LName.getText()); //LName
             updateSt.setString(3,Email.getText()); //Email         
             updateSt.setString(4,Phone.getText()); //Phone                       
            
-            {  updateSt.setString(5,radioGroup.toString()); // gender ********
+         /*   {  updateSt.setString(5,radioGroup.toString()); // gender ********
             if ( Female.isSelected())
                 Female.setSelected(true); 
             else           
-                Male.setSelected(false); }
+                Male.setSelected(false); }*/
             
             updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
             updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
             updateSt.setString(8,Address.getText()); //Address
             updateSt.setString(9,Experience.getText()); //Experience
             updateSt.setInt(13,SignFrame.SekkerID);
+            
+            updateSt.setString(4,Phone.getText()); //Phone
+          //  updateSt.setString(5,Male.getText()); // Gender {if statment(isSelected))}
             
            
             int updateRows = updateSt.executeUpdate();
@@ -550,12 +487,8 @@ public class updateCvFrame extends javax.swing.JFrame {
         }        
         catch(SQLException ex)
                 { JOptionPane.showMessageDialog(null, ex.getMessage());} 
-        
-        catch (Exception ex) 
-        { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE);
-        }
          
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }}                                       
 
     /**
      * @param args the command line arguments
@@ -595,6 +528,8 @@ public class updateCvFrame extends javax.swing.JFrame {
 
 
 
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Address;
     private javax.swing.JTextField Age;
@@ -611,7 +546,6 @@ public class updateCvFrame extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
