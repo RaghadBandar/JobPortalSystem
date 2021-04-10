@@ -191,14 +191,11 @@ public class AddJob extends javax.swing.JFrame {
             
             String insert = "INSERT INTO JOB (JobID, JobName, State, Description, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
             
-            try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+            try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                     java.sql.Statement stt = con.createStatement(); )
-                    {
-                      
+                    {                    
                         int INSERT_State = stt.executeUpdate(insert);
-                        
-                     JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");   
-                    
+
                     }
             catch (SQLException ex){
                 JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in INSERT", JOptionPane.ERROR_MESSAGE);
@@ -250,8 +247,8 @@ public class AddJob extends javax.swing.JFrame {
         boolean uExist = false;
         
         
-       try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
-              PreparedStatement ps= con.prepareStatement("SELECT * FROM job WHERE 'jobID' = ? ") ){
+       try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+              PreparedStatement ps= con.prepareStatement("SELECT * FROM job WHERE jobID = ? ") ){
            
             ps.setInt(1, id);
            

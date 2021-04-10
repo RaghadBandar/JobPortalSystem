@@ -15,26 +15,6 @@ import javax.swing.JOptionPane;
 
 public class JobPortal {
 
-    private Connection connectionse;
-
-    public void closeDB() {
-
-        try {
-            connectionse.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    public void openDB() {
-
-        try {
-            connectionse = DriverManager.getConnection(DataBase_URL, DataBase_UsreName, DataBase_UPassword);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
     
     private static final String DataBase_URL = "jdbc:derby://localhost:1527/JobPortalDB";
     private static final String DataBase_UsreName = "DB";
