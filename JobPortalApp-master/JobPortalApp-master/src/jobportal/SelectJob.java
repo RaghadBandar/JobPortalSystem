@@ -31,7 +31,6 @@ public class SelectJob extends javax.swing.JFrame {
                 java.sql.Statement stt = con.createStatement();
                 ResultSet rs = stt.executeQuery(sql)) {
             ResultSetMetaData metadata = rs.getMetaData();
-            int col = metadata.getColumnCount();
 
             if (rs.next()) {
 

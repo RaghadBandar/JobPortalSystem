@@ -1,11 +1,19 @@
 package jobportal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author ragha
@@ -137,10 +145,28 @@ public class SearchForJobByID extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int id = Integer.parseInt(jTextField7.getText());
-        SelectJob x = new SelectJob(id);
-        x.setVisible(true);
-        this.setVisible(false);
+        int ID = Integer.parseInt(jTextField7.getText());
+        
+        try (Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                PreparedStatement prepstatement = connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?");
+                ResultSet rs = prepstatement.executeQuery();) {
+            
+            prepstatement.setInt(1, ID);
+            
+            boolean exists = false;
+            while (rs.next()) {
+                exists = true;
+            }
+            if (exists) {
+                SelectJob x = new SelectJob(id);
+                x.setVisible(true);
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "This information does not exixt ", "Error could not be found", JOptionPane.PLAIN_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
