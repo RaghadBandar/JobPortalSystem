@@ -188,7 +188,7 @@ public class AddJob extends javax.swing.JFrame {
                 
             // int jobId = Integer.parseInt(jobid);
             
-            String insert = "INSERT INTO JOB (JobID, JobName, State, Description, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
+            String insert = "INSERT INTO JOB (JobID, JobName, State, Descripiton, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
             
             try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                     java.sql.Statement stt = con.createStatement(); )
