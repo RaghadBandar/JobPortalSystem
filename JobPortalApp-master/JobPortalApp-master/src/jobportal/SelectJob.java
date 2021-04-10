@@ -30,8 +30,6 @@ public class SelectJob extends javax.swing.JFrame {
     try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
     java.sql.Statement stt = con.createStatement();
     ResultSet rs = stt.executeQuery(sql)) {
-    ResultSetMetaData metadata = rs.getMetaData();
-    int col = metadata.getColumnCount();
     
     if(rs.next()){
         
@@ -193,35 +191,30 @@ public class SelectJob extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        int SeekerID = Integer.parseInt(SeekerIDjText.getText());
-
-        String sql = "SELECT State FROM JOB where JobID=" + JobID;//If this Job have a Seeker 
+        int SeekerID = Integer.parseInt(SeekerIDjText.getText());        
+        String sql_appliy = "SELECT * FROM APPLIED_TO_BY where JobID=" + JobID + " and SeekerID=" + SeekerID;//If the seeker appliy for this job befor
+        String sql_State = "SELECT State FROM JOB where JobID=" + JobID;//If this Job have a Seeker 
 
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-                java.sql.Statement stt = con.createStatement();
-                ResultSet rs = stt.executeQuery(sql)) {
+                java.sql.Statement st_State = con.createStatement();
+                ResultSet rs_State = st_State.executeQuery(sql_State);
+                java.sql.PreparedStatement pst2 = con.prepareStatement("Insert into APPLIED_TO_BY values( ?,?)");
+                
+                java.sql.Statement St_apply = con.createStatement();
+                ResultSet rs_apply = St_apply.executeQuery(sql_appliy)) {
 
-            ResultSetMetaData metadata = rs.getMetaData();
-            rs.next();
-            String State = rs.getString("State");
-
-        //If the seeker appliy for this job befor
-        String sql2 = "SELECT * FROM APPLIED_TO_BY where JobID="+JobID+" and SeekerID="+SeekerID;
-            java.sql.Statement pst = con.createStatement();
-            ResultSet rs_pst = stt.executeQuery(sql2);
-            ResultSetMetaData metadata2 = rs_pst.getMetaData();
             
+            rs_State.next();
+              String JobState = rs_State.getString("State");  
+
             boolean empty = true;
-            while(rs_pst.next()){
+            while(rs_apply.next()){
                 empty = false;
             }
-
             
-            if (!empty) {
-                JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse you have applied for it before.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                if (State == "T") {
-                    java.sql.PreparedStatement pst2 = con.prepareStatement("Insert into APPLIED_TO_BY values( ?,?)");
+            if (empty) {
+//                if (JobState == "T") {
+                    
                     pst2.setInt(1, JobID);
                     pst2.setInt(2, SeekerID);
 
@@ -231,18 +224,19 @@ public class SelectJob extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(null, "Unsuccessfull applying for job", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse the job state is approved for another seeker.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
-                }
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse the job state is approved for another seeker.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
+//                }
+            } else {
+                JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse you have applied for it before.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-        SekeerServices x = new SekeerServices();
-        x.setVisible(true);
-        this.setVisible(false);
+    JobTable x = new JobTable();
+    x.setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
