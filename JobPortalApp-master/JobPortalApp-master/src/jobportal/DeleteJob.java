@@ -23,7 +23,9 @@ public class DeleteJob extends javax.swing.JFrame {
      * Creates new form DeleteJob
      */
     public DeleteJob() {
+        super(" Delet Job ");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
