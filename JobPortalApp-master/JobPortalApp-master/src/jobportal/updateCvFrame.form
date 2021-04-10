@@ -59,23 +59,24 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                              <Component id="jLabel14" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace pref="106" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabel14" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="Age" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="GPA" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="Qualifications" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="Address" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="Experience" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <Component id="Major" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="96" pref="163" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="Age" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="GPA" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="Qualifications" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="Address" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="Experience" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                                  <Component id="Major" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="96" pref="189" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel11" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                                   <Component id="jLabel12" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                                   <Component id="jLabel13" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
@@ -128,11 +129,13 @@
                                       </Group>
                                   </Group>
                               </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="jButton2" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace pref="495" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jButton3" min="-2" pref="90" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" pref="88" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -235,11 +238,12 @@
                           <Component id="Experience" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="35" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton2" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton1" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="jButton2" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="jButton3" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -542,6 +546,16 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MajorActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton3">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/jobportal/Updicon.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
