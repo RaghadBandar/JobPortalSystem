@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import static jobportal.SignFrame.SekkerID;
 import static sun.misc.MessageUtils.where;
 
 public class updateCvFrame extends javax.swing.JFrame {
