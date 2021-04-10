@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import static jobportal.SignFrame.SeekerIDjText;
 import static jobportal.SignFrame.SekkerID;
 import static sun.misc.MessageUtils.where;
 
@@ -24,9 +25,7 @@ public class updateCvFrame extends javax.swing.JFrame {
     public updateCvFrame() {
         initComponents();
         setLocationRelativeTo(null);
-                    Gender=  new ButtonGroup();                    
-                    Gender.add(Female);      
-                    Gender.add(Male);   }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,11 +112,13 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Users-User-Female-icon.png"))); // NOI18N
 
         Female.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(Female);
         Female.setText("Female");
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/images.png"))); // NOI18N
 
         Male.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(Male);
         Male.setText("Male");
 
         jLabel11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 26)); // NOI18N
@@ -454,9 +455,9 @@ public class updateCvFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {                                         
         try {  
                     
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/Try", "Try","1234"); //check the database
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
             st=con.createStatement();
-            rs=st.executeQuery("select * from TRY.CV");
+            rs=st.executeQuery("select * from CV");
             
             PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?,"
                     + "SeekerPhone=?,Gender=?, ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
@@ -476,10 +477,10 @@ public class updateCvFrame extends javax.swing.JFrame {
             updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
             updateSt.setString(8,Address.getText()); //Address
             updateSt.setString(9,Experience.getText()); //Experience
-            updateSt.setInt(10,SignFrame.SekkerID);
-            updateSt.setInt(10,SekkerID);
+            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) );
+            //updateSt.setInt(11,SekkerID);
+\
 
-           
             int updateRows = updateSt.executeUpdate();
             if (updateRows>0)
             {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
@@ -499,10 +500,10 @@ public class updateCvFrame extends javax.swing.JFrame {
         
         boolean uExist = false;       
         
-       try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
-              PreparedStatement ps= con.prepareStatement("SELECT * FROM CV_MAJOR and CV_QUALIFICATION WHERE 'SeekerID' = ? ") ){
+       try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+              PreparedStatement ps= con.prepareStatement("SELECT * FROM CV_MAJOR and CV_QUALIFICATION WHERE SeekerID = ? ") ){
            
-            ps.setInt(1, ID);
+            ps.setInt(1,Integer.parseInt(SeekerIDjText.getText()) );
            
             rs = ps.executeQuery();
            

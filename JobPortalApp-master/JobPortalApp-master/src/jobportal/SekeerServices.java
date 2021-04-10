@@ -8,7 +8,6 @@ package jobportal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import javax.swing.JOptionPane;
 import static jobportal.SignFrame.SeekerIDjText;
 
@@ -54,7 +53,6 @@ public class SekeerServices extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -64,6 +62,7 @@ public class SekeerServices extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,19 +84,6 @@ public class SekeerServices extends javax.swing.JFrame {
         jLabel4.setText("Choose a Service");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(80, 190, 280, 60);
-
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton4.setText("Apply for Jobs");
-        jButton4.setToolTipText("search ");
-        jButton4.setActionCommand("Show all Jobs");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(160, 280, 190, 40);
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton3.setText("View your Job");
@@ -161,6 +147,19 @@ public class SekeerServices extends javax.swing.JFrame {
         jPanel1.add(jButton5);
         jButton5.setBounds(160, 460, 190, 40);
 
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton4.setText("Apply for Jobs");
+        jButton4.setToolTipText("search ");
+        jButton4.setActionCommand("Show all Jobs");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+        jButton4.setBounds(160, 280, 190, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,12 +173,6 @@ public class SekeerServices extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        JobTable x = new JobTable();
-        x.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
     SearchForJobByID y = new SearchForJobByID();
@@ -202,6 +195,12 @@ public class SekeerServices extends javax.swing.JFrame {
         u.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JobTable R = new JobTable();
+        R.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
