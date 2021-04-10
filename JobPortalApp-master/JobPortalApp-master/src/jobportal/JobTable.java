@@ -23,8 +23,10 @@ public class JobTable extends javax.swing.JFrame {
      * Creates new form JobTable
      */
     public JobTable() {
+        super("Table Of Job");
         initComponents();
-
+        setLocationRelativeTo(null);
+        
         String sql = "SELECT JobID,JobName,Major FROM JOB ";
 
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");

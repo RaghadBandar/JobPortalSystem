@@ -22,8 +22,8 @@ public class SekeerServices extends javax.swing.JFrame {
      * Creates new form SekeerServices
      */
     public SekeerServices() {
+        super("Seeker Services");
         initComponents();
-        
         setLocationRelativeTo(null);
         
         String sql = "SELECT FName FROM CV where SeekerID=" + SeekerIDjText.getText();
