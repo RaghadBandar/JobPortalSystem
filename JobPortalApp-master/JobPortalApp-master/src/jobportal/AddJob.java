@@ -26,6 +26,7 @@ public class AddJob extends javax.swing.JFrame {
         
         super("ADD NEW JOB");
         initComponents();
+        setLocationRelativeTo(null);
             
     }
 

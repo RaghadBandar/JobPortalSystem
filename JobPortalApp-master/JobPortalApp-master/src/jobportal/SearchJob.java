@@ -16,6 +16,7 @@ public class SearchJob extends javax.swing.JFrame {
      */
     public SearchJob() {
         initComponents();
+        setLocationRelativeTo(null);
     }
     
     /**

@@ -23,6 +23,7 @@ public class updateCvFrame extends javax.swing.JFrame {
     
     public updateCvFrame() {
         initComponents();
+        setLocationRelativeTo(null);
                     Gender=  new ButtonGroup();                    
                     Gender.add(Female);      
                     Gender.add(Male);   }

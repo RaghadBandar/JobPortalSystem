@@ -14,6 +14,7 @@ public class SignFrame extends javax.swing.JFrame {
      */
     public SignFrame() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
