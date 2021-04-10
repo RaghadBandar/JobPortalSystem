@@ -20,33 +20,33 @@ import static jobportal.SignFrame.SeekerIDjText;
 public class SelectJob extends javax.swing.JFrame {
 
     int JobID;
-    
+
     public SelectJob(int ID) {
         this();
         this.JobID = ID;
-        jTextField10.setText(""+this.JobID);
-    String sql = "SELECT JobName,Major,Descripiton FROM JOB where JobID="+ID;          
-    
-    try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
-    java.sql.Statement stt = con.createStatement();
-    ResultSet rs = stt.executeQuery(sql)) {
-    ResultSetMetaData metadata = rs.getMetaData();
-    int col = metadata.getColumnCount();
-    
-    if(rs.next()){
-        
-           jTextField1.setText(rs.getString("JobName"));
-        
-           jTextField12.setText(rs.getString("Major"));
-        
-           jTextField13.setText(rs.getString("Descripiton"));
-        }
-        
-    }catch (Exception e) {
+        jTextField10.setText("" + this.JobID);
+        String sql = "SELECT JobName,Major,Descripiton FROM JOB where JobID=" + ID;
+
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql)) {
+            ResultSetMetaData metadata = rs.getMetaData();
+            int col = metadata.getColumnCount();
+
+            if (rs.next()) {
+
+                jTextField1.setText(rs.getString("JobName"));
+
+                jTextField12.setText(rs.getString("Major"));
+
+                jTextField13.setText(rs.getString("Descripiton"));
+            }
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     public SelectJob() {
         initComponents();
     }
@@ -194,48 +194,32 @@ public class SelectJob extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         int SeekerID = Integer.parseInt(SeekerIDjText.getText());
-
-        String sql = "SELECT State FROM JOB where JobID=" + JobID;//If this Job have a Seeker 
+        //If the seeker appliy for this job befor
+        String sql2 = "SELECT * FROM APPLIED_TO_BY where JobID=" + JobID + " and SeekerID=" + SeekerID;
 
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                 java.sql.Statement stt = con.createStatement();
-                ResultSet rs = stt.executeQuery(sql)) {
-
-            ResultSetMetaData metadata = rs.getMetaData();
-            rs.next();
-            String State = rs.getString("State");
-
-        //If the seeker appliy for this job befor
-        String sql2 = "SELECT * FROM APPLIED_TO_BY where JobID="+JobID+" and SeekerID="+SeekerID;
-            java.sql.Statement pst = con.createStatement();
-            ResultSet rs_pst = stt.executeQuery(sql2);
-            ResultSetMetaData metadata2 = rs_pst.getMetaData();
-            
+                ResultSet rs_pst = stt.executeQuery(sql2);
+                java.sql.PreparedStatement pst2 = con.prepareStatement("Insert into APPLIED_TO_BY values( ?,?)")) {
             boolean empty = true;
-            while(rs_pst.next()){
+            while (rs_pst.next()) {
                 empty = false;
             }
 
-            
             if (!empty) {
                 JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse you have applied for it before.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                if (State == "F") {
-                    java.sql.PreparedStatement pst2 = con.prepareStatement("Insert into APPLIED_TO_BY values( ?,?)");
-                    pst2.setString(1, "" + JobID);
-                    pst2.setString(2, "" + SeekerID);
 
-                    int updateRow2 = pst2.executeUpdate();
-                    if (updateRow2 > 0) {
-                        JOptionPane.showMessageDialog(null, "successfull applying for job", "successfull", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Unsuccessfull applying for job", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
-                    }
+                pst2.setString(1, "" + JobID);
+                pst2.setString(2, "" + SeekerID);
+
+                int updateRow2 = pst2.executeUpdate();
+                if (updateRow2 > 0) {
+                    JOptionPane.showMessageDialog(null, "successfull applying for job", "successfull", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse the job state is approved for another seeker.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Unsuccessfull applying for job", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
