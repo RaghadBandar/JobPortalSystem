@@ -57,7 +57,6 @@ public class SearchForJobByID extends javax.swing.JFrame {
         jLabel2.setText("Please Enter Job ID");
 
         jTextField7.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField7.setText("Enter Job ID");
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
@@ -149,7 +148,7 @@ public class SearchForJobByID extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String ID =jTextField7.getText();
-        if(ID.length() != 0){
+    if(ID.length() > 0){
             try (Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery(("SELECT JobID FROM Job WHERE JobID="+ID))) {
@@ -159,7 +158,7 @@ public class SearchForJobByID extends javax.swing.JFrame {
                 exists = true;
             }
             if (exists) {
-                SelectJob x = new SelectJob(ID);
+                SelectJob x = new SelectJob(Integer.parseInt(ID));
                 x.setVisible(true);
                 this.setVisible(false);
             } else {
@@ -168,7 +167,7 @@ public class SearchForJobByID extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-        }else {
+    }else {
             JOptionPane.showMessageDialog(null, "Please, Enter Job ID ", "Error", JOptionPane.PLAIN_MESSAGE);
         }
         
