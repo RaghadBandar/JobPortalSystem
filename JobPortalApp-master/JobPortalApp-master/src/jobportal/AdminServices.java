@@ -18,7 +18,7 @@ import static jobportal.SignFrame.SeekerIDjText;
  */
 public class AdminServices extends javax.swing.JFrame {
 
-    private Object Updatejob;
+    
 
     /**
      * Creates new form AddJobAdmin
@@ -48,6 +48,7 @@ public class AdminServices extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,14 +91,14 @@ public class AdminServices extends javax.swing.JFrame {
         jButton4.setBounds(110, 250, 210, 40);
 
         jButton5.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
-        jButton5.setText("Delete Job");
+        jButton5.setText("Update Job");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton5);
-        jButton5.setBounds(110, 400, 210, 40);
+        jButton5.setBounds(110, 450, 210, 40);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/icons8-exit-24.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +114,16 @@ public class AdminServices extends javax.swing.JFrame {
         jPanel1.add(jButton7);
         jButton7.setBounds(110, 350, 210, 40);
 
+        jButton8.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
+        jButton8.setText("Delete Job");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8);
+        jButton8.setBounds(110, 400, 210, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,7 +132,7 @@ public class AdminServices extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
         );
 
         pack();
@@ -145,12 +156,13 @@ public class AdminServices extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(AdminServices.this ,"See you next time..");
         System.exit(0);
     }//GEN-LAST:event_jButton6ActionPerformed
-     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
          UpdateJob updatejob = new UpdateJob();
          Updatejob.setVisible(true);
-         this.setVisible(false);
-    } 
+         this.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+ 
     /**
      * @param args the command line arguments
      */
@@ -194,10 +206,11 @@ public class AdminServices extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-}
+
