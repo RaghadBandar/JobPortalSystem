@@ -341,8 +341,8 @@ public class updateCvFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SekeerServices s = new SekeerServices();
-        s.setVisible(true);
+        SekeerServices x = new SekeerServices();
+        x.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -458,7 +458,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             rs=st.executeQuery("select * from TRY.CV");
             
             PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?,"
-                    + "SeekerPhone=?,Gender=? ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
+                    + "SeekerPhone=?,Female=? and Male=?, ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
         
             updateSt.setString(1,FName.getText()); //FName
             updateSt.setString(2,LName.getText()); //LName
