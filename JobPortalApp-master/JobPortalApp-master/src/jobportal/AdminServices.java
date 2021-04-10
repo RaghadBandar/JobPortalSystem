@@ -18,6 +18,8 @@ import static jobportal.SignFrame.SeekerIDjText;
  */
 public class AdminServices extends javax.swing.JFrame {
 
+    private Object Updatejob;
+
     /**
      * Creates new form AddJobAdmin
      */
@@ -143,7 +145,12 @@ public class AdminServices extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(AdminServices.this ,"See you next time..");
         System.exit(0);
     }//GEN-LAST:event_jButton6ActionPerformed
-
+     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        
+         UpdateJob updatejob = new UpdateJob();
+         Updatejob.setVisible(true);
+         this.setVisible(false);
+    } 
     /**
      * @param args the command line arguments
      */
