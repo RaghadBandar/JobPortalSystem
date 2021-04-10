@@ -152,8 +152,8 @@ public class UpdateJob extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {                                         
-        int ID; 
+    /* private void jButton2ActionPerformed(java.awt.event.ActionEvent evt){                                         
+       int ID; 
         
         String sql=" UPDATE FROM Job WHERE JobID=?" ;
         try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");  
@@ -197,8 +197,8 @@ public class UpdateJob extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(null, 
          ex.getMessage(), "an error has accured ", 
           JOptionPane.ERROR_MESSAGE);
-        }
-    }
+        }*/
+    
     
      private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:

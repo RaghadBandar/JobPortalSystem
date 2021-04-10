@@ -34,7 +34,7 @@ public class JobTable extends javax.swing.JFrame {
                 ResultSet rs = stt.executeQuery(sql);) {
 
             while (rs.next()) {
-                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+               jTable1.setModel(DbUtils.resultSetToTableModel(rs) );
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);

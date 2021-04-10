@@ -159,7 +159,7 @@ public class AdminServices extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
          UpdateJob updatejob = new UpdateJob();
-         Updatejob.setVisible(true);
+         updatejob.setVisible(true);
          this.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
  
@@ -213,4 +213,4 @@ public class AdminServices extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
+}

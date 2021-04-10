@@ -159,7 +159,7 @@ public class SearchForJobByID extends javax.swing.JFrame {
                 exists = true;
             }
             if (exists) {
-                SelectJob x = new SelectJob(ID);
+                SelectJob x = new SelectJob(Integer.parseInt(ID));
                 x.setVisible(true);
                 this.setVisible(false);
             } else {
