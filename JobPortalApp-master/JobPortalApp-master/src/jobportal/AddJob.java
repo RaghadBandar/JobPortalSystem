@@ -195,7 +195,7 @@ public class AddJob extends javax.swing.JFrame {
                     java.sql.Statement stt = con.createStatement(); )
                     {                    
                         int INSERT_State = stt.executeUpdate(insert);
-
+                       
                     }
             catch (SQLException ex){
                 JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in INSERT", JOptionPane.ERROR_MESSAGE);
