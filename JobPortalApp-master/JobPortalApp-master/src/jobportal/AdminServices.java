@@ -5,6 +5,7 @@
  */
 package jobportal;
 
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -49,6 +50,7 @@ public class AdminServices extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,14 +93,14 @@ public class AdminServices extends javax.swing.JFrame {
         jButton4.setBounds(110, 250, 210, 40);
 
         jButton5.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
-        jButton5.setText("Update Job");
+        jButton5.setText("Regestration");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton5);
-        jButton5.setBounds(110, 450, 210, 40);
+        jButton5.setBounds(110, 500, 210, 40);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/icons8-exit-24.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +109,7 @@ public class AdminServices extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton6);
-        jButton6.setBounds(350, 430, 50, 30);
+        jButton6.setBounds(350, 510, 50, 30);
 
         jButton7.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         jButton7.setText("Select Seeker for Job");
@@ -124,6 +126,16 @@ public class AdminServices extends javax.swing.JFrame {
         jPanel1.add(jButton8);
         jButton8.setBounds(110, 400, 210, 40);
 
+        jButton9.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
+        jButton9.setText("Update Job");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9);
+        jButton9.setBounds(110, 450, 210, 40);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +144,7 @@ public class AdminServices extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
         );
 
         pack();
@@ -162,6 +174,17 @@ public class AdminServices extends javax.swing.JFrame {
          updatejob.setVisible(true);
          this.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+       // Read Registretion Info using file
+          /*  FileReader Reader=new FileReader("",true);
+            Reader.read("\n Username: "+username+"\n Password: "+password);
+            Reader.read(System.getProperty("line.separator"));
+            Reader.close();
+            setVisible(false);
+            new Register_Form().setVisible(true);
+            JOptionPane.showMessageDialog(null,"Successfully Added to txt File");*/
+    }//GEN-LAST:event_jButton9ActionPerformed
  
     /**
      * @param args the command line arguments
@@ -207,6 +230,7 @@ public class AdminServices extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

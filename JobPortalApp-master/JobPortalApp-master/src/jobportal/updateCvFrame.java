@@ -17,7 +17,6 @@ import static sun.misc.MessageUtils.where;
 
 public class updateCvFrame extends javax.swing.JFrame {
     
-    private ButtonGroup Gender; 
     Connection con;
     Statement st;
     ResultSet rs;
@@ -68,8 +67,6 @@ public class updateCvFrame extends javax.swing.JFrame {
         Age = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         Major = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,8 +137,18 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel16.setText("Experience");
 
         Experience.setForeground(new java.awt.Color(153, 153, 153));
+        Experience.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExperienceActionPerformed(evt);
+            }
+        });
 
         Address.setForeground(new java.awt.Color(153, 153, 153));
+        Address.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddressActionPerformed(evt);
+            }
+        });
 
         Qualifications.setMaximumRowCount(3);
         Qualifications.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bachelor of Finance major", "Bachelor of Marketing major", "Master of Accounting major", "Doctorate of Accounting major", "Master of Development administration" }));
@@ -168,10 +175,6 @@ public class updateCvFrame extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Female.png"))); // NOI18N
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/UsernameIcon.png"))); // NOI18N
 
         Major.setForeground(new java.awt.Color(153, 153, 153));
 
@@ -201,22 +204,11 @@ public class updateCvFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(LName)
-                                            .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                            .addComponent(FName)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jLabel17)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Female)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Male, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(45, 45, 45)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(LName)
+                                    .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                                    .addComponent(FName)))
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,12 +222,16 @@ public class updateCvFrame extends javax.swing.JFrame {
                                         .addGap(60, 60, 60)
                                         .addComponent(jLabel9)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(85, 85, 85)
-                                        .addComponent(jLabel10))
-                                    .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addGap(2, 2, 2)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Female)
+                                            .addComponent(jLabel10))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Male, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(138, Short.MAX_VALUE))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
@@ -273,26 +269,15 @@ public class updateCvFrame extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addComponent(Female)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel17)))
-                        .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addComponent(Male))
-                        .addGap(21, 21, 21)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Female)
+                        .addComponent(Male))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Age, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -349,7 +334,45 @@ public class updateCvFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+        try {  
+                    
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
+            st=con.createStatement();
+            rs=st.executeQuery("select * from CV");
+            
+            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?,"
+                    + "SeekerPhone=?,Gender=?, ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
+        
+            updateSt.setString(1,FName.getText()); //FName
+            updateSt.setString(2,LName.getText()); //LName
+            updateSt.setString(3,Email.getText()); //Email         
+            updateSt.setString(4,Phone.getText()); //Phone                       
+        
+            // gender
+           if(Female.isSelected())             
+             updateSt.setString(5,"Female");
+           else if(Male.isSelected()) 
+             updateSt.setString(5,"male"); 
+            
+            updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
+            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
+            updateSt.setString(8,Address.getText()); //Address
+            updateSt.setString(9,Experience.getText()); //Experience
+            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) );
+
+
+            int updateRows = updateSt.executeUpdate();
+            if (updateRows>0)
+            {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
+            else 
+                {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }            
+        }        
+        catch(SQLException ex)
+                { JOptionPane.showMessageDialog(null, ex.getMessage());} 
+        
+        catch (Exception ex) 
+        { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE); }    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
        try{ 
@@ -452,53 +475,9 @@ public class updateCvFrame extends javax.swing.JFrame {
        
     }//GEN-LAST:event_QualificationsActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {                                         
-        try {  
-                    
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
-            st=con.createStatement();
-            rs=st.executeQuery("select * from CV");
-            
-            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?,"
-                    + "SeekerPhone=?,Gender=?, ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
+    public boolean isSeekerIDexist(int ID) {
         
-            updateSt.setString(1,FName.getText()); //FName
-            updateSt.setString(2,LName.getText()); //LName
-            updateSt.setString(3,Email.getText()); //Email         
-            updateSt.setString(4,Phone.getText()); //Phone                       
-        
-            // gender
-           if(Female.isSelected())             
-             updateSt.setString(5,"Female");
-           else if(Male.isSelected()) 
-             updateSt.setString(5,"male"); 
-            
-            updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
-            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
-            updateSt.setString(8,Address.getText()); //Address
-            updateSt.setString(9,Experience.getText()); //Experience
-            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) );
-            //updateSt.setInt(11,SekkerID);
-\
-
-            int updateRows = updateSt.executeUpdate();
-            if (updateRows>0)
-            {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
-            else 
-                {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }            
-        }        
-        catch(SQLException ex)
-                { JOptionPane.showMessageDialog(null, ex.getMessage());} 
-        
-        catch (Exception ex) 
-        { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE);
-        }
-    }                                   
-
-    
-        public boolean isSeekerIDexist(int ID) {
-        
-        boolean uExist = false;       
+        boolean Exist = false;       
         
        try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
               PreparedStatement ps= con.prepareStatement("SELECT * FROM CV_MAJOR and CV_QUALIFICATION WHERE SeekerID = ? ") ){
@@ -508,11 +487,11 @@ public class updateCvFrame extends javax.swing.JFrame {
             rs = ps.executeQuery();
            
            if (rs.next()){
-               uExist = true;  } }
+               Exist = true;  } }
        
         catch (SQLException ex){
                 JOptionPane.showMessageDialog(updateCvFrame.this, ex.getMessage(), "Error in UPDATE", JOptionPane.ERROR_MESSAGE); }
-        return uExist;
+        return Exist;
        }  
         
     /**
@@ -579,8 +558,6 @@ public class updateCvFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
