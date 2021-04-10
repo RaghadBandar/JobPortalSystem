@@ -24,7 +24,7 @@ public class AdminServices extends javax.swing.JFrame {
     public AdminServices() {
         
         super ("ADMIN SERVICES");
-       //initComponents();
+       initComponents();
        setLocationRelativeTo(null);
         
          String sql = "SELECT FName FROM Admin where AdminID=" + SeekerIDjText.getText();
@@ -34,7 +34,7 @@ public class AdminServices extends javax.swing.JFrame {
             
             rs.next();
             String name = rs.getString("FName");
-         //   nameLabel.setText(name);
+            nameLabel.setText(name);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
