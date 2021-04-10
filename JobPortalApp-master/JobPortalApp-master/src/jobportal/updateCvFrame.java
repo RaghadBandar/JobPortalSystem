@@ -411,13 +411,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             updateSt.setString(2,LName.getText()); //LName
             updateSt.setString(3,Email.getText()); //Email         
             updateSt.setString(4,Phone.getText()); //Phone
-            updateSt.setString(5,Male.getText()); // Gender {if statment(isSelected))}
-                        {  updateSt.setString(5,radioGroup.toString());{
-        if ( Female.isSelected())
-                Female.setSelected(true);
-        else 
-                 Male.setSelected(true); }}    
-            
+            updateSt.setString(5,radioGroup.toString()); // Gender             
             updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
             updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
             updateSt.setString(8,Major.getText()); //Major ... check 
