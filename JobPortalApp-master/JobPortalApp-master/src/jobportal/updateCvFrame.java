@@ -410,50 +410,8 @@ public class updateCvFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-<<<<<<< HEAD
-             
-        try {  
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
-            st=con.createStatement();
-            rs=st.executeQuery("select * from CV");
-            
-            PreparedStatement updateSt= con.prepareStatement("Update Job Seeker CV set FName=?, LName=?, SeekerEmail=?,"
-                    + "SeekerPhone=?,Gender=?,Age=?,GPA=?,Major=?,Qualifications=?,Address=?, Experience=? where SeekerID=? ");
-        
-            updateSt.setString(1,FName.getText()); //FName
-            updateSt.setString(2,LName.getText()); //LName
-            updateSt.setString(3,Email.getText()); //Email         
-            updateSt.setString(4,Phone.getText()); //Phone
-            updateSt.setString(5,Male.getText()); // Gender {if statment(isSelected))}
-                        {  updateSt.setString(5,radioGroup.toString());{
-        if ( Female.isSelected())
-                Female.setSelected(true);
-        else 
-                 Male.setSelected(true); }}    
-            
-            updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
-            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
-            updateSt.setString(8,Major.getText()); //Major ... check 
-            updateSt.setString(9,Qualifications.getSelectedItem().toString()); // Qualifications ... check
-            updateSt.setString(10,Address.getText()); //Address
-            updateSt.setString(11,Experience.getText()); //Experience 
-            updateSt.setInt(12,SignFrame.SekkerID);
-           
-            int updateRows = updateSt.executeUpdate();
-            if (updateRows>0)
-            {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
-            else 
-                {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }            
-        }        
-        catch(SQLException ex)
-                { JOptionPane.showMessageDialog(null, ex.getMessage());} 
-        
-        catch (Exception ex) {
-          JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occured", JOptionPane.ERROR_MESSAGE);}
+
          
-=======
-   
->>>>>>> 52fc528df504a4be748f1360a5417b9fac4a0cc4
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
@@ -557,7 +515,7 @@ public class updateCvFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        try {  
                     
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/Try", "Try","1234"); //check the database
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
             st=con.createStatement();
             rs=st.executeQuery("select * from CV");
             
