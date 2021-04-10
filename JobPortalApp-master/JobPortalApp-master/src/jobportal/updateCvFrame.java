@@ -1,4 +1,5 @@
 package jobportal;
+import java.awt.HeadlessException;
 import static java.lang.String.valueOf;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,20 +7,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.regex.Pattern;
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
+import static jobportal.SignFrame.SekkerID;
 import static sun.misc.MessageUtils.where;
 
 public class updateCvFrame extends javax.swing.JFrame {
-
+    
+    private ButtonGroup Gender; 
     Connection con;
     Statement st;
     ResultSet rs;
     
     public updateCvFrame() {
         initComponents();
-    }
+                    Gender=  new ButtonGroup();                    
+                    Gender.add(Female);      
+                    Gender.add(Male);   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -341,29 +347,137 @@ public class updateCvFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try {  
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
-            st=con.createStatement();
-            rs=st.executeQuery("select * from CV");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
+       try{ 
+           if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", Email.getText()))) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email", "Error", JOptionPane.ERROR_MESSAGE); } }
             
-            PreparedStatement updateSt= con.prepareStatement("Update Job Seeker CV set FName=?, LName=?, SeekerEmail=?,"
-                    + "SeekerPhone=?,Gender=?,Age=?,GPA=?,Major=?,Qualifications=?,Address=?, Experience=? where SeekerID=? ");
+       catch(HeadlessException ex)
+            {
+                JOptionPane.showMessageDialog(null,ex.getMessage(), "The email is valid", JOptionPane.INFORMATION_MESSAGE);   } 
+    }//GEN-LAST:event_EmailActionPerformed
+
+    private void PhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneActionPerformed
+         String phone = Phone.getText();
+        String regexStr = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";
+        Phone.setText(phone);
+
+        try {
+        // valid function goes here
+        phone = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";}
+    catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(),"Please enter a valid phone number",JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_PhoneActionPerformed
+
+    private void FNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FNameActionPerformed
+                try {
+            String fname;
+        fname = FName.getText(); }
+                
+        catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_FNameActionPerformed
+
+    private void LNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LNameActionPerformed
+       try {
+            String fname;
+        fname = FName.getText(); }       
+        
+        catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_LNameActionPerformed
+
+    private void MajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MajorActionPerformed
+            try {
+            String major;
+        major = Major.getText(); }
+             
+        catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_MajorActionPerformed
+
+    private void AddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressActionPerformed
+       try {
+            String address;
+        address = Address.getText(); }
+             
+        catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_AddressActionPerformed
+
+    private void ExperienceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExperienceActionPerformed
+            try {
+            String experience;
+        experience = Experience.getText(); }
+             
+        catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_ExperienceActionPerformed
+
+    private void AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeActionPerformed
+      try{
+           int age;
+           age = Integer.parseInt(Age.getText());
+               if ( age < 20)
+        JOptionPane.showMessageDialog(null,"Age should be > 20 ","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
+        
+        catch(NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage(), " Please enter a Digit ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_AgeActionPerformed
+
+    private void GPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GPAActionPerformed
+   try{
+           double gpa;
+           gpa = Double.parseDouble(GPA.getText());
+              if ( (gpa < 0) && (gpa > 5))
+                          
+          JOptionPane.showMessageDialog(null,"GPA should be >0 and <= 5","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
+        
+      
+        catch(HeadlessException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage(), " Please enter a digit ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_GPAActionPerformed
+
+    private void QualificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QualificationsActionPerformed
+     try {
+               String qualification;
+             qualification= Qualifications.getSelectedItem().toString(); }
+      
+      catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should Select one from the QUALIFICATION ! ", JOptionPane.ERROR_MESSAGE); }
+       
+    }//GEN-LAST:event_QualificationsActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {                                         
+        try {  
+                    
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/Try", "Try","1234"); //check the database
+            st=con.createStatement();
+            rs=st.executeQuery("select * from TRY.CV");
+            
+            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?,"
+                    + "SeekerPhone=?,Gender=? ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
         
             updateSt.setString(1,FName.getText()); //FName
             updateSt.setString(2,LName.getText()); //LName
             updateSt.setString(3,Email.getText()); //Email         
-            updateSt.setString(4,Phone.getText()); //Phone
-          //  updateSt.setString(5,Male.getText()); // Gender {if statment(isSelected))}
-            
-            
+            updateSt.setString(4,Phone.getText()); //Phone                       
+        
+            // gender
+           if(Female.isSelected())             
+             updateSt.setString(5,"Female");
+           else if(Male.isSelected()) 
+             updateSt.setString(5,"male"); 
             
             updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
             updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
-            updateSt.setString(8,Major.getText()); //Major ... check
-            updateSt.setString(9,Qualifications.getSelectedItem().toString()); // Qualifications ... check
-            updateSt.setString(10,Address.getText()); //Address
-            updateSt.setString(11,Experience.getText()); //Experience 
-            updateSt.setInt(12,SignFrame.SekkerID);
+            updateSt.setString(8,Address.getText()); //Address
+            updateSt.setString(9,Experience.getText()); //Experience
+            updateSt.setInt(10,SignFrame.SekkerID);
+            updateSt.setInt(10,SekkerID);
+
            
             int updateRows = updateSt.executeUpdate();
             if (updateRows>0)
@@ -373,9 +487,32 @@ public class updateCvFrame extends javax.swing.JFrame {
         }        
         catch(SQLException ex)
                 { JOptionPane.showMessageDialog(null, ex.getMessage());} 
-         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        catch (Exception ex) 
+        { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE);
+        }
+    }                                   
 
+    
+        public boolean isSeekerIDexist(int ID) {
+        
+        boolean uExist = false;       
+        
+       try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+              PreparedStatement ps= con.prepareStatement("SELECT * FROM CV_MAJOR and CV_QUALIFICATION WHERE 'SeekerID' = ? ") ){
+           
+            ps.setInt(1, ID);
+           
+            rs = ps.executeQuery();
+           
+           if (rs.next()){
+               uExist = true;  } }
+       
+        catch (SQLException ex){
+                JOptionPane.showMessageDialog(updateCvFrame.this, ex.getMessage(), "Error in UPDATE", JOptionPane.ERROR_MESSAGE); }
+        return uExist;
+       }  
+        
     /**
      * @param args the command line arguments
      */
