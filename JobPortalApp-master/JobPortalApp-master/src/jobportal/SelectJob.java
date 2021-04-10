@@ -220,10 +220,10 @@ public class SelectJob extends javax.swing.JFrame {
             if (!empty) {
                 JOptionPane.showMessageDialog(null, "You can't apply for a Job " + JobID + " becouse you have applied for it before.", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                if (State == "F") {
+                if (State == "T") {
                     java.sql.PreparedStatement pst2 = con.prepareStatement("Insert into APPLIED_TO_BY values( ?,?)");
-                    pst2.setString(1, "" + JobID);
-                    pst2.setString(2, "" + SeekerID);
+                    pst2.setInt(1, JobID);
+                    pst2.setInt(2, SeekerID);
 
                     int updateRow2 = pst2.executeUpdate();
                     if (updateRow2 > 0) {
