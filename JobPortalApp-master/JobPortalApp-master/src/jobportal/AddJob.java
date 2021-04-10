@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -178,7 +177,7 @@ public class AddJob extends javax.swing.JFrame {
         
             
             String jobName = jobtext.getText();
-            String jobid = jobID1.getText();
+            int jobid = Integer.parseInt(jobID1.getText());
             String major = majorText.getText();
             String state = stateText.getText();
             String des = desTextArea.getText();
@@ -187,7 +186,7 @@ public class AddJob extends javax.swing.JFrame {
             
             if (verifData()){
                 
-             int jobId = Integer.parseInt(jobid);
+            // int jobId = Integer.parseInt(jobid);
             
             String insert = "INSERT INTO JOB (JobID, JobName, State, Description, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
             
@@ -195,7 +194,9 @@ public class AddJob extends javax.swing.JFrame {
                     java.sql.Statement stt = con.createStatement(); )
                     {                    
                         int INSERT_State = stt.executeUpdate(insert);
-                       
+                        
+                        if (INSERT_State>0)
+                        JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");
                     }
             catch (SQLException ex){
                 JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error in INSERT", JOptionPane.ERROR_MESSAGE);
@@ -203,7 +204,7 @@ public class AddJob extends javax.swing.JFrame {
                 
           JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-            JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");
+           
            
             }
         
@@ -233,7 +234,7 @@ public class AddJob extends javax.swing.JFrame {
              return false;
          }   
          
-         else if (isJobIDexist(Integer.parseInt(jobID1.getText())) ) {
+         else if (isJobIDexist(Integer.parseInt(jobID1.getText()))) {
              JOptionPane.showMessageDialog(AddJob.this, "Job ID is already exist.. Try again!");
              return false;
              
@@ -254,7 +255,7 @@ public class AddJob extends javax.swing.JFrame {
            
            ResultSet rs = ps.executeQuery();
            
-           if (rs.next()){
+           while (rs.next()){
                uExist = true;
            }
        }
