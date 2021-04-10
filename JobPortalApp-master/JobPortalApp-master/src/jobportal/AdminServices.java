@@ -24,7 +24,23 @@ public class AdminServices extends javax.swing.JFrame {
     public AdminServices() {
         
         super ("ADMIN SERVICES");
-        initComponents();
+       //initComponents();
+       setLocationRelativeTo(null);
+        
+         String sql = "SELECT FName FROM Admin where AdminID=" + SeekerIDjText.getText();
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql) ) {
+            
+            rs.next();
+            String name = rs.getString("FName");
+         //   nameLabel.setText(name);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    }
     }
 
     /**
@@ -38,7 +54,7 @@ public class AdminServices extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -57,10 +73,10 @@ public class AdminServices extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(30, 40, 100, 30);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel3.setText("Fatima!");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(30, 60, 130, 50);
+        nameLabel.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        nameLabel.setText("Fatima!");
+        jPanel1.add(nameLabel);
+        nameLabel.setBounds(30, 60, 130, 50);
 
         jLabel4.setFont(new java.awt.Font("Rockwell Condensed", 0, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 255));
@@ -189,8 +205,8 @@ public class AdminServices extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nameLabel;
     // End of variables declaration//GEN-END:variables
 }
