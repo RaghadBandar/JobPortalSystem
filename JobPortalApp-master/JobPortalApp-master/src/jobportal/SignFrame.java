@@ -1,5 +1,10 @@
 package jobportal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 
 
 public class SignFrame extends javax.swing.JFrame {
@@ -128,55 +133,54 @@ public class SignFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        if(SeekerRadio.isSelected()){
-//            String sql = "SELECT SeekerID FROM Job_Seeker where SeekerID="+SeekerIDjText.getText();
-//            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-//                java.sql.Statement stt = con.createStatement();
-//                ResultSet rs = stt.executeQuery(sql);) {
-//
-//            if (rs.next()) {
+            String sql = "SELECT SeekerID FROM Job_Seeker where SeekerID="+SeekerIDjText.getText();
+            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql);) {
+
+            if (rs.next()) {
                 SekeerServices x = new SekeerServices();
                 x.setVisible(true);
                 this.setVisible(false);    
-//            }else{
-//                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
-//                Resat();
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-//            Resat();
-//        }    
-    }
-        if(AdminRadio.isSelected()){
-//            String sql = "SELECT AdminID FROM Admin where AdminID="+SeekerIDjText.getText();
-//            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-//                java.sql.Statement stt = con.createStatement();
-//                ResultSet rs = stt.executeQuery(sql);) {
-//
-//            if (rs.next()) {
+            }else{
+                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
+                Resat();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+            Resat();
+        }    
+    }else if(AdminRadio.isSelected()){
+            String sql = "SELECT AdminID FROM Admin where AdminID="+SeekerIDjText.getText();
+            try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql);) {
+
+            if (rs.next()) {
                AdminServices y = new AdminServices();
                y.setVisible(true);
                this.setVisible(false);
-//               
-//            }else{
-//                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
-//                Resat();
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
-//              Resat();
-//        } 
-//            
-//    }else{
-//            JOptionPane.showMessageDialog(null, "Please, Select a user Role.", "Error", JOptionPane.ERROR_MESSAGE);
-//            Resat();
+               
+            }else{
+                JOptionPane.showMessageDialog(null, "your ID and/or Password incorrect!! ", "Error", JOptionPane.ERROR_MESSAGE);
+                Resat();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+              Resat();
+        } 
+            
+    }else{
+            JOptionPane.showMessageDialog(null, "Please, Select a user Role.", "Error", JOptionPane.ERROR_MESSAGE);
+            Resat();
        }
     }//GEN-LAST:event_jButton1ActionPerformed
-//    private void Resat(){
-//        SeekerIDjText.setText("");
-//        jPasswordField1.setText("");
-//        SeekerRadio.setSelected(false); 
-//         AdminRadio.setSelected(false);  
-//       }
+    private void Resat(){
+        SeekerIDjText.setText("");
+        jPasswordField1.setText("");
+        SeekerRadio.setSelected(false); 
+         AdminRadio.setSelected(false);  
+       }
     
     
     private void SeekerRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeekerRadioActionPerformed
