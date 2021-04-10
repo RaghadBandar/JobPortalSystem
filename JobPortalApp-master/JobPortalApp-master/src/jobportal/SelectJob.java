@@ -47,7 +47,9 @@ public class SelectJob extends javax.swing.JFrame {
     }
 
     public SelectJob() {
+        super("Select Job");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

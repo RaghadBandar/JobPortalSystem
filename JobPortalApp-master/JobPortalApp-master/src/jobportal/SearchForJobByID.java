@@ -25,7 +25,9 @@ public class SearchForJobByID extends javax.swing.JFrame {
      * Creates new form SearchForJobByID
      */
     public SearchForJobByID() {
+        super("Search For Job By ID");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -146,9 +148,9 @@ public class SearchForJobByID extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int ID = Integer.parseInt(jTextField7.getText());
-        
-        try (Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+        String ID =jTextField7.getText();
+        if(ID.length() != 0){
+            try (Connection connection = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                 Statement statement = connection.createStatement();
                 ResultSet rs = statement.executeQuery(("SELECT JobID FROM Job WHERE JobID="+ID))) {
 
@@ -166,6 +168,10 @@ public class SearchForJobByID extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
+        }else {
+            JOptionPane.showMessageDialog(null, "Please, Enter Job ID ", "Error", JOptionPane.PLAIN_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
