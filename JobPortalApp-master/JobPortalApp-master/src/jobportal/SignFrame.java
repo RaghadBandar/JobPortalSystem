@@ -151,7 +151,7 @@ public class SignFrame extends javax.swing.JFrame {
             Resat();
         }    
     }
-        if(AdminRadio.isSelected()){
+       else if(AdminRadio.isSelected()){
             String sql = "SELECT AdminID FROM Admin where AdminID="+SeekerIDjText.getText();
             try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                 java.sql.Statement stt = con.createStatement();
@@ -180,7 +180,7 @@ public class SignFrame extends javax.swing.JFrame {
         SeekerIDjText.setText("");
         jPasswordField1.setText("");
         SeekerRadio.setSelected(false); 
-         AdminRadio.setSelected(false);  
+        AdminRadio.setSelected(false);  
        }
     
     
