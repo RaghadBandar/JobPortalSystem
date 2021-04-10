@@ -342,7 +342,7 @@ public class updateCvFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          try {  
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB","1234"); //check the database
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
             st=con.createStatement();
             rs=st.executeQuery("select * from CV");
             
