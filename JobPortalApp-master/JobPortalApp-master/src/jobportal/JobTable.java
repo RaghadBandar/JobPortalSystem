@@ -24,24 +24,18 @@ public class JobTable extends javax.swing.JFrame {
      */
     public JobTable() {
         initComponents();
-        
-        String sql = "SELECT JobID,JobName,Major FROM JOB ";          
-    
-    try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
-    java.sql.Statement stt = con.createStatement();
-    ResultSet rs = stt.executeQuery(sql);) {
-      
-    while(rs.next()){
-        
-//        String id = String.valueOf(rs.getInt("JobID"));
-//        String name = rs.getString("JobName");
-//        String major = rs.getString("Major");
 
-        jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-              
-    }   
-    
-    } catch (Exception e) {
+        String sql = "SELECT JobID,JobName,Major FROM JOB ";
+
+        try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+                java.sql.Statement stt = con.createStatement();
+                ResultSet rs = stt.executeQuery(sql);) {
+
+            while (rs.next()) {
+                jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            }
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
