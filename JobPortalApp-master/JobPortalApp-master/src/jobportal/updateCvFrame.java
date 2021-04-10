@@ -458,7 +458,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             rs=st.executeQuery("select * from TRY.CV");
             
             PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?,"
-                    + "SeekerPhone=?,Female=? and Male=?, ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
+                    + "SeekerPhone=?,Gender=?, ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
         
             updateSt.setString(1,FName.getText()); //FName
             updateSt.setString(2,LName.getText()); //LName
