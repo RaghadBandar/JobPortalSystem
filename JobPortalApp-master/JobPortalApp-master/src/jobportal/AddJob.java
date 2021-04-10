@@ -178,7 +178,7 @@ public class AddJob extends javax.swing.JFrame {
         
             
             String jobName = jobtext.getText();
-            String jobid = jobID1.getText();
+            int jobid = Integer.parseInt(jobID1.getText());
             String major = majorText.getText();
             String state = stateText.getText();
             String des = desTextArea.getText();
@@ -187,17 +187,18 @@ public class AddJob extends javax.swing.JFrame {
             
             if (verifData()){
                 
-             int jobId = Integer.parseInt(jobid);
+           //  int jobId = Integer.parseInt(jobid);
             
-            String insert = "INSERT INTO JOB (JobID, JobName, State, Description, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
+            String insert = "INSERT INTO JOB (JobID, JobName, State, Descripiton, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
             
-            try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+            try(Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                     java.sql.Statement stt = con.createStatement(); )
                     {
                       
                         int INSERT_State = stt.executeUpdate(insert);
                         
-                     JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");   
+                        if (INSERT_State>0)
+                           JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");   
                     
                     }
             catch (SQLException ex){
@@ -206,7 +207,7 @@ public class AddJob extends javax.swing.JFrame {
                 
           JOptionPane.showMessageDialog(AddJob.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-            JOptionPane.showMessageDialog(AddJob.this, "The Job have been added successfully!");
+            
            
             }
         
@@ -220,7 +221,6 @@ public class AddJob extends javax.swing.JFrame {
 
     public boolean verifData (){
          
-      
          
          if (jobtext.getText().equals("") || jobID1.getText().equals("") 
                || majorText.getText().equals("") || stateText.getText().equals("") || desTextArea.getText().equals(""))
@@ -250,14 +250,14 @@ public class AddJob extends javax.swing.JFrame {
         boolean uExist = false;
         
         
-       try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB",  "DB",  "1234");
+       try( Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
               PreparedStatement ps= con.prepareStatement("SELECT * FROM job WHERE 'jobID' = ? ") ){
            
             ps.setInt(1, id);
            
            ResultSet rs = ps.executeQuery();
            
-           if (rs.next()){
+           while (rs.next()){
                uExist = true;
            }
        }

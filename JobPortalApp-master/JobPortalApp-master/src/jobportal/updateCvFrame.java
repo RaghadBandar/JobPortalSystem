@@ -451,7 +451,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/Try", "Try","1234"); //check the database
 
          try {  
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB","1234"); //check the database
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
             st=con.createStatement();
             rs=st.executeQuery("select * from CV");
             
