@@ -49,9 +49,7 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Phone = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         Female = new javax.swing.JRadioButton();
-        jLabel10 = new javax.swing.JLabel();
         Male = new javax.swing.JRadioButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -105,13 +103,9 @@ public class updateCvFrame extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel8.setText("Gender");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Users-User-Female-icon.png"))); // NOI18N
-
         Female.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(Female);
         Female.setText("Female");
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/images.png"))); // NOI18N
 
         Male.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(Male);
@@ -213,16 +207,13 @@ public class updateCvFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(60, 60, 60)
-                                        .addComponent(jLabel9)))
+                                        .addGap(60, 60, 60)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(2, 2, 2)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(Female)
-                                            .addComponent(jLabel10))
+                                        .addComponent(Female)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(Male, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(138, Short.MAX_VALUE))))
@@ -264,13 +255,10 @@ public class updateCvFrame extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Phone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Female)
-                        .addComponent(Male))
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Female)
+                    .addComponent(Male))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,12 +309,6 @@ public class updateCvFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SekeerServices sekeerServices = new SekeerServices();
-        sekeerServices.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
        try{ 
            if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", Email.getText()))) {
@@ -376,24 +358,6 @@ public class updateCvFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
     }//GEN-LAST:event_MajorActionPerformed
 
-    private void AddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressActionPerformed
-       try {
-            String address;
-        address = Address.getText(); }
-             
-        catch(Exception ex) {
-        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
-    }//GEN-LAST:event_AddressActionPerformed
-
-    private void ExperienceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExperienceActionPerformed
-            try {
-            String experience;
-        experience = Experience.getText(); }
-             
-        catch(Exception ex) {
-        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
-    }//GEN-LAST:event_ExperienceActionPerformed
-
     private void AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeActionPerformed
       try{
            int age;
@@ -429,48 +393,69 @@ public class updateCvFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_QualificationsActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
-//            Statement st=con.createStatement();
-//            ResultSet rs=st.executeQuery("select * from CV") 
-                ) {  
-                    
-            
-            
-  PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");             
-             
+        try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
+            //            Statement st=con.createStatement();
+            //            ResultSet rs=st.executeQuery("select * from CV")
+        ) {
+
+            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");
+
             updateSt.setString(1,FName.getText()); //FName
-            updateSt.setString(2,LName.getText()); //LName      
-            updateSt.setString(3,Phone.getText()); //Phone                       
+            updateSt.setString(2,LName.getText()); //LName
+            updateSt.setString(3,Phone.getText()); //Phone
             updateSt.setString(4,Experience.getText()); //Experience
             updateSt.setString(5,Address.getText()); //Address
-            updateSt.setString(6,Email.getText()); //Email   
-            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA                       
-        
+            updateSt.setString(6,Email.getText()); //Email
+            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
+
             // gender
-           if(Female.isSelected())             
-             updateSt.setString(8,"Female");
-           else if(Male.isSelected()) 
-            updateSt.setString(8,"male"); 
-            
+            if(Female.isSelected())
+            updateSt.setString(8,"Female");
+            else if(Male.isSelected())
+            updateSt.setString(8,"male");
+
             updateSt.setInt(9,Integer.valueOf(Age.getText())); //Age
-         
+
             updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
-         
 
             int updateRows = updateSt.executeUpdate();
             if (updateRows>0)
             {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
-            else 
-                {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }            
-        }        
+            else
+            {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }
+        }
         catch(SQLException ex)
-                { JOptionPane.showMessageDialog(null, ex.getMessage());} 
-        
-        catch (Exception ex) 
-                     
+        { JOptionPane.showMessageDialog(null, ex.getMessage());}
+
+        catch (Exception ex)
+
         { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE); }
-         
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        SekeerServices sekeerServices = new SekeerServices();
+        sekeerServices.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void AddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressActionPerformed
+        try {
+            String address;
+            address = Address.getText(); }
+
+        catch(Exception ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_AddressActionPerformed
+
+    private void ExperienceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExperienceActionPerformed
+        try {
+            String experience;
+            experience = Experience.getText(); }
+
+        catch(Exception ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_ExperienceActionPerformed
 
     public boolean isSeekerIDexist(int ID) {
         
@@ -548,7 +533,6 @@ public class updateCvFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -562,7 +546,6 @@ public class updateCvFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
