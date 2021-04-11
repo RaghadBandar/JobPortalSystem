@@ -68,25 +68,32 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel13.setText("Name of Job");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(70, 210, 100, 29);
+        jLabel13.setBounds(70, 210, 100, 30);
 
         jLabel10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel10.setText("Major");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(70, 280, 100, 29);
+        jLabel10.setBounds(70, 280, 100, 30);
 
         jLabel12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel12.setText("State ");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(70, 340, 150, 29);
+        jLabel12.setBounds(70, 340, 150, 30);
 
         jLabel14.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel14.setText("Describtion");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(70, 400, 100, 29);
+        jLabel14.setBounds(70, 400, 100, 30);
 
         jComboBox3.setMaximumRowCount(2);
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        jComboBox3.setToolTipText("");
+        jComboBox3.setAutoscrolls(true);
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox3);
         jComboBox3.setBounds(240, 340, 110, 30);
 
@@ -185,6 +192,10 @@ public class UpdateJobNext extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     /**
      * @param args the command line arguments
