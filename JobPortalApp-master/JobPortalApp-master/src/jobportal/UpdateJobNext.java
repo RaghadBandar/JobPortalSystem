@@ -167,23 +167,21 @@ public class UpdateJobNext extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    int ID; 
-    String sql=" Update FROM Job WHERE JobID=?" ;
+     
+    
     try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-            Statement statement= connection.createStatement();
-            ResultSet rs=statement.executeQuery("SELECT JobID FROM Job WHERE JobID=?")){
-            int idJob = Integer.parseInt(jTextField6.getText());
-            boolean exists = false;
-            while(rs.next()){
-                exists=true;
-            }
-        if(exists){
-            UpdateJobNext x = new UpdateJobNext(idJob);
-            x.setVisible(true);
-            this.setVisible(false);
-        }else{
-            JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
-        }
+            
+            
+            ){
+        PreparedStatement updateSt= connection.prepareStatement("Update Job set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");
+        ResultSet rs= updateSt.executeQuery();
+        
+        updateSt.setString(1,jTextField6.getText()); //Job Name
+        //updateSt.setString(2,); //State
+        //updateSt.setString(3,); //Descrbtion
+        //updateSt.setString(4,); //major
+
+        
     } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,
                 ex.getMessage(), "an error has accured ",
