@@ -17,7 +17,7 @@ import static sun.misc.MessageUtils.where;
 
 public class updateCvFrame extends javax.swing.JFrame {
     
-    
+    ResultSet rs;
     
     public updateCvFrame() {
         super("UPDATE PROFILE");
@@ -297,9 +297,8 @@ public class updateCvFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,9 +409,9 @@ public class updateCvFrame extends javax.swing.JFrame {
 
             // gender
             if(Female.isSelected())
-            updateSt.setString(8,"Female");
+            updateSt.setString(8,"F");
             else if(Male.isSelected())
-            updateSt.setString(8,"male");
+            updateSt.setString(8,"M");
 
             updateSt.setInt(9,Integer.valueOf(Age.getText())); //Age
 
