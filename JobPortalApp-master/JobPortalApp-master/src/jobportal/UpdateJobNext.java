@@ -21,8 +21,8 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private Component jTextField;
     
     public UpdateJobNext() {
-        initComponents();
-        //super("UPDATE JOB");
+       
+        super("UPDATE JOB");
         initComponents();
         setLocationRelativeTo(null);    }
     
@@ -40,6 +40,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -47,13 +48,14 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,34 +75,22 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel13.setText("Name of Job");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(30, 210, 200, 30);
+        jLabel13.setBounds(60, 210, 200, 29);
 
         jLabel10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel10.setText("Major");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(60, 250, 100, 30);
+        jLabel10.setBounds(60, 260, 100, 29);
 
         jLabel12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel12.setText("State ");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(60, 310, 150, 30);
+        jLabel12.setBounds(60, 310, 150, 29);
 
         jLabel14.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel14.setText("Describtion");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(30, 370, 140, 30);
-
-        jComboBox3.setMaximumRowCount(2);
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
-        jComboBox3.setToolTipText("");
-        jComboBox3.setAutoscrolls(true);
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBox3);
-        jComboBox3.setBounds(220, 310, 110, 30);
+        jLabel14.setBounds(60, 370, 140, 29);
 
         jComboBox4.setMaximumRowCount(3);
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
@@ -110,7 +100,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jComboBox4);
-        jComboBox4.setBounds(210, 250, 170, 30);
+        jComboBox4.setBounds(210, 260, 170, 30);
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
@@ -152,6 +142,23 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(200, 360, 210, 60);
 
+        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("True");
+        jPanel1.add(jRadioButton1);
+        jRadioButton1.setBounds(210, 310, 70, 25);
+
+        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("False");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton2);
+        jRadioButton2.setBounds(290, 310, 59, 25);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,32 +175,55 @@ public class UpdateJobNext extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
      
-    
-    try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-            
-            
-            ){
-        PreparedStatement updateSt= connection.prepareStatement("Update Job set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");
-        ResultSet rs= updateSt.executeQuery();
+        if (jTextField6.getText().equals("") || jTextArea1.getText().equals("") ||   jComboBox4.getSelectedItem().equals("") ) 
+         {
+             JOptionPane.showMessageDialog(null, "There are an EMPTY field","",JOptionPane.PLAIN_MESSAGE);
+         }  else{
+            try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+            PreparedStatement updateSt= connection.prepareStatement("Update Job set JobName=?, State=?,Descripiton=?,Major=? WHERE JobId=? ");
+        ){
+        
         
         updateSt.setString(1,jTextField6.getText()); //Job Name
-        //updateSt.setString(2,); //State
-        //updateSt.setString(3,); //Descrbtion
-        //updateSt.setString(4,); //major
+        
+        if(jRadioButton1.isSelected()){
+          updateSt.setString(2,"T"); //State  
+        }else {
+            updateSt.setString(2,"F"); //State 
+        }
+        
+        updateSt.setString(3,jTextArea1.getText()); ///Descrbtion
+        
+        if(jComboBox4.getSelectedItem() == jComboBox4.getItemAt(0)){
+            updateSt.setString(4,"Finance Department");
+        }else if(jComboBox4.getSelectedItem() == jComboBox4.getItemAt(1)){
+            updateSt.setString(4,"marketing Department");
+        }else if(jComboBox4.getSelectedItem() == jComboBox4.getItemAt(2)){
+            updateSt.setString(4,"Accounting Department");
+        }else if(jComboBox4.getSelectedItem() == jComboBox4.getItemAt(3)){
+            updateSt.setString(4,"Development Department");
+        }
+        updateSt.setInt(5,IDJob);//JobID
+        
+        int updateRow2 = updateSt.executeUpdate();
+                if (updateRow2 > 0) {
+                    JOptionPane.showMessageDialog(null, "successfull Updataing job", "successfull", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Unsuccessfull Updataing for job", "Unsuccessfull", JOptionPane.INFORMATION_MESSAGE);
+                }
 
         
-    } catch (SQLException ex) {
+    } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,
                 ex.getMessage(), "an error has accured ",
                 JOptionPane.ERROR_MESSAGE);
         }
+        }
+    
+    
          
     
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         
@@ -207,6 +237,10 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,9 +278,9 @@ public class UpdateJobNext extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -255,6 +289,8 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField6;
