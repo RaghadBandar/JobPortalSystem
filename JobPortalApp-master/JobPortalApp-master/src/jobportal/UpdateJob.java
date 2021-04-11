@@ -5,12 +5,6 @@
  */
 package jobportal;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
 /**
  *
  * @author ِAsus
@@ -75,17 +69,25 @@ public class UpdateJob extends javax.swing.JFrame {
         jTextField1.setText("Enter ID");
         jPanel2.add(jTextField1);
         jTextField1.setBounds(120, 260, 180, 30);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton1);
-        jButton1.setBounds(40, 310, 50, 40);
+        jButton1.setBounds(20, 320, 50, 40);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Updateicon.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         jPanel2.add(jButton2);
-        jButton2.setBounds(280, 320, 50, 30);
+        jButton2.setBounds(350, 310, 50, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,114 +105,27 @@ public class UpdateJob extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int idJob = Integer.parseInt(jTextField1.getText());
+        UpdateJobNext x = new UpdateJobNext(idJob);
+        x.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        {
-    private void updateActionPerformed(java.awt.event.ActionEvent evt)   
-        
-        int ID;
-        String sql=" Update FROM Job WHERE JobID=?" ;
-        try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-            PreparedStatement prepstatement= connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?")){
-            ID = Integer.parseInt(jTextField1.getText());
-            prepstatement.setInt(1, ID);
-            ResultSet rs=prepstatement.executeQuery();
-            boolean exists = false;
-            while(rs.next()){
-                exists=true;
-            }
-            if(exists){
-                int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to Update This permenantly? ","Delete Job",JOptionPane.YES_NO_OPTION);
-                if(option==JOptionPane.YES_OPTION){
-                    PreparedStatement sts= connection.prepareStatement(sql);
-                    sts.setInt(1,ID);
-                    sts.executeUpdate();
-                    JOptionPane.showMessageDialog(this.jTextField1,"your Operation was successfuly Done","info",JOptionPane.PLAIN_MESSAGE);
-                }
-                if(option==JOptionPane.NO_OPTION){
-                    return;
-                }
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
-            }
-            }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,
-            ex.getMessage(), "Database error",
-            JOptionPane.ERROR_MESSAGE);
-            }
-        catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null,
-                ex.getMessage(), " error has accord! Try Again",
-                JOptionPane.ERROR_MESSAGE);
-        }
 
-        catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,
-                ex.getMessage(), "an error has accured ",
-                JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_jButton3ActionPerformed
-    
-    /* private void jButton2ActionPerformed(java.awt.event.ActionEvent evt){                                         
-       int ID; 
-        
-        String sql=" UPDATE FROM Job WHERE JobID=?" ;
-        try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");  
-        PreparedStatement prepstatement= connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?")){
-        ID = Integer.parseInt(jTextField1.getText());
-        prepstatement.setInt(1, ID);
-        ResultSet rs=prepstatement.executeQuery();
-        boolean exists = false; 
-        while(rs.next()){
-           exists=true;
-       }
-        
-        if(exists){
-        int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to update This permenantly? ","Update Job",JOptionPane.YES_NO_OPTION);
-        if(option==JOptionPane.YES_OPTION){
-        PreparedStatement sts= connection.prepareStatement(sql);
-        sts.setInt(1,ID); 
-        sts.executeUpdate();
-        JOptionPane.showMessageDialog(this.jTextField1,"your Operation was successfuly Done","info",JOptionPane.PLAIN_MESSAGE);
-      }
-        if(option==JOptionPane.NO_OPTION){
-        return;
-      }
-       }
-        else{
-        JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
-       } 
-      }
-       catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, 
-           ex.getMessage(), "Database error", 
-           JOptionPane.ERROR_MESSAGE);
-        }
-       catch (NumberFormatException ex) {
-          JOptionPane.showMessageDialog(null, 
-          ex.getMessage(), " error has accord! Try Again", 
-          JOptionPane.ERROR_MESSAGE);
-        }
 
-         catch (Exception ex) {
-          JOptionPane.showMessageDialog(null, 
-         ex.getMessage(), "an error has accured ", 
-          JOptionPane.ERROR_MESSAGE);
-        }*/
-    
-    
-     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-    }                                           
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         new AdminServices().setVisible(true);
-    }                                        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:   
+    }                                           
+                                       
     /**
      * 
      * @param args the command line arguments

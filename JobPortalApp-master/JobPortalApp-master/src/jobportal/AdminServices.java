@@ -169,7 +169,7 @@ public class AdminServices extends javax.swing.JFrame {
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
          UpdateJob updatejob = new UpdateJob();
          updatejob.setVisible(true);
-         this.setVisible(true);
+         this.setVisible(false);
     }//GEN-LAST:event_updateActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

@@ -1,8 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//        int ID;
+//        String sql=" Update FROM Job WHERE JobID=?" ;
+//        try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+//            PreparedStatement prepstatement= connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?")){
+//            ID = Integer.parseInt(jTextField1.getText());
+//            prepstatement.setInt(1, ID);
+//            ResultSet rs=prepstatement.executeQuery();
+//            boolean exists = false;
+//            while(rs.next()){
+//                exists=true;
+//            }
+//            if(exists){
+//                int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to Update This permenantly? ","Delete Job",JOptionPane.YES_NO_OPTION);
+//                if(option==JOptionPane.YES_OPTION){
+//                    PreparedStatement sts= connection.prepareStatement(sql);
+//                    sts.setInt(1,ID);
+//                    sts.executeUpdate();
+//                    JOptionPane.showMessageDialog(this.jTextField1,"your Operation was successfuly Done","info",JOptionPane.PLAIN_MESSAGE);
+//                }
+//                if(option==JOptionPane.NO_OPTION){
+//                    return;
+//                }
+//            }
+//            else{
+//                JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
+//            }
+//            }
+//        catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null,
+//            ex.getMessage(), "Database error",
+//            JOptionPane.ERROR_MESSAGE);
+//            }
+//        catch (NumberFormatException ex) {
+//            JOptionPane.showMessageDialog(null,
+//                ex.getMessage(), " error has accord! Try Again",
+//                JOptionPane.ERROR_MESSAGE);
+//        }
+//
+//        catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null,
+//                ex.getMessage(), "an error has accured ",
+//                JOptionPane.ERROR_MESSAGE);
+//        }
 package jobportal;
 
 import java.sql.Connection;
@@ -18,11 +56,16 @@ import javax.swing.JOptionPane;
  */
 public class UpdateJobNext extends javax.swing.JFrame {
 
-    /**
-     * Creates new form UpdateJobNext
-     */
+      
+    int IDJob;
+    
     public UpdateJobNext() {
         initComponents();
+    }
+    
+    public UpdateJobNext(int IDJob ) {
+        this();
+        this.IDJob = IDJob;
     }
 
     /**
@@ -38,13 +81,11 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -71,20 +112,15 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jPanel1.add(jLabel13);
         jLabel13.setBounds(70, 210, 100, 29);
 
-        jLabel11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        jLabel11.setText("Job ID");
-        jPanel1.add(jLabel11);
-        jLabel11.setBounds(70, 260, 100, 29);
-
         jLabel10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel10.setText("Major");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(70, 310, 100, 29);
+        jLabel10.setBounds(70, 280, 100, 29);
 
         jLabel12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
-        jLabel12.setText("Number of Emloyee");
+        jLabel12.setText("State ");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(70, 360, 150, 29);
+        jLabel12.setBounds(70, 340, 150, 29);
 
         jLabel14.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel14.setText("Describtion");
@@ -94,18 +130,12 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jComboBox3.setMaximumRowCount(2);
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
         jPanel1.add(jComboBox3);
-        jComboBox3.setBounds(240, 360, 110, 30);
+        jComboBox3.setBounds(240, 340, 110, 30);
 
         jComboBox4.setMaximumRowCount(3);
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
         jPanel1.add(jComboBox4);
-        jComboBox4.setBounds(180, 310, 170, 30);
-
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.setText("Enter Job ID");
-        jPanel1.add(jTextField5);
-        jTextField5.setBounds(180, 260, 170, 30);
+        jComboBox4.setBounds(180, 280, 170, 30);
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
@@ -153,51 +183,51 @@ public class UpdateJobNext extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       int ID; 
-        
-        String sql=" UPDATE FROM Job WHERE JobID=?" ;
-        try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");  
-        PreparedStatement prepstatement= connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?")){
-        ID = Integer.parseInt(jTextField1.getText());
-        prepstatement.setInt(1, ID);
-        ResultSet rs=prepstatement.executeQuery();
-        boolean exists = false; 
-        while(rs.next()){
-           exists=true;
-       }
-        
-        if(exists){
-        int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to update This permenantly? ","Update Job",JOptionPane.YES_NO_OPTION);
-        if(option==JOptionPane.YES_OPTION){
-        PreparedStatement sts= connection.prepareStatement(sql);
-        sts.setInt(1,ID); 
-        sts.executeUpdate();
-        JOptionPane.showMessageDialog(this.jTextField1,"your Operation was successfuly Done","info",JOptionPane.PLAIN_MESSAGE);
-      }
-        if(option==JOptionPane.NO_OPTION){
-        return;
-      }
-       }
-        else{
-        JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
-       } 
-      }
-       catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, 
-           ex.getMessage(), "Database error", 
-           JOptionPane.ERROR_MESSAGE);
-        }
-       catch (NumberFormatException ex) {
-          JOptionPane.showMessageDialog(null, 
-          ex.getMessage(), " error has accord! Try Again", 
-          JOptionPane.ERROR_MESSAGE);
-        }
-
-         catch (Exception ex) {
-          JOptionPane.showMessageDialog(null, 
-         ex.getMessage(), "an error has accured ", 
-          JOptionPane.ERROR_MESSAGE);
-        }*/
-    
+//        
+//        String sql=" UPDATE FROM Job WHERE JobID=?" ;
+//        try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");  
+//        PreparedStatement prepstatement= connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?")){
+//        ID = Integer.parseInt(jTextField1.getText());
+//        prepstatement.setInt(1, ID);
+//        ResultSet rs=prepstatement.executeQuery();
+//        boolean exists = false; 
+//        while(rs.next()){
+//           exists=true;
+//       }
+//        
+//        if(exists){
+//        int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to update This permenantly? ","Update Job",JOptionPane.YES_NO_OPTION);
+//        if(option==JOptionPane.YES_OPTION){
+//        PreparedStatement sts= connection.prepareStatement(sql);
+//        sts.setInt(1,ID); 
+//        sts.executeUpdate();
+//        JOptionPane.showMessageDialog(this.jTextField1,"your Operation was successfuly Done","info",JOptionPane.PLAIN_MESSAGE);
+//      }
+//        if(option==JOptionPane.NO_OPTION){
+//        return;
+//      }
+//       }
+//        else{
+//        JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
+//       } 
+//      }
+//       catch (SQLException ex) {
+//        JOptionPane.showMessageDialog(null, 
+//           ex.getMessage(), "Database error", 
+//           JOptionPane.ERROR_MESSAGE);
+//        }
+//       catch (NumberFormatException ex) {
+//          JOptionPane.showMessageDialog(null, 
+//          ex.getMessage(), " error has accord! Try Again", 
+//          JOptionPane.ERROR_MESSAGE);
+//        }
+//
+//         catch (Exception ex) {
+//          JOptionPane.showMessageDialog(null, 
+//         ex.getMessage(), "an error has accured ", 
+//          JOptionPane.ERROR_MESSAGE);
+//        }*/
+//    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -242,7 +272,6 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -250,7 +279,6 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
