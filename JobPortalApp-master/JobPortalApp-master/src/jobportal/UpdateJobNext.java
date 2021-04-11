@@ -1,6 +1,7 @@
 
 package jobportal;
 
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,6 +17,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
 
       
     int IDJob;
+    private Component jTextField1;
     
     public UpdateJobNext() {
         initComponents();
@@ -59,31 +61,31 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Update \nJob");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(30, 50, 160, 70);
+        jLabel2.setBounds(10, 80, 310, 70);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/adminInterface.png"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 430, 200);
+        jLabel1.setBounds(10, 0, 430, 200);
 
         jLabel13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel13.setText("Name of Job");
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(70, 210, 100, 30);
+        jLabel13.setBounds(30, 210, 200, 30);
 
         jLabel10.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel10.setText("Major");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(70, 280, 100, 30);
+        jLabel10.setBounds(60, 250, 100, 30);
 
         jLabel12.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel12.setText("State ");
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(70, 340, 150, 30);
+        jLabel12.setBounds(60, 310, 150, 30);
 
         jLabel14.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel14.setText("Describtion");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(70, 400, 100, 30);
+        jLabel14.setBounds(30, 370, 140, 30);
 
         jComboBox3.setMaximumRowCount(2);
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
@@ -95,18 +97,23 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jComboBox3);
-        jComboBox3.setBounds(240, 340, 110, 30);
+        jComboBox3.setBounds(220, 310, 110, 30);
 
         jComboBox4.setMaximumRowCount(3);
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
         jPanel1.add(jComboBox4);
-        jComboBox4.setBounds(180, 280, 170, 30);
+        jComboBox4.setBounds(210, 250, 170, 30);
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
         jTextField6.setText("Enter Name of Job");
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField6);
-        jTextField6.setBounds(180, 210, 170, 30);
+        jTextField6.setBounds(210, 210, 170, 30);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
         jPanel1.add(jButton1);
@@ -130,7 +137,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(180, 410, 210, 60);
+        jScrollPane1.setBounds(200, 360, 210, 60);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,7 +158,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
     String sql=" Update FROM Job WHERE JobID=?" ;
         try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
             PreparedStatement prepstatement= connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?")){
-            ID = Integer.parseInt(jTextField1.getText());
+            ID = Integer.parseInt( jTextField6.getText());
             prepstatement.setInt(1, ID);
             ResultSet rs=prepstatement.executeQuery();
             boolean exists = false;
@@ -196,6 +203,10 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
      * @param args the command line arguments
