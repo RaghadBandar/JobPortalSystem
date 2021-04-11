@@ -64,9 +64,9 @@ public class updateCvFrame extends javax.swing.JFrame {
         Qualifications = new javax.swing.JComboBox<>();
         GPA = new javax.swing.JTextField();
         Age = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Major = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,18 +156,6 @@ public class updateCvFrame extends javax.swing.JFrame {
 
         Age.setForeground(new java.awt.Color(153, 153, 153));
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Updicon.png"))); // NOI18N
-        jButton1.setToolTipText("Cleack Update");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +164,13 @@ public class updateCvFrame extends javax.swing.JFrame {
         });
 
         Major.setForeground(new java.awt.Color(153, 153, 153));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Updicon.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -241,9 +236,9 @@ public class updateCvFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,9 +296,9 @@ public class updateCvFrame extends javax.swing.JFrame {
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Experience, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -331,48 +326,6 @@ public class updateCvFrame extends javax.swing.JFrame {
         sekeerServices.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
-//            Statement st=con.createStatement();
-//            ResultSet rs=st.executeQuery("select * from CV") 
-                ) {  
-                    
-            
-            
-  PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");             
-             
-            updateSt.setString(1,FName.getText()); //FName
-            updateSt.setString(2,LName.getText()); //LName      
-            updateSt.setString(3,Phone.getText()); //Phone                       
-            updateSt.setString(4,Experience.getText()); //Experience
-            updateSt.setString(5,Address.getText()); //Address
-            updateSt.setString(6,Email.getText()); //Email   
-            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA                       
-        
-            // gender
-           if(Female.isSelected())             
-             updateSt.setString(8,"Female");
-           else if(Male.isSelected()) 
-            updateSt.setString(8,"male"); 
-            
-            updateSt.setInt(9,Integer.valueOf(Age.getText())); //Age
-         
-            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
-         
-
-            int updateRows = updateSt.executeUpdate();
-            if (updateRows>0)
-            {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
-            else 
-                {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }            
-        }        
-        catch(SQLException ex)
-                { JOptionPane.showMessageDialog(null, ex.getMessage());} 
-        
-        catch (Exception ex)      
-        { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE); }    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
        try{ 
@@ -474,6 +427,50 @@ public class updateCvFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should Select one from the QUALIFICATION ! ", JOptionPane.ERROR_MESSAGE); }
        
     }//GEN-LAST:event_QualificationsActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
+//            Statement st=con.createStatement();
+//            ResultSet rs=st.executeQuery("select * from CV") 
+                ) {  
+                    
+            
+            
+  PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");             
+             
+            updateSt.setString(1,FName.getText()); //FName
+            updateSt.setString(2,LName.getText()); //LName      
+            updateSt.setString(3,Phone.getText()); //Phone                       
+            updateSt.setString(4,Experience.getText()); //Experience
+            updateSt.setString(5,Address.getText()); //Address
+            updateSt.setString(6,Email.getText()); //Email   
+            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA                       
+        
+            // gender
+           if(Female.isSelected())             
+             updateSt.setString(8,"Female");
+           else if(Male.isSelected()) 
+            updateSt.setString(8,"male"); 
+            
+            updateSt.setInt(9,Integer.valueOf(Age.getText())); //Age
+         
+            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
+         
+
+            int updateRows = updateSt.executeUpdate();
+            if (updateRows>0)
+            {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
+            else 
+                {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }            
+        }        
+        catch(SQLException ex)
+                { JOptionPane.showMessageDialog(null, ex.getMessage());} 
+        
+        catch (Exception ex) 
+                     
+        { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE); }
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public boolean isSeekerIDexist(int ID) {
         
