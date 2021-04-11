@@ -52,7 +52,7 @@ public class UpdateJob extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Update \nJob");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(30, 50, 160, 70);
+        jLabel2.setBounds(0, 80, 300, 70);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/adminInterface.png"))); // NOI18N
         jPanel2.add(jLabel1);
@@ -62,13 +62,13 @@ public class UpdateJob extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
         jLabel3.setText("Enter the ID of the Job you want to Update");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(50, 200, 330, 50);
+        jLabel3.setBounds(20, 170, 560, 90);
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
         jTextField1.setText("Enter ID");
         jPanel2.add(jTextField1);
-        jTextField1.setBounds(120, 260, 180, 30);
+        jTextField1.setBounds(120, 280, 180, 30);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
