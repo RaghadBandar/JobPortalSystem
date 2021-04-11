@@ -156,47 +156,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     int ID; 
     String sql=" Update FROM Job WHERE JobID=?" ;
-        try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
-            PreparedStatement prepstatement= connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?")){
-            ID = Integer.parseInt( jTextField6.getText());
-            prepstatement.setInt(1, ID);
-            ResultSet rs=prepstatement.executeQuery();
-            boolean exists = false;
-            while(rs.next()){
-                exists=true;
-            }
-            if(exists){
-                int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to Update This permenantly? ","Update Job",JOptionPane.YES_NO_OPTION);
-                if(option==JOptionPane.YES_OPTION){
-                    PreparedStatement sts= connection.prepareStatement(sql);
-                    sts.setInt(1,ID);
-                    sts.executeUpdate();
-                    JOptionPane.showMessageDialog(this.jTextField1,"your Operation was successfuly Done","info",JOptionPane.PLAIN_MESSAGE);
-                }
-                if(option==JOptionPane.NO_OPTION){
-                    return;
-                }
-            }
-            else{
-                JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
-            }
-            }
-        catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,
-            ex.getMessage(), "Database error",
-            JOptionPane.ERROR_MESSAGE);
-            }
-        catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null,
-                ex.getMessage(), " error has accord! Try Again",
-                JOptionPane.ERROR_MESSAGE);
-        }
-
-        catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,
-                ex.getMessage(), "an error has accured ",
-                JOptionPane.ERROR_MESSAGE);
-        }
+        
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
