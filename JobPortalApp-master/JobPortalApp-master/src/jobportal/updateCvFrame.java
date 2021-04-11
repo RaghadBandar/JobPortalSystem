@@ -423,17 +423,17 @@ public class updateCvFrame extends javax.swing.JFrame {
               return;}
 
             // check if phone is valid
-          else if ( ! ( Phone.getText().chars().allMatch( Character::isDigit ) || Phone.getText().length()!=9)) {
-        JOptionPane.showMessageDialog(updateCvFrame.this,"Please enter a valid phone number","",JOptionPane.ERROR_MESSAGE); }
+          else if (   !(Phone.getText().chars().allMatch( Character::isDigit )) || (Phone.getText().length() < 9) || (Phone.getText().length() > 9) ) {
+        JOptionPane.showMessageDialog(updateCvFrame.this,"Please enter a valid phone number","",JOptionPane.ERROR_MESSAGE); }   
            
                 
             // check if Age is valid        
-             else if ( Age.getText().equals( "< 20 " )) {
+             else if ( Integer.parseInt(Age.getText())  < 20  ) {
           JOptionPane.showMessageDialog(updateCvFrame.this,"Age should be > 20 ","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
                   
                   
            //check if GPA is valid                
-             else if ( (GPA.getText().equals(" < 0")) || (GPA.getText().equals(" > 5")) ) { 
+             else if ( (Integer.parseInt(GPA.getText()) < 1 ) || (Integer.parseInt(GPA.getText()) >5  ) ) { 
           JOptionPane.showMessageDialog(updateCvFrame.this,"GPA should be >0 and <= 5","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
          
                  
@@ -445,22 +445,11 @@ public class updateCvFrame extends javax.swing.JFrame {
       
            // check if Qualifiaction is selected          
             else if ( Qualifications.getSelectedItem().equals("") )  {
-            JOptionPane.showMessageDialog(updateCvFrame.this, " You should Select one from the QUALIFICATION ! ","", JOptionPane.ERROR_MESSAGE); }
-                  
-                               
-//       
-//            // check if address is valid               
-//            else if ( Address.getText().equals("") ) { 
-//            JOptionPane.showMessageDialog(updateCvFrame.this, " You should enter A string ! ","", JOptionPane.ERROR_MESSAGE); }
-//                 
-//
-//                 
-//            // check if experience is valid
-//             else if (Experience.getText().equals("") ) {
-//            JOptionPane.showMessageDialog(updateCvFrame.this, " You should enter A string ! ","", JOptionPane.ERROR_MESSAGE); }
-//                   
-//                   
-        try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
+            JOptionPane.showMessageDialog(updateCvFrame.this, " You should Select one from the QUALIFICATION ! ","", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                
+                        try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
             //            Statement st=con.createStatement();
             //            ResultSet rs=st.executeQuery("select * from CV")
         ) {
@@ -498,6 +487,62 @@ public class updateCvFrame extends javax.swing.JFrame {
         catch (Exception ex)
 
         { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE); }
+                
+            }
+                  
+                               
+//       
+//            // check if address is valid               
+//            else if ( Address.getText().equals("") ) { 
+//            JOptionPane.showMessageDialog(updateCvFrame.this, " You should enter A string ! ","", JOptionPane.ERROR_MESSAGE); }
+//                 
+//
+//                 
+//            // check if experience is valid
+//             else if (Experience.getText().equals("") ) {
+//            JOptionPane.showMessageDialog(updateCvFrame.this, " You should enter A string ! ","", JOptionPane.ERROR_MESSAGE); }
+//                   
+//                   
+
+
+//        try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
+//            //            Statement st=con.createStatement();
+//            //            ResultSet rs=st.executeQuery("select * from CV")
+//        ) {
+//
+//            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");
+//
+//            updateSt.setString(1,FName.getText()); //FName
+//            updateSt.setString(2,LName.getText()); //LName
+//            updateSt.setString(3,Phone.getText()); //Phone
+//            updateSt.setString(4,Experience.getText()); //Experience
+//            updateSt.setString(5,Address.getText()); //Address
+//            updateSt.setString(6,Email.getText()); //Email
+//            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
+//
+//            // gender
+//            if(Female.isSelected())
+//            updateSt.setString(8,"F");
+//            else if(Male.isSelected())
+//            updateSt.setString(8,"M");
+//
+//            updateSt.setInt(9,Integer.valueOf(Age.getText())); //Age
+//
+//            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
+//                                      
+//
+//            int updateRows = updateSt.executeUpdate();
+//            if (updateRows>0)
+//            {JOptionPane.showMessageDialog(null, "CV Updated.. "); }
+//            else
+//            {JOptionPane.showMessageDialog(null, "Can't apply update process.. "); }
+//        }
+//        catch(SQLException ex)
+//        { JOptionPane.showMessageDialog(null, ex.getMessage());}
+//
+//        catch (Exception ex)
+//
+//        { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE); }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
