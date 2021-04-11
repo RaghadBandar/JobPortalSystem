@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,10 +18,11 @@ public class UpdateJobNext extends javax.swing.JFrame {
 
       
     int IDJob;
-    private Component jTextField1;
+    private Component jTextField;
     
     public UpdateJobNext() {
-        super("UPDATE JOB");
+        initComponents();
+        //super("UPDATE JOB");
         initComponents();
         setLocationRelativeTo(null);    }
     
@@ -102,6 +104,11 @@ public class UpdateJobNext extends javax.swing.JFrame {
 
         jComboBox4.setMaximumRowCount(3);
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox4);
         jComboBox4.setBounds(210, 250, 170, 30);
 
@@ -117,6 +124,11 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jTextField6.setBounds(210, 210, 170, 30);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(20, 490, 50, 30);
 
@@ -157,6 +169,28 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     int ID; 
     String sql=" Update FROM Job WHERE JobID=?" ;
+    try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
+            Statement statement= connection.createStatement();
+            ResultSet rs=statement.executeQuery("SELECT JobID FROM Job WHERE JobID=?")){
+            int idJob = Integer.parseInt(jTextField6.getText());
+            boolean exists = false;
+            while(rs.next()){
+                exists=true;
+            }
+        if(exists){
+            UpdateJobNext x = new UpdateJobNext(idJob);
+            x.setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
+        }
+    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,
+                ex.getMessage(), "an error has accured ",
+                JOptionPane.ERROR_MESSAGE);
+        }
+         
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
@@ -164,8 +198,17 @@ public class UpdateJobNext extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox3ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         this.setVisible(false);
+        new AdminServices().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
 
     /**
      * @param args the command line arguments
