@@ -412,7 +412,12 @@ public class updateCvFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  
-                    
+             // check if field is empty or not
+
+          if (FName.getText().equals("") || LName.getText().equals("") || Email.getText().equals("") || Phone.getText().equals("") || Age.getText().equals("") || GPA.getText().equals("") || Major.getText().equals("") || Qualifications.getSelectedItem().equals("") || Address.getText().equals("") || Experience.getText().equals("")) 
+         {
+             JOptionPane.showMessageDialog(updateCvFrame.this, "There are an EMPTY field","",JOptionPane.PLAIN_MESSAGE);
+         }       
             
                     
             // check if FName is valid
@@ -426,8 +431,8 @@ public class updateCvFrame extends javax.swing.JFrame {
                  
            // check if LName is valid
                  try {
-            String fname;
-        fname = FName.getText(); }       
+            String lname;
+        lname = LName.getText(); }       
         
         catch(Exception ex) {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
