@@ -412,31 +412,7 @@ public class updateCvFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  
-        try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
-            //            Statement st=con.createStatement();
-            //            ResultSet rs=st.executeQuery("select * from CV")
-        ) {
-
-            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");
-
-            updateSt.setString(1,FName.getText()); //FName
-            updateSt.setString(2,LName.getText()); //LName
-            updateSt.setString(3,Phone.getText()); //Phone
-            updateSt.setString(4,Experience.getText()); //Experience
-            updateSt.setString(5,Address.getText()); //Address
-            updateSt.setString(6,Email.getText()); //Email
-            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
-
-            // gender
-            if(Female.isSelected())
-            updateSt.setString(8,"F");
-            else if(Male.isSelected())
-            updateSt.setString(8,"M");
-
-            updateSt.setInt(9,Integer.valueOf(Age.getText())); //Age
-
-            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
-            
+                    
             
                     
             // check if FName is valid
@@ -533,6 +509,31 @@ public class updateCvFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
                    
                    
+        try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
+            //            Statement st=con.createStatement();
+            //            ResultSet rs=st.executeQuery("select * from CV")
+        ) {
+
+            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");
+
+            updateSt.setString(1,FName.getText()); //FName
+            updateSt.setString(2,LName.getText()); //LName
+            updateSt.setString(3,Phone.getText()); //Phone
+            updateSt.setString(4,Experience.getText()); //Experience
+            updateSt.setString(5,Address.getText()); //Address
+            updateSt.setString(6,Email.getText()); //Email
+            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
+
+            // gender
+            if(Female.isSelected())
+            updateSt.setString(8,"F");
+            else if(Male.isSelected())
+            updateSt.setString(8,"M");
+
+            updateSt.setInt(9,Integer.valueOf(Age.getText())); //Age
+
+            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
+                                      
 
             int updateRows = updateSt.executeUpdate();
             if (updateRows>0)
