@@ -341,7 +341,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             st=con.createStatement();
             rs=st.executeQuery("select * from CV");
             
-            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?, SeekerPhone=?,Gender=?, Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
+            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?, SeekerPhone=?,JRadioButton=?, Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
         
             updateSt.setString(1,FName.getText()); //FName
             updateSt.setString(2,LName.getText()); //LName
@@ -358,7 +358,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
             updateSt.setString(8,Address.getText()); //Address
             updateSt.setString(9,Experience.getText()); //Experience
-            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) );
+            updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
 
 
             int updateRows = updateSt.executeUpdate();
