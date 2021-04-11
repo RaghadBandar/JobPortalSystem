@@ -22,6 +22,7 @@ public class updateCvFrame extends javax.swing.JFrame {
     ResultSet rs;
     
     public updateCvFrame() {
+        super("UPDATE PROFILE");
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -328,8 +329,8 @@ public class updateCvFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        SekeerServices x = new SekeerServices();
-        x.setVisible(true);
+        SekeerServices sekeerServices = new SekeerServices();
+        sekeerServices.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -339,10 +340,10 @@ public class updateCvFrame extends javax.swing.JFrame {
                     
             Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
             st=con.createStatement();
-            rs=st.executeQuery("select * from CV");
+            rs=st.executeQuery("select * from CV.DB");
             
-            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?, SeekerPhone=?,JRadioButton=?, Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
-        
+            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?, SeekerPhone=?,Gender=?, Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
+             
             updateSt.setString(1,FName.getText()); //FName
             updateSt.setString(2,LName.getText()); //LName
             updateSt.setString(3,Email.getText()); //Email         
@@ -352,7 +353,7 @@ public class updateCvFrame extends javax.swing.JFrame {
            if(Female.isSelected())             
              updateSt.setString(5,"Female");
            else if(Male.isSelected()) 
-             updateSt.setString(5,"male"); 
+            updateSt.setString(5,"male"); 
             
             updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
             updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
@@ -360,6 +361,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             updateSt.setString(9,Experience.getText()); //Experience
             updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
 
+            
 
             int updateRows = updateSt.executeUpdate();
             if (updateRows>0)

@@ -44,13 +44,13 @@ public class AdminServices extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        add = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        update = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
+        Regestration = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,30 +77,35 @@ public class AdminServices extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(0, 0, 424, 200);
 
-        jButton1.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
-        jButton1.setText("Add New Job");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        add.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
+        add.setText("Add New Job");
+        add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(110, 290, 210, 40);
+        jPanel1.add(add);
+        add.setBounds(110, 290, 210, 40);
 
         jButton4.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         jButton4.setText("Display Jobs");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton4);
         jButton4.setBounds(110, 240, 210, 40);
 
-        jButton5.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
-        jButton5.setText("Regestration");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        update.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
+        update.setText("Update Job");
+        update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                updateActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5);
-        jButton5.setBounds(110, 490, 210, 40);
+        jPanel1.add(update);
+        update.setBounds(110, 440, 210, 40);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/icons8-exit-24.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -113,28 +118,33 @@ public class AdminServices extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         jButton7.setText("Select Seeker for Job");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton7);
         jButton7.setBounds(110, 340, 210, 40);
 
-        jButton8.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
-        jButton8.setText("Delete Job");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        delete.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
+        delete.setText("Delete Job");
+        delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                deleteActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8);
-        jButton8.setBounds(110, 390, 210, 40);
+        jPanel1.add(delete);
+        delete.setBounds(110, 390, 210, 40);
 
-        jButton9.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
-        jButton9.setText("Update Job");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        Regestration.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
+        Regestration.setText("Regestration");
+        Regestration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                RegestrationActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton9);
-        jButton9.setBounds(110, 440, 210, 40);
+        jPanel1.add(Regestration);
+        Regestration.setBounds(110, 490, 210, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,32 +160,30 @@ public class AdminServices extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
          AddJob addjob = new AddJob();
          addjob.setVisible(true);
          this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new DeleteJob().setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+         UpdateJob updatejob = new UpdateJob();
+         updatejob.setVisible(true);
+         this.setVisible(true);
+    }//GEN-LAST:event_updateActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
         JOptionPane.showMessageDialog(AdminServices.this ,"See you next time..");
         System.exit(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-         UpdateJob updatejob = new UpdateJob();
-         updatejob.setVisible(true);
-         this.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        DeleteJob deleteJob  = new DeleteJob();
+        deleteJob.setVisible(true);
+        this.setVisible(true);
+    }//GEN-LAST:event_deleteActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void RegestrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegestrationActionPerformed
        // Read Registretion Info using file
           /*  FileReader Reader=new FileReader("",true);
             Reader.read("\n Username: "+username+"\n Password: "+password);
@@ -184,7 +192,15 @@ public class AdminServices extends javax.swing.JFrame {
             setVisible(false);
             new Register_Form().setVisible(true);
             JOptionPane.showMessageDialog(null,"Successfully Added to txt File");*/
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_RegestrationActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
  
     /**
      * @param args the command line arguments
@@ -224,17 +240,17 @@ public class AdminServices extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Regestration;
+    private javax.swing.JButton add;
+    private javax.swing.JButton delete;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
