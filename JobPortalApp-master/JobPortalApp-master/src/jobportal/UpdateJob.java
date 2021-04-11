@@ -106,9 +106,11 @@ public class UpdateJob extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        {
+     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt)   
+        
         int ID;
-
-        String sql=" DELETE FROM Job WHERE JobID=?" ;
+        String sql=" Update FROM Job WHERE JobID=?" ;
         try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
             PreparedStatement prepstatement= connection.prepareStatement("SELECT JobID FROM Job WHERE JobID=?")){
             ID = Integer.parseInt(jTextField1.getText());
@@ -119,7 +121,7 @@ public class UpdateJob extends javax.swing.JFrame {
                 exists=true;
             }
             if(exists){
-                int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to delete This permenantly? ","Delete Job",JOptionPane.YES_NO_OPTION);
+                int option= JOptionPane.showConfirmDialog(null,"Are you sure you want to Update This permenantly? ","Delete Job",JOptionPane.YES_NO_OPTION);
                 if(option==JOptionPane.YES_OPTION){
                     PreparedStatement sts= connection.prepareStatement(sql);
                     sts.setInt(1,ID);
@@ -133,12 +135,12 @@ public class UpdateJob extends javax.swing.JFrame {
             else{
                 JOptionPane.showMessageDialog(null,"This information does not exixt ","Error could not be found",JOptionPane.PLAIN_MESSAGE);
             }
-        }
+            }
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,
-                ex.getMessage(), "Database error",
-                JOptionPane.ERROR_MESSAGE);
-        }
+            ex.getMessage(), "Database error",
+            JOptionPane.ERROR_MESSAGE);
+            }
         catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null,
                 ex.getMessage(), " error has accord! Try Again",
