@@ -423,12 +423,10 @@ public class updateCvFrame extends javax.swing.JFrame {
               return;}
 
             // check if phone is valid
-//                 try {
-//       String phone = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";}
-//          if ( ! Phone.getText().equals(^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$)) {
-//        JOptionPane.showMessageDialog(updateCvFrame.this,"Please enter a valid phone number","",JOptionPane.ERROR_MESSAGE); }
-//           
-//                
+          else if ( ! ( Phone.getText().chars().allMatch( Character::isDigit ) || Phone.getText().length()!=9)) {
+        JOptionPane.showMessageDialog(updateCvFrame.this,"Please enter a valid phone number","",JOptionPane.ERROR_MESSAGE); }
+           
+                
             // check if Age is valid        
              else if ( Age.getText().equals( "< 20 " )) {
           JOptionPane.showMessageDialog(updateCvFrame.this,"Age should be > 20 ","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
