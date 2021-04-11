@@ -15,7 +15,10 @@ public class SearchJobID extends javax.swing.JFrame {
      * Creates new form SearchJobID
      */
     public SearchJobID() {
+        super("Search Job by ID");
         initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**

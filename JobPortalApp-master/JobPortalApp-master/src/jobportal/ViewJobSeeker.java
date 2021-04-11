@@ -22,7 +22,10 @@ public class ViewJobSeeker extends javax.swing.JFrame {
      * Creates new form ViewJobSeeker
      */
     public ViewJobSeeker() {
+        super("View Job Seeker");
         initComponents();
+        setLocationRelativeTo(null);
+
         
         String sql = "SELECT * FROM JOB where SeekerID="+SeekerIDjText.getText();          
     

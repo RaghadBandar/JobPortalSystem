@@ -15,8 +15,9 @@ public class SelectSeekerJob extends javax.swing.JFrame {
      * Creates new form SelectSeekerJob
      */
     public SelectSeekerJob() {
+        super("Select Seeker Job");
         initComponents();
-    }
+        setLocationRelativeTo(null);    }
 
     /**
      * This method is called from within the constructor to initialize the form.

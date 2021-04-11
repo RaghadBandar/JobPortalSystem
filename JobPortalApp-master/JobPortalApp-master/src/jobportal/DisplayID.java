@@ -14,8 +14,10 @@ public class DisplayID extends javax.swing.JFrame {
     /**
      * Creates new form DisplayID
      */
-    public DisplayID() {
+    public DisplayID() {       
+        super("Display ID");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

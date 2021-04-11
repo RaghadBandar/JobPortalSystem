@@ -3,7 +3,9 @@ package jobportal;
 public class AllJobs extends javax.swing.JFrame {
 
     public AllJobs() {
+        super("Show all jobs");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

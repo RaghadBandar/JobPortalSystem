@@ -28,6 +28,7 @@ public class AdminServices extends javax.swing.JFrame {
         
         super ("ADMIN SERVICES");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

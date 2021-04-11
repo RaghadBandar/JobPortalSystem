@@ -309,56 +309,130 @@ public class updateCvFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
-       try{ 
-           if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", Email.getText()))) {
-            JOptionPane.showMessageDialog(null, "Please enter a valid email", "Error", JOptionPane.ERROR_MESSAGE); } }
+//     
+//         /*  if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", Email.getText())))
+//           {
+//            JOptionPane.showMessageDialog(null, "Please enter a valid email", "Error", JOptionPane.ERROR_MESSAGE); 
+//              return;} */
             
-       catch(HeadlessException ex)
-            {
-                JOptionPane.showMessageDialog(null,ex.getMessage(), "The email is valid", JOptionPane.INFORMATION_MESSAGE);   } 
+      
     }//GEN-LAST:event_EmailActionPerformed
 
     private void PhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PhoneActionPerformed
-         String phone = Phone.getText();
+/*         String phone = Phone.getText();
         String regexStr = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";
         Phone.setText(phone);
 
         try {
         // valid function goes here
-        phone = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";}
+       String phone = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";}
     catch(Exception ex) {
-        JOptionPane.showMessageDialog(null,ex.getMessage(),"Please enter a valid phone number",JOptionPane.ERROR_MESSAGE); }
+        JOptionPane.showMessageDialog(null,ex.getMessage(),"Please enter a valid phone number",JOptionPane.ERROR_MESSAGE); }*/
     }//GEN-LAST:event_PhoneActionPerformed
 
     private void FNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FNameActionPerformed
-                try {
+//                try {
+//            String fname;
+//        fname = FName.getText(); }
+//                
+//        catch(Exception ex) {
+//        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_FNameActionPerformed
+
+    private void LNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LNameActionPerformed
+//       try {
+//            String fname;
+//        fname = FName.getText(); }       
+//        
+//        catch(Exception ex) {
+//        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_LNameActionPerformed
+
+    private void MajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MajorActionPerformed
+//            try {
+//            String major;
+//        major = Major.getText(); }
+//             
+//        catch(Exception ex) {
+//        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_MajorActionPerformed
+
+    private void AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeActionPerformed
+//      try{
+//           int age;
+//           age = Integer.parseInt(Age.getText());
+//               if ( age < 20)
+//        JOptionPane.showMessageDialog(null,"Age should be > 20 ","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
+//        
+//        catch(NumberFormatException ex) {
+//            JOptionPane.showMessageDialog(null,ex.getMessage(), " Please enter a Digit ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_AgeActionPerformed
+
+    private void GPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GPAActionPerformed
+//   try{
+//           double gpa;
+//           gpa = Double.parseDouble(GPA.getText());
+//              if ( (gpa < 0) && (gpa > 5))
+//                          
+//          JOptionPane.showMessageDialog(null,"GPA should be >0 and <= 5","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
+//        
+//      
+//        catch(HeadlessException | NumberFormatException ex) {
+//            JOptionPane.showMessageDialog(null,ex.getMessage(), " Please enter a digit ", JOptionPane.ERROR_MESSAGE); }
+    }//GEN-LAST:event_GPAActionPerformed
+
+    private void QualificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QualificationsActionPerformed
+//     try {
+//               String qualification;
+//             qualification= Qualifications.getSelectedItem().toString(); }
+//      
+//      catch(Exception ex) {
+//        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should Select one from the QUALIFICATION ! ", JOptionPane.ERROR_MESSAGE); }
+       
+    }//GEN-LAST:event_QualificationsActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+             // check if email is valid
+        if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", Email.getText())))
+           {
+            JOptionPane.showMessageDialog(null, "Please enter a valid email", "Error", JOptionPane.ERROR_MESSAGE); 
+              return;}
+
+            // check if phone is valid
+                 try {
+       String phone = "^(1\\-)?[0-9]{3}\\-?[0-9]{3}\\-?[0-9]{4}$";}
+          catch(Exception ex) {
+        JOptionPane.showMessageDialog(null,ex.getMessage(),"Please enter a valid phone number",JOptionPane.ERROR_MESSAGE); }
+           
+            // check if FName is valid
+                 try {
             String fname;
         fname = FName.getText(); }
                 
         catch(Exception ex) {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
-    }//GEN-LAST:event_FNameActionPerformed
-
-    private void LNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LNameActionPerformed
-       try {
+                 
+            // check if LName is valid
+                 try {
             String fname;
         fname = FName.getText(); }       
         
         catch(Exception ex) {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
-    }//GEN-LAST:event_LNameActionPerformed
-
-    private void MajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MajorActionPerformed
-            try {
+                 
+                
+            // check if Major is valid     
+                try {
             String major;
         major = Major.getText(); }
              
         catch(Exception ex) {
-        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
-    }//GEN-LAST:event_MajorActionPerformed
-
-    private void AgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeActionPerformed
-      try{
+        JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); } 
+                 
+                
+            // check if Age is valid  
+                  try{
            int age;
            age = Integer.parseInt(Age.getText());
                if ( age < 20)
@@ -366,32 +440,48 @@ public class updateCvFrame extends javax.swing.JFrame {
         
         catch(NumberFormatException ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage(), " Please enter a Digit ", JOptionPane.ERROR_MESSAGE); }
-    }//GEN-LAST:event_AgeActionPerformed
-
-    private void GPAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GPAActionPerformed
-   try{
+                  
+                  
+           //check if GPA is valid
+                  try{
            double gpa;
            gpa = Double.parseDouble(GPA.getText());
               if ( (gpa < 0) && (gpa > 5))
                           
           JOptionPane.showMessageDialog(null,"GPA should be >0 and <= 5","Error could not be found",JOptionPane.PLAIN_MESSAGE); }
-        
-      
+         
         catch(HeadlessException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null,ex.getMessage(), " Please enter a digit ", JOptionPane.ERROR_MESSAGE); }
-    }//GEN-LAST:event_GPAActionPerformed
-
-    private void QualificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QualificationsActionPerformed
-     try {
+                  
+           
+           // check if Qualifiaction is selected
+                  try {
                String qualification;
              qualification= Qualifications.getSelectedItem().toString(); }
-      
+   
       catch(Exception ex) {
         JOptionPane.showMessageDialog(null,ex.getMessage(), " You should Select one from the QUALIFICATION ! ", JOptionPane.ERROR_MESSAGE); }
+                  
+                               
        
-    }//GEN-LAST:event_QualificationsActionPerformed
+            // check if address is valid
+                 try {
+            String address;
+            address = Address.getText(); }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        catch(Exception ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+                 
+                 
+            // check if experience is valid
+                   try {
+            String experience;
+            experience = Experience.getText(); }
+
+        catch(Exception ex) {
+            JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+            
+        
         try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
             //            Statement st=con.createStatement();
             //            ResultSet rs=st.executeQuery("select * from CV")
@@ -439,21 +529,21 @@ public class updateCvFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void AddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressActionPerformed
-        try {
-            String address;
-            address = Address.getText(); }
-
-        catch(Exception ex) {
-            JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+//        try {
+//            String address;
+//            address = Address.getText(); }
+//
+//        catch(Exception ex) {
+//            JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
     }//GEN-LAST:event_AddressActionPerformed
 
     private void ExperienceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExperienceActionPerformed
-        try {
-            String experience;
-            experience = Experience.getText(); }
-
-        catch(Exception ex) {
-            JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
+//        try {
+//            String experience;
+//            experience = Experience.getText(); }
+//
+//        catch(Exception ex) {
+//            JOptionPane.showMessageDialog(null,ex.getMessage(), " You should enter A string ! ", JOptionPane.ERROR_MESSAGE); }
     }//GEN-LAST:event_ExperienceActionPerformed
 
     public boolean isSeekerIDexist(int ID) {

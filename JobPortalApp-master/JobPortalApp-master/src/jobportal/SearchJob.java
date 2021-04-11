@@ -15,6 +15,7 @@ public class SearchJob extends javax.swing.JFrame {
      * Creates new form SearchJob
      */
     public SearchJob() {
+        super("Search Job");       
         initComponents();
         setLocationRelativeTo(null);
     }

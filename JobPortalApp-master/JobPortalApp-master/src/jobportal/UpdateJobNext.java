@@ -20,8 +20,9 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private Component jTextField1;
     
     public UpdateJobNext() {
+        super("UPDATE JOB");
         initComponents();
-    }
+        setLocationRelativeTo(null);    }
     
     public UpdateJobNext(int IDJob ) {
         this();
@@ -156,8 +157,6 @@ public class UpdateJobNext extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     int ID; 
     String sql=" Update FROM Job WHERE JobID=?" ;
-        
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed

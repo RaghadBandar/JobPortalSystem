@@ -15,7 +15,9 @@ public class InterviowSeeker extends javax.swing.JFrame {
      * Creates new form InterviowSeeker
      */
     public InterviowSeeker() {
+        super("Interview Seeker");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

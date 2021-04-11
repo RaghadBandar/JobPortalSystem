@@ -15,8 +15,9 @@ public class DisplayJob extends javax.swing.JFrame {
      * Creates new form DisplayJob
      */
     public DisplayJob() {
+        super("Display Job");
         initComponents();
-    }
+        setLocationRelativeTo(null);    }
 
     /**
      * This method is called from within the constructor to initialize the form.

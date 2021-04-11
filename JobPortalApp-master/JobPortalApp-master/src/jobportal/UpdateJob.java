@@ -24,7 +24,9 @@ public class UpdateJob extends javax.swing.JFrame {
     
      
     public UpdateJob() {
+        super("UPDATE Job");
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

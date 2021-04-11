@@ -15,6 +15,7 @@ public class screen extends javax.swing.JFrame {
      * Creates new form screen
      */
     public screen() {
+        super("Job Portal System");
         initComponents();
         setLocationRelativeTo(null);
     }
