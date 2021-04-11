@@ -342,12 +342,15 @@ public class updateCvFrame extends javax.swing.JFrame {
             st=con.createStatement();
             rs=st.executeQuery("select * from CV.DB");
             
-            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?, SeekerPhone=?,Gender=?, Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
+  PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");             
              
             updateSt.setString(1,FName.getText()); //FName
-            updateSt.setString(2,LName.getText()); //LName
-            updateSt.setString(3,Email.getText()); //Email         
-            updateSt.setString(4,Phone.getText()); //Phone                       
+            updateSt.setString(2,LName.getText()); //LName      
+            updateSt.setString(3,Phone.getText()); //Phone                       
+            updateSt.setString(4,Experience.getText()); //Experience
+            updateSt.setString(5,Address.getText()); //Address
+            updateSt.setString(6,Email.getText()); //Email   
+            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA                       
         
             // gender
            if(Female.isSelected())             
@@ -356,12 +359,9 @@ public class updateCvFrame extends javax.swing.JFrame {
             updateSt.setString(5,"male"); 
             
             updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
-            updateSt.setDouble(7,Double.valueOf(GPA.getText())); //GPA
-            updateSt.setString(8,Address.getText()); //Address
-            updateSt.setString(9,Experience.getText()); //Experience
+         
             updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
-
-            
+         
 
             int updateRows = updateSt.executeUpdate();
             if (updateRows>0)
