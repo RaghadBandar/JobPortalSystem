@@ -341,8 +341,7 @@ public class updateCvFrame extends javax.swing.JFrame {
             st=con.createStatement();
             rs=st.executeQuery("select * from CV");
             
-            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?,"
-                    + "SeekerPhone=?,Gender=?, ,Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
+            PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?, SeekerEmail=?, SeekerPhone=?,Gender=?, Age=?,GPA=?,Address=?, Experience=? where SeekerID=?");
         
             updateSt.setString(1,FName.getText()); //FName
             updateSt.setString(2,LName.getText()); //LName
