@@ -179,7 +179,7 @@ public class AddJob extends javax.swing.JFrame {
         
             
             String jobName = jobtext.getText();
-            int jobid = Integer.parseInt(jobID1.getText());
+            String jobid = jobID1.getText();
             String major = majorText.getText();
             String state = stateText.getText();
             String des = desTextArea.getText();
@@ -188,6 +188,7 @@ public class AddJob extends javax.swing.JFrame {
             
             if (verifData()){
             
+                int id = Integer.parseInt(jobid);
             
             String insert = "INSERT INTO JOB (JobID, JobName, State, Descripiton, Major) VALUES ("+jobid+",'"+jobName+"','"+state+"','"+des+"','"+major+"')";
             
