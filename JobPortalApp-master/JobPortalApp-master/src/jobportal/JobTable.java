@@ -25,15 +25,15 @@ public class JobTable extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        String sql = "SELECT JobID,JobName,Major FROM JOB ";
 
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                 java.sql.Statement stt = con.createStatement();
-                ResultSet rs = stt.executeQuery(sql)) {
+                ResultSet rs = stt.executeQuery("SELECT JobID,JobName,Major FROM JOB ") ) {
 
             while (rs.next()) {
                jTable1.setModel(DbUtils.resultSetToTableModel(rs) );
             }
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -224,10 +224,15 @@ public class JobTable extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int id = Integer.parseInt(jTextField7.getText());
-        SelectJob x = new SelectJob(id);
-        x.setVisible(true);
-        this.setVisible(false);
+        if(jTextField7.getText().length() <= 0){
+            JOptionPane.showMessageDialog(null," Plase, Selcte Job ", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+          int id = Integer.parseInt(jTextField7.getText());
+          SelectJob x = new SelectJob(id);
+          x.setVisible(true);
+          this.setVisible(false);  
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked

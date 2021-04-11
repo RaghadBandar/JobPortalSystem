@@ -69,7 +69,6 @@ public class SelectJob extends javax.swing.JFrame {
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -136,16 +135,6 @@ public class SelectJob extends javax.swing.JFrame {
         jPanel1.add(jPanel4);
         jPanel4.setBounds(30, 110, 350, 160);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
-        jButton1.setToolTipText("Go Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(30, 290, 40, 30);
-
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/checkIcon.png"))); // NOI18N
         jButton2.setToolTipText("Apply for Job");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -185,12 +174,6 @@ public class SelectJob extends javax.swing.JFrame {
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField11ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JobTable x = new JobTable();
-        x.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
@@ -276,7 +259,6 @@ public class SelectJob extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
