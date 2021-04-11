@@ -17,9 +17,7 @@ import static sun.misc.MessageUtils.where;
 
 public class updateCvFrame extends javax.swing.JFrame {
     
-    Connection con;
-    Statement st;
-    ResultSet rs;
+    
     
     public updateCvFrame() {
         super("UPDATE PROFILE");
@@ -336,11 +334,12 @@ public class updateCvFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        try {  
+        try(Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
+//            Statement st=con.createStatement();
+//            ResultSet rs=st.executeQuery("select * from CV") 
+                ) {  
                     
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234"); //check the database
-            st=con.createStatement();
-            rs=st.executeQuery("select * from CV.DB");
+            
             
   PreparedStatement updateSt= con.prepareStatement("Update CV set FName=?, LName=?,SeekerPhone=?,Experience=?,Address=?, SeekerEmail=?,GPA=? ,Gender=?, Age=? WHERE SeekerID=? ");             
              
@@ -354,11 +353,11 @@ public class updateCvFrame extends javax.swing.JFrame {
         
             // gender
            if(Female.isSelected())             
-             updateSt.setString(5,"Female");
+             updateSt.setString(8,"Female");
            else if(Male.isSelected()) 
-            updateSt.setString(5,"male"); 
+            updateSt.setString(8,"male"); 
             
-            updateSt.setInt(6,Integer.valueOf(Age.getText())); //Age
+            updateSt.setInt(9,Integer.valueOf(Age.getText())); //Age
          
             updateSt.setInt(10,Integer.parseInt(SeekerIDjText.getText()) ); // Seeker ID
          
@@ -372,7 +371,7 @@ public class updateCvFrame extends javax.swing.JFrame {
         catch(SQLException ex)
                 { JOptionPane.showMessageDialog(null, ex.getMessage());} 
         
-        catch (Exception ex) 
+        catch (Exception ex)      
         { JOptionPane.showMessageDialog(null, ex.getMessage(), "An error occurred", JOptionPane.ERROR_MESSAGE); }    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void EmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailActionPerformed
