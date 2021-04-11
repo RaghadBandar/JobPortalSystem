@@ -29,7 +29,7 @@ public class JobTableForAdmin extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        String sql = "SELECT JobID,JobName,Major,Description FROM JOB ";
+        String sql = "SELECT JobID,JobName,Major FROM JOB ";
 
         try (Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
                 java.sql.Statement stt = con.createStatement();
@@ -67,22 +67,22 @@ public class JobTableForAdmin extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Job ID", "Job Name", "Major", "Description"
+                "Job ID", "Job Name", "Major"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
