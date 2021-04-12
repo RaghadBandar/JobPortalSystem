@@ -77,7 +77,7 @@ public class SekeerServices extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel3.setText("Ahmed!");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(30, 60, 130, 50);
+        jLabel3.setBounds(30, 60, 220, 50);
 
         jLabel4.setFont(new java.awt.Font("Rockwell Condensed", 0, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(204, 204, 255));
