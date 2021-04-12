@@ -66,11 +66,11 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Update \nJob");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 80, 310, 70);
+        jLabel2.setBounds(20, 50, 200, 70);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/adminInterface.png"))); // NOI18N
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 0, 430, 200);
+        jLabel1.setBounds(0, 0, 430, 200);
 
         jLabel13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel13.setText("Name of Job");
@@ -90,7 +90,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel14.setText("Describtion");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(60, 370, 140, 29);
+        jLabel14.setBounds(50, 360, 140, 29);
 
         jComboBox4.setMaximumRowCount(3);
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
@@ -101,7 +101,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jComboBox4);
-        jComboBox4.setBounds(210, 260, 170, 30);
+        jComboBox4.setBounds(200, 260, 180, 30);
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
@@ -112,7 +112,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField6);
-        jTextField6.setBounds(210, 210, 170, 30);
+        jTextField6.setBounds(200, 210, 180, 30);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(20, 490, 50, 30);
+        jButton1.setBounds(20, 460, 50, 30);
 
         jButton2.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/Updicon.png"))); // NOI18N
@@ -131,7 +131,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(310, 490, 90, 30);
+        jButton2.setBounds(310, 460, 90, 30);
 
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
@@ -147,7 +147,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("True");
         jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(210, 310, 70, 29);
+        jRadioButton1.setBounds(200, 310, 70, 23);
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
@@ -158,7 +158,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(290, 310, 67, 29);
+        jRadioButton2.setBounds(310, 310, 51, 23);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,7 +168,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
         );
 
         pack();
