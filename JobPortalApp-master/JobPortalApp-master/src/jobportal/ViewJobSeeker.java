@@ -150,7 +150,7 @@ public class ViewJobSeeker extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("State:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(90, 360, 50, 20);
+        jLabel3.setBounds(70, 360, 50, 20);
 
         jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -159,7 +159,7 @@ public class ViewJobSeeker extends javax.swing.JFrame {
         jCheckBox1.setText("Approve");
         jCheckBox1.setEnabled(false);
         jPanel1.add(jCheckBox1);
-        jCheckBox1.setBounds(150, 360, 80, 20);
+        jCheckBox1.setBounds(130, 360, 100, 20);
 
         jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
         jCheckBox2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -172,7 +172,7 @@ public class ViewJobSeeker extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jCheckBox2);
-        jCheckBox2.setBounds(230, 360, 105, 20);
+        jCheckBox2.setBounds(250, 360, 109, 20);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/back.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {

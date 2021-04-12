@@ -48,7 +48,7 @@ public class SignUpFrame extends javax.swing.JFrame {
         jLabel2.setBounds(60, 280, 60, 40);
 
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Enter UserName");
+        jTextField1.setToolTipText("Enter UserName");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -63,7 +63,7 @@ public class SignUpFrame extends javax.swing.JFrame {
         jLabel3.setBounds(60, 350, 40, 30);
 
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("Enter ID");
+        jTextField2.setToolTipText("Enter ID");
         jPanel1.add(jTextField2);
         jTextField2.setBounds(180, 350, 140, 30);
 

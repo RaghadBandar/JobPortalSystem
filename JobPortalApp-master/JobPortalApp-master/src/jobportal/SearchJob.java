@@ -67,7 +67,7 @@ public class SearchJob extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/searchaJobInte.png"))); // NOI18N
 
         jTextField7.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField7.setText("Enter Job ID");
+        jTextField7.setToolTipText("Enter JobID");
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);

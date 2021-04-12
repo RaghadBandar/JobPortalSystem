@@ -76,22 +76,22 @@ public class CvFrame1 extends javax.swing.JFrame {
         jLabel3.setText("First Name");
 
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Enter First Name");
+        jTextField1.setToolTipText("Enter First Name");
 
         jLabel4.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel4.setText("Last Name");
 
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("Enter Last Name");
+        jTextField2.setToolTipText("Enter First Name");
 
         jLabel5.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel5.setText("Email");
 
         jTextField3.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField3.setText("Enter your Email");
+        jTextField3.setToolTipText("Enter your Email");
 
         jTextField4.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField4.setText("Enter your Phone");
+        jTextField4.setToolTipText("Enter your Phone");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -118,7 +118,7 @@ public class CvFrame1 extends javax.swing.JFrame {
         jRadioButton2.setText("Male");
 
         jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.setText("Enter your Age");
+        jTextField5.setToolTipText("Enter your Age");
 
         jLabel11.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel11.setText("Age");
@@ -127,7 +127,7 @@ public class CvFrame1 extends javax.swing.JFrame {
         jLabel12.setText("GPA");
 
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField6.setText("Enter your GPA 0.0");
+        jTextField6.setToolTipText("Enter your GPA 0.0");
 
         jLabel13.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel13.setText("Major");
@@ -143,12 +143,13 @@ public class CvFrame1 extends javax.swing.JFrame {
 
         jComboBox2.setMaximumRowCount(3);
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bachelor of Finance major", "Bachelor of Marketing major", "Master of Accounting major", "Doctorate of Accounting major", "Master of Development administration" }));
+        jComboBox2.setToolTipText("Select one");
 
         jTextField7.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField7.setText("Address [Region]");
+        jTextField7.setToolTipText("Address [Region]");
 
         jTextField8.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField8.setText("Past Experince?");
+        jTextField8.setToolTipText("Past Experince?");
 
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 18)); // NOI18N
@@ -161,7 +162,7 @@ public class CvFrame1 extends javax.swing.JFrame {
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/UsernameIcon.png"))); // NOI18N
 
         jTextField9.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField9.setText("Enter Your Major");
+        jTextField9.setToolTipText("Enter Your Major");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -344,7 +345,7 @@ public class CvFrame1 extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 789, Short.MAX_VALUE)
         );
 
         pack();

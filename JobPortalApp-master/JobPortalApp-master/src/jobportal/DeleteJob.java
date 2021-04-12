@@ -51,7 +51,7 @@ public class DeleteJob extends javax.swing.JFrame {
         jLabel3.setBounds(50, 200, 330, 50);
 
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Enter ID");
+        jTextField1.setToolTipText("Enter ID");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

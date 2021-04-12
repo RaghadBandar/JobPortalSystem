@@ -121,6 +121,7 @@ public class JobTable extends javax.swing.JFrame {
 
         jTextField7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(153, 153, 153));
+        jTextField7.setToolTipText("Enter JobID");
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);

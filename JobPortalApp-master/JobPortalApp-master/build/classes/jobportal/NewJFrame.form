@@ -129,7 +129,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Enter interviow ID"/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter interviow ID"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -145,7 +145,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Enter Title of Interviow"/>
+            <Property name="toolTipText" type="java.lang.String" value="Enter Title of Interviow"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -161,7 +161,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="YYYY-MM-DD"/>
+            <Property name="toolTipText" type="java.lang.String" value="YYYY-MM-DD"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">

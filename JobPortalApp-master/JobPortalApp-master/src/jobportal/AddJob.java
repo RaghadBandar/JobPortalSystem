@@ -79,13 +79,13 @@ public class AddJob extends javax.swing.JFrame {
 
         stateText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         stateText.setForeground(new java.awt.Color(153, 153, 153));
-        stateText.setText("T (True) OR F (False)");
+        stateText.setToolTipText("T (True) OR F (False)");
         jPanel2.add(stateText);
         stateText.setBounds(180, 360, 170, 30);
 
         jobtext.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jobtext.setForeground(new java.awt.Color(153, 153, 153));
-        jobtext.setText("Enter Name of Job!");
+        jobtext.setToolTipText("Enter Name of Job!");
         jPanel2.add(jobtext);
         jobtext.setBounds(180, 210, 170, 30);
 
@@ -142,7 +142,7 @@ public class AddJob extends javax.swing.JFrame {
         desTextArea.setFont(new java.awt.Font("Courier New", 0, 10)); // NOI18N
         desTextArea.setForeground(new java.awt.Color(153, 153, 153));
         desTextArea.setRows(5);
-        desTextArea.setText("Enter Description of JOB!");
+        desTextArea.setToolTipText("Enter Description of JOB!");
         jScrollPane1.setViewportView(desTextArea);
 
         jPanel2.add(jScrollPane1);
@@ -150,13 +150,13 @@ public class AddJob extends javax.swing.JFrame {
 
         jobID1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jobID1.setForeground(new java.awt.Color(153, 153, 153));
-        jobID1.setText("Enter Job ID!");
+        jobID1.setToolTipText("Enter Job ID!");
         jPanel2.add(jobID1);
         jobID1.setBounds(180, 260, 170, 30);
 
         majorText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         majorText.setForeground(new java.awt.Color(153, 153, 153));
-        majorText.setText("Enter Major!");
+        majorText.setToolTipText("Enter Major!");
         jPanel2.add(majorText);
         majorText.setBounds(180, 310, 170, 30);
 

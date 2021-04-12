@@ -49,7 +49,7 @@ public class SearchJobID extends javax.swing.JFrame {
         jLabel18.setText("Job ID");
 
         jTextField5.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField5.setText("Enter Job ID");
+        jTextField5.setToolTipText("Enter JobID");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);

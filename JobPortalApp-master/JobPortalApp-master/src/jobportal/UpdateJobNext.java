@@ -94,6 +94,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
 
         jComboBox4.setMaximumRowCount(3);
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finance Department", "marketing Department", "Accounting Department", "Development Department" }));
+        jComboBox4.setToolTipText("Chose One");
         jComboBox4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox4ActionPerformed(evt);
@@ -104,7 +105,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField6.setText("Enter Name of Job");
+        jTextField6.setToolTipText("Enter Name of Job");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
@@ -146,7 +147,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("True");
         jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(210, 310, 70, 25);
+        jRadioButton1.setBounds(210, 310, 70, 29);
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
@@ -157,7 +158,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(290, 310, 59, 25);
+        jRadioButton2.setBounds(290, 310, 67, 29);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

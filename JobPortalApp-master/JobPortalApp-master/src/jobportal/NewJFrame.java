@@ -47,19 +47,19 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel2.setText("Interviow ID");
 
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Enter interviow ID");
+        jTextField1.setToolTipText("Enter interviow ID");
 
         jLabel3.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         jLabel3.setText("Title");
 
         jTextField2.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField2.setText("Enter Title of Interviow");
+        jTextField2.setToolTipText("Enter Title of Interviow");
 
         jLabel4.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         jLabel4.setText("Date");
 
         jTextField3.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField3.setText("YYYY-MM-DD");
+        jTextField3.setToolTipText("YYYY-MM-DD");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/checkIcon.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {

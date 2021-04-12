@@ -78,7 +78,7 @@ public class UpdateJob extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Enter ID");
+        jTextField1.setToolTipText("Enter ID");
         jPanel2.add(jTextField1);
         jTextField1.setBounds(120, 280, 180, 30);
 
