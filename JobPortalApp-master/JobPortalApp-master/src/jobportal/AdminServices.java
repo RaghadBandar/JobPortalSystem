@@ -106,7 +106,7 @@ public class AdminServices extends javax.swing.JFrame {
             }
         });
         jPanel1.add(update);
-        update.setBounds(110, 440, 210, 40);
+        update.setBounds(110, 340, 210, 40);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobportal/icons8-exit-24.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,7 @@ public class AdminServices extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton7);
-        jButton7.setBounds(110, 340, 210, 40);
+        jButton7.setBounds(110, 440, 210, 40);
 
         delete.setFont(new java.awt.Font("Gill Sans MT Condensed", 0, 24)); // NOI18N
         delete.setText("Delete Job");
