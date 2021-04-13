@@ -117,7 +117,8 @@ public class UpdateJob extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int idJob = Integer.parseInt(jTextField1.getText());
+        if(jTextField1.getText().length() > 0){
+            int idJob = Integer.parseInt(jTextField1.getText());
         
         try(Connection connection=DriverManager.getConnection("jdbc:derby://localhost:1527/JobPortalDB", "DB", "1234");
             Statement statement= connection.createStatement();
@@ -139,6 +140,10 @@ public class UpdateJob extends javax.swing.JFrame {
                 ex.getMessage(), "an error has accured ",
                 JOptionPane.ERROR_MESSAGE);
         }
+        }else {
+             JOptionPane.showMessageDialog(null, "filed is empty.. Try again!","Empty fileds",JOptionPane.PLAIN_MESSAGE);
+        }
+        
 
         
         

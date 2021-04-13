@@ -147,7 +147,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("True");
         jPanel1.add(jRadioButton1);
-        jRadioButton1.setBounds(200, 310, 70, 23);
+        jRadioButton1.setBounds(200, 310, 70, 25);
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
@@ -158,7 +158,7 @@ public class UpdateJobNext extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jRadioButton2);
-        jRadioButton2.setBounds(310, 310, 51, 23);
+        jRadioButton2.setBounds(270, 310, 59, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
